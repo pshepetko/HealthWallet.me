@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 
@@ -17,7 +18,7 @@ class BluetoothStateService {
   Stream<bool> get onStateChanged => _controller.stream;
 
   void startListening() {
-    if (!Platform.isAndroid && !Platform.isIOS) return;
+    if (kIsWeb || (!Platform.isAndroid && !Platform.isIOS)) return;
     _subscription ??= _eventChannel.receiveBroadcastStream().listen((event) {
       _controller.add(event as bool);
     });
@@ -29,7 +30,7 @@ class BluetoothStateService {
   }
 
   Future<bool> isEnabled() async {
-    if (!Platform.isAndroid && !Platform.isIOS) return true;
+    if (kIsWeb || (!Platform.isAndroid && !Platform.isIOS)) return true;
     try {
       final result =
           await _methodChannel.invokeMethod<bool>('isBluetoothEnabled');

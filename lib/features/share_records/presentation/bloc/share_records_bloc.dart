@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:airdrop/airdrop.dart';
+import 'package:health_wallet/features/share_records/data/service/airdrop_stub.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -82,8 +83,10 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
     on<PeerSelected>(handlePeerSelected);
 
     on<TransferStarted>(handleTransferStarted);
-    on<TransferProgressUpdated>(handleTransferProgressUpdated,
-        transformer: droppable());
+    on<TransferProgressUpdated>(
+      handleTransferProgressUpdated,
+      transformer: droppable(),
+    );
     on<TransferCompleted>(handleTransferCompleted);
     on<TransferFailed>(handleTransferFailed);
     on<TransferCancelled>(handleTransferCancelled);
@@ -107,7 +110,8 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
     on<KillSessionRequested>(handleKillSessionRequested);
     on<RemoteSessionKilled>(handleRemoteSessionKilled);
     on<ReceiverInitializedWithInvitation>(
-        handleReceiverInitializedWithInvitation);
+      handleReceiverInitializedWithInvitation,
+    );
     on<ReceiverInitializedWithData>(handleReceiverInitializedWithData);
 
     on<SessionExtendRequested>(handleSessionExtendRequested);
@@ -130,9 +134,7 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
     WidgetsBinding.instance.addObserver(this);
 
     final receiveModeManager = getIt<ReceiveModeService>();
-    _subscribeToStreams(
-      skipInvitationStream: receiveModeManager.isListening,
-    );
+    _subscribeToStreams(skipInvitationStream: receiveModeManager.isListening);
 
     EphemeralSessionManager.instance.initialize(
       onSessionDestroyed: (sessionId) {
@@ -143,13 +145,15 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
 
     await _initDeviceName();
 
-    final defaultDuration =
-        await _preferencesService.getDefaultViewingDuration();
-    emit(state.copyWith(
-      defaultViewingDuration: defaultDuration,
-      selectedViewingDuration: defaultDuration,
-      statusMessage: 'Ready to share',
-    ));
+    final defaultDuration = await _preferencesService
+        .getDefaultViewingDuration();
+    emit(
+      state.copyWith(
+        defaultViewingDuration: defaultDuration,
+        selectedViewingDuration: defaultDuration,
+        statusMessage: 'Ready to share',
+      ),
+    );
   }
 
   Future<void> _onDisposed(
@@ -172,12 +176,14 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
     SendModeSelected event,
     Emitter<ShareRecordsState> emit,
   ) async {
-    emit(state.copyWith(
-      mode: ShareMode.sending,
-      phase: SharePhase.selectingRecords,
-      isSessionActive: false,
-      statusMessage: 'Select records to share',
-    ));
+    emit(
+      state.copyWith(
+        mode: ShareMode.sending,
+        phase: SharePhase.selectingRecords,
+        isSessionActive: false,
+        statusMessage: 'Select records to share',
+      ),
+    );
 
     _viewingTimer?.cancel();
     _monitoringFallbackTimer?.cancel();
@@ -192,26 +198,32 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
 
     switch (result) {
       case PermissionGranted():
-        emit(state.copyWith(
-          mode: ShareMode.receiving,
-          phase: SharePhase.discoveringPeers,
-          statusMessage: 'Waiting for sender...',
-        ));
+        emit(
+          state.copyWith(
+            mode: ShareMode.receiving,
+            phase: SharePhase.discoveringPeers,
+            statusMessage: 'Waiting for sender...',
+          ),
+        );
         await _service.disconnect();
         await _service.startReceivingInMemory();
 
       case PermissionDenied(:final message):
-        emit(state.copyWith(
-          errorMessage: message,
-          statusMessage: 'Permissions required',
-        ));
+        emit(
+          state.copyWith(
+            errorMessage: message,
+            statusMessage: 'Permissions required',
+          ),
+        );
 
       case PermissionPermanentlyDenied(:final message):
-        emit(state.copyWith(
-          errorMessage: message,
-          showSettingsDialog: true,
-          statusMessage: 'Please enable permissions in Settings',
-        ));
+        emit(
+          state.copyWith(
+            errorMessage: message,
+            showSettingsDialog: true,
+            statusMessage: 'Please enable permissions in Settings',
+          ),
+        );
     }
   }
 
@@ -224,10 +236,7 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
     emit(ShareRecordsState.initial());
   }
 
-  void _onRecordToggled(
-    RecordToggled event,
-    Emitter<ShareRecordsState> emit,
-  ) {
+  void _onRecordToggled(RecordToggled event, Emitter<ShareRecordsState> emit) {
     final newSelection = state.selection.toggle(event.resource);
     emit(state.copyWith(selection: newSelection));
   }
@@ -260,9 +269,7 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
   ) async {
     final newDefaultDuration = state.selectedViewingDuration;
     await _preferencesService.setDefaultViewingDuration(newDefaultDuration);
-    emit(state.copyWith(
-      defaultViewingDuration: newDefaultDuration,
-    ));
+    emit(state.copyWith(defaultViewingDuration: newDefaultDuration));
   }
 
   void _onSelectionConfirmed(
@@ -274,10 +281,12 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
       return;
     }
 
-    emit(state.copyWith(
-      phase: SharePhase.discoveringPeers,
-      statusMessage: 'Looking for nearby devices...',
-    ));
+    emit(
+      state.copyWith(
+        phase: SharePhase.discoveringPeers,
+        statusMessage: 'Looking for nearby devices...',
+      ),
+    );
 
     add(const ShareRecordsEvent.symmetricDiscoveryStarted());
   }
@@ -293,11 +302,13 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
     WifiToggleRequested event,
     Emitter<ShareRecordsState> emit,
   ) {
-    emit(state.copyWith(
-      wifiToggleNeeded: true,
-      statusMessage:
-          'WiFi Direct unresponsive. Toggle WiFi off/on, then tap Retry.',
-    ));
+    emit(
+      state.copyWith(
+        wifiToggleNeeded: true,
+        statusMessage:
+            'WiFi Direct unresponsive. Toggle WiFi off/on, then tap Retry.',
+      ),
+    );
   }
 
   void _onConnectionHealthUpdated(
@@ -320,10 +331,10 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
   Future<void> _initDeviceName() async {
     try {
       final deviceInfo = DeviceInfoPlugin();
-      if (Platform.isIOS) {
+      if (!kIsWeb && Platform.isIOS) {
         final iosInfo = await deviceInfo.iosInfo;
         _deviceName = iosInfo.name;
-      } else if (Platform.isAndroid) {
+      } else if (!kIsWeb && Platform.isAndroid) {
         final androidInfo = await deviceInfo.androidInfo;
         _deviceName = androidInfo.model;
       }
@@ -340,7 +351,8 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
     });
     _statusSub = _service.statusStream.listen((status) {
       if (_isClosed) return;
-      final isTransferRelatedPhase = state.phase == SharePhase.connecting ||
+      final isTransferRelatedPhase =
+          state.phase == SharePhase.connecting ||
           state.phase == SharePhase.transferring;
       if (!isTransferRelatedPhase) return;
       switch (status) {
@@ -369,10 +381,12 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
     if (!skipInvitationStream) {
       _invitationSub = _service.invitationStream.listen((data) {
         if (_isClosed) return;
-        add(ShareRecordsEvent.invitationReceived(
-          invitationId: data['invitationId'] as String,
-          deviceName: data['deviceName'] as String? ?? 'Unknown Device',
-        ));
+        add(
+          ShareRecordsEvent.invitationReceived(
+            invitationId: data['invitationId'] as String,
+            deviceName: data['deviceName'] as String? ?? 'Unknown Device',
+          ),
+        );
       });
     }
     _receivedDataSub = _service.receivedDataStream.listen((data) {
@@ -396,20 +410,21 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
         _monitoringFallbackTimer?.cancel();
         if (state.sessionStartedAt == null) {
           debugPrint(
-              '[SHARE] Session ended before receiver started viewing - treating as rejection');
+            '[SHARE] Session ended before receiver started viewing - treating as rejection',
+          );
           add(const ShareRecordsEvent.remoteInvitationRejected());
         } else {
           add(const ShareRecordsEvent.remoteSessionKilled());
         }
       }
     });
-    _extendRequestSub =
-        _service.sessionExtendRequestStream.listen((duration) {
+    _extendRequestSub = _service.sessionExtendRequestStream.listen((duration) {
       if (_isClosed) return;
       add(ShareRecordsEvent.remoteExtendRequest(duration));
     });
-    _extendAcceptedSub =
-        _service.sessionExtendAcceptedStream.listen((duration) {
+    _extendAcceptedSub = _service.sessionExtendAcceptedStream.listen((
+      duration,
+    ) {
       if (_isClosed) return;
       add(ShareRecordsEvent.remoteExtendAccepted(duration));
     });
@@ -421,8 +436,7 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
       if (_isClosed) return;
       add(const ShareRecordsEvent.viewingStartedReceived());
     });
-    _invitationRejectedSub =
-        _service.invitationRejectedStream.listen((_) {
+    _invitationRejectedSub = _service.invitationRejectedStream.listen((_) {
       if (_isClosed) return;
       add(const ShareRecordsEvent.remoteInvitationRejected());
     });
@@ -430,8 +444,7 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
       if (_isClosed) return;
       add(const ShareRecordsEvent.wifiToggleRequested());
     });
-    _connectionHealthSub =
-        _service.connectionHealthStream.listen((health) {
+    _connectionHealthSub = _service.connectionHealthStream.listen((health) {
       if (_isClosed) return;
       add(ShareRecordsEvent.connectionHealthUpdated(health));
     });
@@ -473,7 +486,8 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
               state.phase == SharePhase.connecting) &&
           state.sessionStartedAt == null) {
         debugPrint(
-            '[SHARE] Fallback: no viewingStarted after 60s, starting timer from now');
+          '[SHARE] Fallback: no viewingStarted after 60s, starting timer from now',
+        );
         add(const ShareRecordsEvent.viewingStartedReceived());
       }
     });

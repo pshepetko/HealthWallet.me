@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+
 class DeviceCapabilityService {
   static int estimateIosRam(String machine) {
     final iphone = RegExp(r'iPhone(\d+),(\d+)').firstMatch(machine);
@@ -31,13 +33,13 @@ class DeviceCapabilityService {
     required bool withVision,
     required int ramMB,
   }) {
-    final cpuCores = Platform.numberOfProcessors;
+    final cpuCores = kIsWeb ? 4 : Platform.numberOfProcessors;
     final threads = cpuCores.clamp(1, 4);
 
     int contextSize;
     int gpuLayers = 0;
 
-    if (Platform.isIOS) {
+    if (!kIsWeb && Platform.isIOS) {
       if (ramMB >= 8192) {
         contextSize = 4096;
         gpuLayers = withVision ? 4 : 0;

@@ -67,9 +67,9 @@ dependencies:
   mobile_scanner: ^7.2.0
   onboarding_overlay: ^3.2.2
 
-  fhir_ips_export:
-    git:
-      url: ssh://git@git.techstackapps.com:2822/mobile/health-wallet/fhir-ips-export.git
+ # fhir_ips_export:
+  #  git:
+   #   url: ssh://git@git.techstackapps.com:2822/mobile/health-wallet/fhir-ips-export.git
   flutter_doc_scanner: ^0.0.18
   permission_handler: ^12.0.1
   open_file: ^3.5.10
@@ -99,9 +99,9 @@ dependencies:
 
 
   # P2P file transfer (local package)
-  airdrop:
-    git:
-      url: ssh://git@git.techstackapps.com:2822/mobile/flutter/packages/flutter-airdrop.git
+ # airdrop:
+   # git:
+    #  url: ssh://git@git.techstackapps.com:2822/mobile/flutter/packages/flutter-airdrop.git
 
 dev_dependencies:
   flutter_test:

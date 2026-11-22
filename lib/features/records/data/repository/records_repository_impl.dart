@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:drift/drift.dart';
-import 'package:fhir_ips_export/fhir_ips_export.dart';
 import 'package:health_wallet/core/constants/blood_types.dart';
 import 'package:health_wallet/core/data/local/app_database.dart';
 import 'package:health_wallet/core/utils/logger.dart';
@@ -601,50 +600,8 @@ class RecordsRepositoryImpl implements RecordsRepository {
     String? sourceId,
     String? patientId,
   }) async {
-    List<String>? patientSourceIds;
-    if (patientId != null) {
-      final allPatients = await _datasource.getResources(
-        resourceTypes: [FhirType.Patient.name],
-      );
-      patientSourceIds = allPatients
-          .map(IFhirResource.fromLocalDto)
-          .where((p) => p.id == patientId && p.sourceId.isNotEmpty)
-          .map((p) => p.sourceId)
-          .toSet()
-          .toList();
-    }
-
-    List<FhirResourceLocalDto> resourceDtos = await _datasource.getResources(
-      resourceTypes: [],
-      sourceId: sourceId,
-      sourceIds: patientSourceIds,
-    );
-
-    List<IFhirResource> resources =
-        resourceDtos.map(IFhirResource.fromLocalDto).toList();
-
-    Patient? patient = patientId != null
-        ? resources.whereType<Patient>().where((p) => p.id == patientId).firstOrNull
-        : resources.whereType<Patient>().firstOrNull;
-
-    if (patient == null) {
-      throw Exception("Patient not found");
-    }
-
-    final patientName = FhirFieldExtractor.extractHumanNameFamilyFirst(
-          patient.name?.first,
-        )?.replaceAll(RegExp(r'[^\w\s-]'), '').replaceAll(' ', '_') ??
-        'Unknown';
-
-    FhirIpsBuilder builder = FhirIpsBuilder();
-    FhirIpsPdfRenderer renderer = FhirIpsPdfRenderer();
-
-    final ipsData = await builder.buildFromRawResources(
-      rawResources: resources.map((r) => r.rawResource).toList(),
-      rawPatient: patient.rawResource,
-    );
-
-    final bytes = await renderer.render(ipsData: ipsData);
-    return (bytes: bytes, patientName: patientName);
+    // fhir_ips_export is a private package in the upstream repository.
+    // Disabled locally so the app can compile without SSH access.
+    throw UnsupportedError('IPS PDF export is disabled in this local build.');
   }
 }

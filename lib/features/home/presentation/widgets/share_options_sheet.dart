@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:health_wallet/features/records/presentation/bloc/records_bloc.dart';
@@ -44,7 +45,7 @@ Future<void> showShareOptionsMenu(
           ],
         ),
       ),
-      if (Platform.isIOS)
+      if (!kIsWeb && Platform.isIOS)
         PopupMenuItem<String>(
           height: 40,
           value: 'apple_wallet',
@@ -63,7 +64,7 @@ Future<void> showShareOptionsMenu(
             ],
           ),
         ),
-      if (Platform.isAndroid)
+      if (!kIsWeb && Platform.isAndroid)
         PopupMenuItem<String>(
           height: 40,
           value: 'google_wallet',

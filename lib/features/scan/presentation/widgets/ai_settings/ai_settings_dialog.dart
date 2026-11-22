@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:health_wallet/core/config/constants/app_constants.dart';
 import 'package:health_wallet/core/config/constants/shared_prefs_constants.dart';
@@ -102,18 +103,20 @@ class AiTokenSettingsDialog extends StatefulWidget {
 
   static Future<int> _detectDeviceRamMB() async {
     try {
-      final deviceInfo = DeviceInfoPlugin();
-      if (Platform.isIOS) {
-        final ios = await deviceInfo.iosInfo;
-        return DeviceCapabilityService.estimateIosRam(ios.utsname.machine);
-      } else if (Platform.isAndroid) {
-        try {
-          final memInfo = await File('/proc/meminfo').readAsString();
-          final match = RegExp(r'MemTotal:\s+(\d+)').firstMatch(memInfo);
-          if (match != null) return int.parse(match.group(1)!) ~/ 1024;
-        } catch (_) {}
-        final android = await deviceInfo.androidInfo;
-        return android.isLowRamDevice ? 2048 : 4096;
+      if (!kIsWeb) {
+        final deviceInfo = DeviceInfoPlugin();
+        if (Platform.isIOS) {
+          final ios = await deviceInfo.iosInfo;
+          return DeviceCapabilityService.estimateIosRam(ios.utsname.machine);
+        } else if (Platform.isAndroid) {
+          try {
+            final memInfo = await File('/proc/meminfo').readAsString();
+            final match = RegExp(r'MemTotal:\s+(\d+)').firstMatch(memInfo);
+            if (match != null) return int.parse(match.group(1)!) ~/ 1024;
+          } catch (_) {}
+          final android = await deviceInfo.androidInfo;
+          return android.isLowRamDevice ? 2048 : 4096;
+        }
       }
     } catch (_) {}
     return 4096;
@@ -337,7 +340,8 @@ class _AiTokenSettingsDialogState extends State<AiTokenSettingsDialog> {
                         context.l10n.threadsDescription,
                         _threads,
                         1,
-                        Platform.numberOfProcessors.clamp(1, 8),
+                        (kIsWeb ? 4 : Platform.numberOfProcessors)
+                            .clamp(1, 8),
                         widget.recommendedThreads,
                         (v) => setState(() => _threads = v),
                         textColor,
@@ -397,8 +401,10 @@ class _AiTokenSettingsDialogState extends State<AiTokenSettingsDialog> {
 
   Widget _buildDeviceInfoChip(Color textColor, int estimatedMB) {
     final ramGB = (widget.deviceRamMB / 1024).toStringAsFixed(1);
-    final cores = Platform.numberOfProcessors;
-    final platform = Platform.isIOS ? 'iOS' : 'Android';
+    final cores = kIsWeb ? 4 : Platform.numberOfProcessors;
+    final platform = kIsWeb
+        ? 'Web'
+        : (Platform.isIOS ? 'iOS' : 'Android');
 
     return Container(
       padding: const EdgeInsets.symmetric(

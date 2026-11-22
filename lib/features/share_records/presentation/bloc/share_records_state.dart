@@ -1,4 +1,4 @@
-import 'package:airdrop/airdrop.dart';
+import 'package:health_wallet/features/share_records/data/service/airdrop_stub.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:health_wallet/features/records/domain/entity/entity.dart';
@@ -6,11 +6,7 @@ import 'package:health_wallet/features/share_records/domain/entity/entity.dart';
 
 part 'share_records_state.freezed.dart';
 
-enum ShareMode {
-  idle,
-  sending,
-  receiving,
-}
+enum ShareMode { idle, sending, receiving }
 
 enum SharePhase {
   selectingRecords,
@@ -81,7 +77,8 @@ class ShareRecordsState with _$ShareRecordsState {
 
   int get receivedCount => receivedData?.recordCount ?? 0;
 
-  bool get isDefaultDuration => selectedViewingDuration == defaultViewingDuration;
+  bool get isDefaultDuration =>
+      selectedViewingDuration == defaultViewingDuration;
 
   double get progressPercentage {
     if (transferProgress == null) return 0.0;

@@ -3,23 +3,24 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:health_wallet/app/app.dart';
+import 'package:health_wallet/core/config/constants/ai_model_config.dart';
 import 'package:health_wallet/core/di/injection.dart' hide PdfStorageService;
 import 'package:health_wallet/core/navigation/app_router.dart';
 import 'package:health_wallet/core/navigation/observers/order_route_observer.dart';
 import 'package:health_wallet/core/services/biometric_auth_service.dart';
+import 'package:health_wallet/core/services/bluetooth_state_service.dart';
 import 'package:health_wallet/core/services/pdf_storage_service.dart';
 import 'package:health_wallet/features/notifications/bloc/notification_bloc.dart';
 import 'package:health_wallet/features/records/domain/entity/entity.dart';
 import 'package:health_wallet/features/records/domain/entity/record_note/record_note.dart';
 import 'package:health_wallet/features/records/domain/repository/records_repository.dart';
 import 'package:health_wallet/features/records/presentation/bloc/records_bloc.dart';
-import 'package:health_wallet/core/config/constants/ai_model_config.dart';
 import 'package:health_wallet/features/scan/domain/entity/processing_session.dart';
 import 'package:health_wallet/features/scan/domain/repository/scan_repository.dart';
 import 'package:health_wallet/features/scan/domain/services/document_reference_service.dart';
+import 'package:health_wallet/features/scan/domain/services/ocr_processing_service.dart';
 import 'package:health_wallet/features/scan/domain/services/text_recognition_service.dart';
 import 'package:health_wallet/features/scan/presentation/bloc/scan_bloc.dart';
-import 'package:health_wallet/features/scan/domain/services/ocr_processing_service.dart';
 import 'package:health_wallet/features/sync/data/data_source/local/sync_local_data_source.dart';
 import 'package:health_wallet/features/sync/domain/entities/source.dart';
 import 'package:health_wallet/features/sync/domain/entities/sync_qr_data.dart';
@@ -32,10 +33,10 @@ import 'package:health_wallet/features/user/domain/entity/user.dart';
 import 'package:health_wallet/features/user/domain/repository/user_repository.dart';
 import 'package:health_wallet/features/user/domain/services/default_patient_service.dart';
 import 'package:health_wallet/features/user/domain/services/patient_deduplication_service.dart';
+import 'package:health_wallet/features/user/domain/services/patient_edit_service.dart';
 import 'package:health_wallet/features/user/domain/services/patient_selection_service.dart';
 import 'package:health_wallet/features/user/presentation/bloc/user_bloc.dart';
 import 'package:health_wallet/features/user/presentation/preferences_modal/sections/patient/bloc/patient_bloc.dart';
-import 'package:health_wallet/features/user/domain/services/patient_edit_service.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -75,26 +76,24 @@ class FakeBiometricAuthService extends Fake implements BiometricAuthService {
 class FakeRecordsRepository extends Fake implements RecordsRepository {
   @override
   Future<List<IFhirResource>> getResources({
+    DateFilter? dateFilter,
     List<FhirType> resourceTypes = const [],
     String? sourceId,
     List<String>? sourceIds,
     int limit = 20,
     int offset = 0,
-  }) async =>
-      [];
+  }) async => [];
 
   @override
   Future<List<IFhirResource>> getRelatedResourcesForEncounter({
     required String encounterId,
     String? sourceId,
-  }) async =>
-      [];
+  }) async => [];
 
   @override
   Future<List<IFhirResource>> getRelatedResources({
     required IFhirResource resource,
-  }) async =>
-      [];
+  }) async => [];
 
   @override
   Future<IFhirResource?> resolveReference(String reference) async => null;
@@ -104,8 +103,7 @@ class FakeRecordsRepository extends Fake implements RecordsRepository {
     required String resourceId,
     String? sourceId,
     required String content,
-  }) async =>
-      0;
+  }) async => 0;
 
   @override
   Future<List<RecordNote>> getRecordNotes(String resourceId) async => [];
@@ -129,8 +127,7 @@ class FakeRecordsRepository extends Fake implements RecordsRepository {
   Future<List<IFhirResource>> getBloodTypeObservations({
     required String patientId,
     String? sourceId,
-  }) async =>
-      [];
+  }) async => [];
 
   @override
   Future<String> saveObservation(IFhirResource observation) async => '';
@@ -144,15 +141,13 @@ class FakeRecordsRepository extends Fake implements RecordsRepository {
     List<FhirType> resourceTypes = const [],
     String? sourceId,
     int limit = 50,
-  }) async =>
-      [];
+  }) async => [];
 
   @override
   Future<({Uint8List bytes, String patientName})> buildIpsExport({
     String? sourceId,
     String? patientId,
-  }) async =>
-      (bytes: Uint8List(0), patientName: 'Unknown');
+  }) async => (bytes: Uint8List(0), patientName: 'Unknown');
 }
 
 class FakeSyncRepository extends Fake implements SyncRepository {
@@ -242,6 +237,8 @@ class MockDocumentReferenceService extends Mock
 
 class MockPatientEditService extends Mock implements PatientEditService {}
 
+class FakePdfStorageService extends Fake implements PdfStorageService {}
+
 // ---------------------------------------------------------------------------
 // Test
 // ---------------------------------------------------------------------------
@@ -260,26 +257,35 @@ void main() {
     final fakeRecordsRepo = FakeRecordsRepository();
     final fakeSyncRepo = FakeSyncRepository();
     final fakeScanRepo = FakeScanRepository();
+    final fakeSyncLocalDataSource = FakeSyncLocalDataSource();
 
-    final deduplicationService =
-        PatientDeduplicationService(fakeRecordsRepo, fakeSyncRepo);
+    final deduplicationService = PatientDeduplicationService(
+      fakeRecordsRepo,
+      fakeSyncRepo,
+    );
     final selectionService = PatientSelectionService(deduplicationService);
     final getSourcesUseCase = GetSourcesUseCase(fakeSyncRepo);
     final walletPatientService = WalletPatientService(fakeSyncRepo);
-    final sourceTypeService =
-        SourceTypeService(walletPatientService, fakeSyncRepo);
+    final sourceTypeService = SourceTypeService(
+      walletPatientService,
+      fakeSyncRepo,
+    );
 
     // --- Blocs (constructed with fake dependencies) ---
     final userBloc = UserBloc(fakeUserRepo, fakeBiometricAuth);
     final syncBloc = SyncBloc(
       fakeSyncRepo,
       fakeRecordsRepo,
-      DefaultPatientService(fakeRecordsRepo, FakeSyncLocalDataSource()),
+      DefaultPatientService(
+        fakeRecordsRepo,
+        fakeSyncLocalDataSource,
+        walletPatientService,
+      ),
     );
     final recordsBloc = RecordsBloc(fakeRecordsRepo);
     final prefs = await SharedPreferences.getInstance();
     final scanBloc = ScanBloc(
-      PdfStorageService(),
+      FakePdfStorageService(),
       fakeScanRepo,
       OcrProcessingHelper(MockTextRecognitionService()),
       fakeSyncRepo,
@@ -297,6 +303,10 @@ void main() {
     );
 
     // --- Register everything the App widget resolves from getIt ---
+    getIt.registerFactory<UserRepository>(() => fakeUserRepo);
+    getIt.registerLazySingleton<BluetoothStateService>(
+      () => FakeBluetoothStateService(),
+    );
     getIt.registerSingleton<AppRouter>(AppRouter());
     getIt.registerFactory<AppRouteObserver>(() => AppRouteObserver());
     getIt.registerFactory<UserBloc>(() => userBloc);
@@ -307,7 +317,8 @@ void main() {
     getIt.registerFactory<RecordsRepository>(() => fakeRecordsRepo);
     getIt.registerFactory<SyncRepository>(() => fakeSyncRepo);
     getIt.registerFactory<PatientDeduplicationService>(
-        () => deduplicationService);
+      () => deduplicationService,
+    );
     getIt.registerFactory<PatientSelectionService>(() => selectionService);
     getIt.registerFactory<PatientBloc>(() => patientBloc);
     getIt.registerSingleton<NotificationBloc>(notificationBloc);
@@ -329,4 +340,18 @@ void main() {
     await notificationBloc.close();
     await patientBloc.close();
   });
+}
+
+class FakeBluetoothStateService extends Fake implements BluetoothStateService {
+  @override
+  Stream<bool> get isBluetoothEnabledStream => const Stream<bool>.empty();
+
+  @override
+  void startListening() {}
+
+  @override
+  void stopListening() {}
+
+  @override
+  void dispose() {}
 }

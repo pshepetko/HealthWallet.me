@@ -1,9 +1,14 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class SharePermissionsHelper {
   static Future<PermissionResult> requestSharePermissions() async {
+    if (kIsWeb) {
+      return const PermissionDenied([]);
+    }
+
     if (Platform.isIOS) {
       final bluetoothStatus = await Permission.bluetooth.status;
 
@@ -75,6 +80,8 @@ class SharePermissionsHelper {
   }
 
   static Future<bool> hasRequiredPermissions() async {
+    if (kIsWeb) return false;
+
     if (Platform.isIOS) {
       final bluetoothStatus = await Permission.bluetooth.status;
       return bluetoothStatus.isGranted;
@@ -103,7 +110,7 @@ class SharePermissionsHelper {
   }
 
   static String getPermissionExplanation() {
-    if (Platform.isIOS) {
+    if (!kIsWeb && Platform.isIOS) {
       return 'To share records with nearby devices, HealthWallet needs access to:\n\n'
           '• Bluetooth - to discover and connect to nearby devices\n\n'
           'This allows you to securely share health records with other devices nearby.';

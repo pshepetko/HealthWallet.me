@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:airdrop/airdrop.dart';
+import 'package:health_wallet/features/share_records/data/service/airdrop_stub.dart';
 import 'package:flutter/material.dart';
 import 'package:health_wallet/core/di/injection.dart';
 import 'package:health_wallet/core/navigation/app_router.dart';
@@ -32,10 +32,7 @@ class ReceiveModeManager implements ReceiveModeService {
 
   EphemeralRecordsContainer? _pendingReceivedData;
 
-  ReceiveModeManager(
-    this._shareRecordsService,
-    this._notificationBloc,
-  );
+  ReceiveModeManager(this._shareRecordsService, this._notificationBloc);
 
   bool get isListening => _isListening;
 
@@ -135,24 +132,28 @@ class ReceiveModeManager implements ReceiveModeService {
   }
 
   void _subscribeToInvitations() {
-    _invitationSubscription =
-        _shareRecordsService.invitationStream.listen((invitation) {
+    _invitationSubscription = _shareRecordsService.invitationStream.listen((
+      invitation,
+    ) {
       debugPrint('[ReceiveMode] Invitation received: $invitation');
       _showInvitationNotification(invitation);
     });
   }
 
   void _subscribeToReceivedData() {
-    _receivedDataSubscription =
-        _shareRecordsService.receivedDataStream.listen((data) {
+    _receivedDataSubscription = _shareRecordsService.receivedDataStream.listen((
+      data,
+    ) {
       debugPrint('[ReceiveMode] Data received in background');
       _handleReceivedData(data);
     });
 
-    _receivedFilesSubscription =
-        _shareRecordsService.receivedFilesStream.listen((filePaths) {
+    _receivedFilesSubscription = _shareRecordsService.receivedFilesStream.listen((
+      filePaths,
+    ) {
       debugPrint(
-          '[ReceiveMode] Files received in background: ${filePaths.length} files');
+        '[ReceiveMode] Files received in background: ${filePaths.length} files',
+      );
       _handleReceivedFiles(filePaths);
     });
   }
@@ -179,12 +180,14 @@ class ReceiveModeManager implements ReceiveModeService {
 
     if (_pendingInvitationId != null) {
       debugPrint(
-          '[ReceiveMode] Data arrived while invitation pending, stored for BLoC');
+        '[ReceiveMode] Data arrived while invitation pending, stored for BLoC',
+      );
       return;
     }
 
     debugPrint(
-        '[ReceiveMode] Auto-navigating to viewer: ${container.recordCount} records from ${container.senderDeviceName}');
+      '[ReceiveMode] Auto-navigating to viewer: ${container.recordCount} records from ${container.senderDeviceName}',
+    );
     final router = getIt<AppRouter>();
     router.push(ShareRecordsRoute(hasReceivedData: true));
   }
@@ -192,14 +195,16 @@ class ReceiveModeManager implements ReceiveModeService {
   void _showInvitationNotification(Map<String, dynamic> invitation) {
     final deviceName =
         invitation['senderDeviceName'] as String? ??
-            invitation['deviceName'] as String? ??
-            'Unknown Device';
+        invitation['deviceName'] as String? ??
+        'Unknown Device';
     final invitationId = invitation['invitationId'] as String? ?? '';
 
     debugPrint('[ReceiveMode] Invitation from: $deviceName');
 
     if (_pendingInvitationId != null) {
-      debugPrint('[ReceiveMode] Already handling an invitation, skipping duplicate');
+      debugPrint(
+        '[ReceiveMode] Already handling an invitation, skipping duplicate',
+      );
       return;
     }
 
@@ -220,10 +225,12 @@ class ReceiveModeManager implements ReceiveModeService {
 
     if (context == null) {
       debugPrint('[ReceiveMode] No context for dialog, navigating directly');
-      router.push(ShareRecordsRoute(
-        pendingInvitationId: invitationId,
-        pendingInvitationDeviceName: deviceName,
-      ));
+      router.push(
+        ShareRecordsRoute(
+          pendingInvitationId: invitationId,
+          pendingInvitationDeviceName: deviceName,
+        ),
+      );
       return;
     }
 
@@ -278,12 +285,12 @@ class ReceiveModeManager implements ReceiveModeService {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Assets.icons.information.svg(
-                              width: 20,
-                              height: 20,
-                              colorFilter: const ColorFilter.mode(
-                                AppColors.warning,
-                                BlendMode.srcIn,
-                              ),
+                            width: 20,
+                            height: 20,
+                            colorFilter: const ColorFilter.mode(
+                              AppColors.warning,
+                              BlendMode.srcIn,
+                            ),
                           ),
                           const SizedBox(width: 10),
                           Expanded(
@@ -304,15 +311,20 @@ class ReceiveModeManager implements ReceiveModeService {
                           child: TextButton(
                             onPressed: () async {
                               Navigator.of(dialogContext).pop();
-                              await _shareRecordsService.rejectInvitation(invitationId);
+                              await _shareRecordsService.rejectInvitation(
+                                invitationId,
+                              );
                               clearPendingInvitation();
 
                               await Future.delayed(const Duration(seconds: 4));
                               if (_isListening && !_isRestarting) {
                                 _isRestarting = true;
-                                debugPrint('[ReceiveMode] Restarting discovery after rejection');
+                                debugPrint(
+                                  '[ReceiveMode] Restarting discovery after rejection',
+                                );
                                 try {
-                                  await _shareRecordsService.startSymmetricDiscovery();
+                                  await _shareRecordsService
+                                      .startSymmetricDiscovery();
                                 } finally {
                                   _isRestarting = false;
                                 }
@@ -339,11 +351,13 @@ class ReceiveModeManager implements ReceiveModeService {
                           child: ElevatedButton(
                             onPressed: () {
                               Navigator.of(dialogContext).pop();
-                              router.push(ShareRecordsRoute(
-                                pendingInvitationId: invitationId,
-                                pendingInvitationDeviceName: deviceName,
-                                invitationPreAccepted: true,
-                              ));
+                              router.push(
+                                ShareRecordsRoute(
+                                  pendingInvitationId: invitationId,
+                                  pendingInvitationDeviceName: deviceName,
+                                  invitationPreAccepted: true,
+                                ),
+                              );
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.primary,

@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:background_downloader/background_downloader.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:health_wallet/features/scan/domain/services/scan_log_buffer.dart';
 import 'package:health_wallet/core/config/constants/ai_model_config.dart';
 import 'package:health_wallet/features/scan/domain/services/device_capability_service.dart';
@@ -98,15 +99,17 @@ class ScanNetworkDataSourceImpl
   Future<int> _getDeviceRamMB() async {
     if (_deviceRamMB != null) return _deviceRamMB!;
     try {
-      final deviceInfo = DeviceInfoPlugin();
-      if (Platform.isIOS) {
-        final ios = await deviceInfo.iosInfo;
-        _deviceRamMB = estimateIosRam(ios.utsname.machine);
-      } else if (Platform.isAndroid) {
-        _deviceRamMB = await _readAndroidRamMB();
-        if (_deviceRamMB == null) {
-          final android = await deviceInfo.androidInfo;
-          _deviceRamMB = android.isLowRamDevice ? 2048 : 4096;
+      if (!kIsWeb) {
+        final deviceInfo = DeviceInfoPlugin();
+        if (Platform.isIOS) {
+          final ios = await deviceInfo.iosInfo;
+          _deviceRamMB = estimateIosRam(ios.utsname.machine);
+        } else if (Platform.isAndroid) {
+          _deviceRamMB = await _readAndroidRamMB();
+          if (_deviceRamMB == null) {
+            final android = await deviceInfo.androidInfo;
+            _deviceRamMB = android.isLowRamDevice ? 2048 : 4096;
+          }
         }
       }
     } catch (_) {}
@@ -124,6 +127,7 @@ class ScanNetworkDataSourceImpl
   }
 
   static Future<int> _getAvailableRamMB() async {
+    if (kIsWeb) return -1;
     if (Platform.isAndroid) {
       try {
         final memInfo = await File('/proc/meminfo').readAsString();
@@ -136,9 +140,13 @@ class ScanNetworkDataSourceImpl
 
   static const double _iosMemoryCeiling = 0.60;
 
+  static int get _currentRssMB =>
+      kIsWeb ? 0 : ProcessInfo.currentRss ~/ (1024 * 1024);
+
   Future<int> _getAvailableRamMBForIos() async {
+    if (kIsWeb) return 0;
     final deviceRam = await _getDeviceRamMB();
-    final currentRssMB = ProcessInfo.currentRss ~/ (1024 * 1024);
+    final currentRssMB = _currentRssMB;
     final safeLimit = (deviceRam * _iosMemoryCeiling).round();
     final headroom = safeLimit - currentRssMB;
     final available = headroom > 0 ? headroom : 0;
@@ -208,7 +216,7 @@ class ScanNetworkDataSourceImpl
   bool isVisionModelAvailable() => _engine != null && _hasVisionProjector;
 
   Future<void> _configureDownloaderForLargeFile() async {
-    if (!Platform.isAndroid) return;
+    if (kIsWeb || !Platform.isAndroid) return;
 
     FileDownloader().configureNotificationForGroup(
       'smart_downloads',
@@ -411,7 +419,7 @@ class ScanNetworkDataSourceImpl
       threads: threads ?? autoConfig.threads,
     );
     final ctx = contextSize ?? autoConfig.contextSize;
-    final availableMB = Platform.isIOS
+    final availableMB = !kIsWeb && Platform.isIOS
         ? await _getAvailableRamMBForIos()
         : await _getAvailableRamMB();
     final requiredMB = estimateRequiredMB(ctx, withVision: withVision);
@@ -419,7 +427,7 @@ class ScanNetworkDataSourceImpl
     ScanLogBuffer.instance.log(
         '[$ts][ScanAI] model loaded (${(fileSize / 1024 / 1024).toStringAsFixed(0)}MB)');
     ScanLogBuffer.instance.log(
-        '[$ts][ScanAI] config: ctx=$ctx, gpu_layers=${config.gpuLayers}, threads=${config.threads}, ram=${ramMB}MB, available=${availableMB}MB, rssMB=${ProcessInfo.currentRss ~/ (1024 * 1024)}, required~${requiredMB}MB, platform=${Platform.operatingSystem}');
+        '[$ts][ScanAI] config: ctx=$ctx, gpu_layers=${config.gpuLayers}, threads=${config.threads}, ram=${ramMB}MB, available=${availableMB}MB, rssMB=$_currentRssMB, required~${requiredMB}MB, platform=${kIsWeb ? 'web' : Platform.operatingSystem}');
 
     if (availableMB >= 0 && availableMB < requiredMB) {
       ScanLogBuffer.instance.log(
@@ -436,7 +444,8 @@ class ScanNetworkDataSourceImpl
           'Model file is corrupted. Please re-download the AI model.');
     }
 
-    final backend = Platform.isAndroid ? GpuBackend.cpu : GpuBackend.auto;
+    final backend =
+        !kIsWeb && Platform.isAndroid ? GpuBackend.cpu : GpuBackend.auto;
     ScanLogBuffer.instance
         .log('[$ts][ScanAI] creating engine with backend=$backend');
 
@@ -505,13 +514,13 @@ class ScanNetworkDataSourceImpl
     final autoConfig =
         computeModelConfig(withVision: withVision, ramMB: ramMB);
     final ctx = contextSize ?? autoConfig.contextSize;
-    final availableMB = Platform.isIOS
+    final availableMB = !kIsWeb && Platform.isIOS
         ? await _getAvailableRamMBForIos()
         : await _getAvailableRamMB();
     final requiredMB = estimateRequiredMB(ctx, withVision: withVision);
     final canProceed = (availableMB < 0) || availableMB >= requiredMB;
     ScanLogBuffer.instance.log(
-        '[$ts][ScanAI] health check: available=${availableMB}MB, required~=${requiredMB}MB, rssMB=${ProcessInfo.currentRss ~/ (1024 * 1024)}, canProceed=$canProceed');
+        '[$ts][ScanAI] health check: available=${availableMB}MB, required~=${requiredMB}MB, rssMB=$_currentRssMB, canProceed=$canProceed');
     return (
       availableMB: availableMB,
       requiredMB: requiredMB,

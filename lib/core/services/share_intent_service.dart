@@ -28,23 +28,28 @@ class ShareIntentService {
     if (_isInitialized) return;
     _isInitialized = true;
 
-    _intentSub = ReceiveSharingIntent.instance.getMediaStream().listen(
-      (sharedFiles) async {
-        if (sharedFiles.isNotEmpty) {
-          await _processSharedFiles(sharedFiles);
-        }
-      },
-      onError: (err) {
-        logger.e('Error receiving shared files: $err');
-      },
-    );
+    if (kIsWeb) return;
 
-    ReceiveSharingIntent.instance.getInitialMedia().then((sharedFiles) async {
+    try {
+      _intentSub = ReceiveSharingIntent.instance.getMediaStream().listen(
+        (sharedFiles) async {
+          if (sharedFiles.isNotEmpty) {
+            await _processSharedFiles(sharedFiles);
+          }
+        },
+        onError: (err) {
+          logger.e('Error receiving shared files: $err');
+        },
+      );
+
+      final sharedFiles = await ReceiveSharingIntent.instance.getInitialMedia();
       if (sharedFiles.isNotEmpty) {
         await _processSharedFiles(sharedFiles);
         ReceiveSharingIntent.instance.reset();
       }
-    });
+    } catch (e) {
+      logger.e('Error initializing share intent: $e');
+    }
   }
 
   Future<void> _processSharedFiles(List<SharedMediaFile> sharedFiles) async {

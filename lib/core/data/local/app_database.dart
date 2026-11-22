@@ -1,14 +1,13 @@
-import 'dart:io';
-
 import 'package:drift/drift.dart';
-import 'package:drift/native.dart';
 import 'package:health_wallet/core/data/local/app_database.steps.dart';
 import 'package:health_wallet/features/records/data/data_source/tables/record_notes.dart';
 import 'package:health_wallet/features/scan/data/data_source/local/tables/processing_sessions.dart';
 import 'package:health_wallet/features/sync/data/data_source/local/tables/fhir_resource_table.dart';
 import 'package:health_wallet/features/sync/data/data_source/local/tables/source_table.dart';
-import 'package:path/path.dart' as p;
-import 'package:path_provider/path_provider.dart';
+
+import 'app_database_stub.dart'
+    if (dart.library.io) 'app_database_native.dart'
+    if (dart.library.js_interop) 'app_database_web.dart';
 
 part 'app_database.g.dart';
 
@@ -19,7 +18,7 @@ part 'app_database.g.dart';
   ProcessingSessions,
 ])
 class AppDatabase extends _$AppDatabase {
-  AppDatabase([QueryExecutor? e]) : super(e ?? _openConnection());
+  AppDatabase([QueryExecutor? e]) : super(e ?? openConnection());
 
   @override
   int get schemaVersion => 9;
@@ -182,19 +181,4 @@ class AppDatabase extends _$AppDatabase {
 
     return results.map((row) => row.data['resource_type'] as String).toList();
   }
-}
-
-LazyDatabase _openConnection() {
-  return LazyDatabase(() async {
-    final dbFolder = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dbFolder.path, 'db.sqlite'));
-    return NativeDatabase(file, setup: (database) {
-      // Enable foreign key constraints and other optimizations
-      database.execute('PRAGMA foreign_keys = ON');
-      database.execute('PRAGMA journal_mode = WAL');
-      database.execute('PRAGMA synchronous = NORMAL');
-      database.execute('PRAGMA cache_size = 10000');
-      database.execute('PRAGMA temp_store = MEMORY');
-    });
-  });
 }

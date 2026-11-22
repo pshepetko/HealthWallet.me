@@ -1,6 +1,7 @@
 import 'dart:io' show Platform;
 
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Notification;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -35,7 +36,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
 
     _overlayEntry = OverlayEntry(
       builder: (overlayContext) {
-        final platformOffset = Platform.isIOS ? Insets.extraLarge : Insets.large;
+        final platformOffset =
+            !kIsWeb && Platform.isIOS ? Insets.extraLarge : Insets.large;
         final tabletExtra = context.isTablet ? -36.0 : 0.0;
         final topPadding =
             MediaQuery.of(context).viewPadding.top + kToolbarHeight + platformOffset + tabletExtra;

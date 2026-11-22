@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 enum DeviceAiCapability { unsupported, basicOnly, full }
@@ -20,15 +21,17 @@ class DeviceCapabilityService {
   Future<int> getDeviceRamMB() async {
     if (_deviceRamMB != null) return _deviceRamMB!;
     try {
-      final deviceInfo = DeviceInfoPlugin();
-      if (Platform.isIOS) {
-        final ios = await deviceInfo.iosInfo;
-        _deviceRamMB = estimateIosRam(ios.utsname.machine);
-      } else if (Platform.isAndroid) {
-        _deviceRamMB = await readAndroidRamMB();
-        if (_deviceRamMB == null) {
-          final android = await deviceInfo.androidInfo;
-          _deviceRamMB = android.isLowRamDevice ? 2048 : 4096;
+      if (!kIsWeb) {
+        final deviceInfo = DeviceInfoPlugin();
+        if (Platform.isIOS) {
+          final ios = await deviceInfo.iosInfo;
+          _deviceRamMB = estimateIosRam(ios.utsname.machine);
+        } else if (Platform.isAndroid) {
+          _deviceRamMB = await readAndroidRamMB();
+          if (_deviceRamMB == null) {
+            final android = await deviceInfo.androidInfo;
+            _deviceRamMB = android.isLowRamDevice ? 2048 : 4096;
+          }
         }
       }
     } catch (_) {}
@@ -42,6 +45,7 @@ class DeviceCapabilityService {
   static const int _minRamForVisionAndroidMB = 11264;
 
   DeviceAiCapability _classifyCapability(int ramMB) {
+    if (kIsWeb) return DeviceAiCapability.full;
     if (Platform.isIOS) {
       if (ramMB < _minRamIosMB) return DeviceAiCapability.unsupported;
       if (ramMB < _minRamForVisionIosMB) return DeviceAiCapability.basicOnly;

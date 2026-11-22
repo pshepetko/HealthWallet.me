@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:injectable/injectable.dart';
@@ -106,7 +107,7 @@ class PdfStorageService {
   }
 
   Future<bool> _requestStoragePermission() async {
-    if (Platform.isAndroid) {
+    if (!kIsWeb && Platform.isAndroid) {
       final status = await Permission.storage.status;
       if (status.isGranted) {
         return true;

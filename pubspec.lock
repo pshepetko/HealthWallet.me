@@ -9,15 +9,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "67.0.0"
-  airdrop:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: HEAD
-      resolved-ref: fec492cb10881eb000345e759182d9e3e422ec86
-      url: "ssh://git@git.techstackapps.com:2822/mobile/flutter/packages/flutter-airdrop.git"
-    source: git
-    version: "1.0.0"
   analyzer:
     dependency: transitive
     description:
@@ -570,15 +561,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.0"
-  fhir_ips_export:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "737b764a12dc27dfcebdda2a58ac0374bee38b85"
-      url: "ssh://git@git.techstackapps.com:2822/mobile/health-wallet/fhir-ips-export.git"
-    source: git
-    version: "0.0.1"
   fhir_r4:
     dependency: "direct main"
     description:
@@ -1027,10 +1009,10 @@ packages:
     dependency: "direct main"
     description:
       name: llamadart
-      sha256: e2bdcb4947ae54aaa0c53d63d5b26c8b44721c53a8a5142ee4d920bc82d0c7a4
+      sha256: "71d7986483b0e48402bcc8f9e0e32a16eab2983f5cd243e77d1603cb1a8ac669"
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.7"
+    version: "0.6.17"
   local_auth:
     dependency: "direct main"
     description:
@@ -1143,14 +1125,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
-  mustache_template:
-    dependency: transitive
-    description:
-      name: mustache_template
-      sha256: daa42be75f2ccfb287c24a75e7ac594f2ea0b32bf9ebe7c15154aa45b2dfb2de
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.2"
   nested:
     dependency: transitive
     description:
