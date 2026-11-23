@@ -16,6 +16,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:health_wallet/core/widgets/custom_app_bar.dart';
 import 'package:health_wallet/features/scan/presentation/bloc/scan_bloc.dart';
 import 'package:health_wallet/features/scan/presentation/widgets/dialog_helper.dart';
+import 'package:health_wallet/features/scan/presentation/widgets/fhir_file_import_dialog.dart';
 import 'package:health_wallet/features/scan/presentation/widgets/import_actions.dart';
 import 'package:health_wallet/features/scan/presentation/helpers/document_handler.dart';
 import 'package:health_wallet/features/dashboard/presentation/helpers/page_view_navigation_controller.dart';
@@ -116,6 +117,7 @@ class _ImportViewState extends State<ImportView> with DocumentHandler {
                             bottom: MediaQuery.of(context).padding.bottom + 76,
                           ),
                           child: ImportActions(
+                            onImportFile: () => _handleImportFile(context),
                             onImportDocument: () =>
                                 _handleImportDocument(context),
                             onPickImage: () => _handlePickImage(context),
@@ -130,11 +132,19 @@ class _ImportViewState extends State<ImportView> with DocumentHandler {
                     Expanded(
                       child: Align(
                         alignment: const Alignment(0, -0.3),
-                        child: _buildEmptyState(context),
+                        child: SingleChildScrollView(
+                          child: _buildEmptyState(context),
+                        ),
                       ),
                     )
                   else
-                    Center(child: _buildEmptyState(context)),
+                    Expanded(
+                      child: Center(
+                        child: SingleChildScrollView(
+                          child: _buildEmptyState(context),
+                        ),
+                      ),
+                    ),
               ],
             ),
           );
@@ -167,6 +177,7 @@ class _ImportViewState extends State<ImportView> with DocumentHandler {
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 400),
             child: ImportActions(
+              onImportFile: () => _handleImportFile(context),
               onImportDocument: () => _handleImportDocument(context),
               onPickImage: () => _handlePickImage(context),
               onScanDocument: () => _navigateToScanTab(context),
@@ -208,6 +219,10 @@ class _ImportViewState extends State<ImportView> with DocumentHandler {
         );
       }
     }
+  }
+
+  Future<void> _handleImportFile(BuildContext context) async {
+    await FhirFileImportDialog.show(context);
   }
 
   Future<void> _handleImportDocument(BuildContext context) async {

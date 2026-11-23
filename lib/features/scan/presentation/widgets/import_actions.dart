@@ -4,12 +4,14 @@ import 'package:health_wallet/core/theme/app_insets.dart';
 import 'package:health_wallet/gen/assets.gen.dart';
 
 class ImportActions extends StatelessWidget {
+  final VoidCallback? onImportFile;
   final VoidCallback? onImportDocument;
   final VoidCallback? onPickImage;
   final VoidCallback? onScanDocument;
 
   const ImportActions({
     super.key,
+    this.onImportFile,
     this.onImportDocument,
     this.onPickImage,
     this.onScanDocument,
@@ -19,6 +21,15 @@ class ImportActions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        if (onImportFile != null) ...[
+          AppButton(
+            label: 'Import file',
+            icon: Assets.icons.documentFile.svg(),
+            variant: AppButtonVariant.secondary,
+            onPressed: onImportFile,
+          ),
+          const SizedBox(height: Insets.small),
+        ],
         AppButton(
           label: 'Import Document',
           icon: Assets.icons.document.svg(),
@@ -43,4 +54,3 @@ class ImportActions extends StatelessWidget {
     );
   }
 }
-
