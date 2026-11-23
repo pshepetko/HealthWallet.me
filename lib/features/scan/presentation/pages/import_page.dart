@@ -1,11 +1,13 @@
 import 'dart:io';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:health_wallet/core/di/injection.dart';
 import 'package:health_wallet/core/services/external_files_service.dart';
 import 'package:health_wallet/core/theme/app_text_style.dart';
+import 'package:health_wallet/core/utils/logger.dart';
 import 'package:health_wallet/features/scan/domain/entity/processing_session.dart';
 import 'package:health_wallet/features/scan/presentation/widgets/session_list.dart';
 import 'package:health_wallet/gen/assets.gen.dart';
@@ -53,9 +55,9 @@ class _ImportViewState extends State<ImportView> with DocumentHandler {
     if (externalFileService.hasPendingFiles) {
       final paths = externalFileService.consumeFilePaths();
       if (paths.isNotEmpty) {
-        context
-            .read<ScanBloc>()
-            .add(DocumentImported(filePaths: paths.toList()));
+        context.read<ScanBloc>().add(
+          DocumentImported(filePaths: paths.toList()),
+        );
       }
     }
   }
@@ -107,12 +109,12 @@ class _ImportViewState extends State<ImportView> with DocumentHandler {
                           style: AppTextStyle.bodySmall,
                         ),
                         const SizedBox(height: 24),
-                        Expanded(
-                          child: SessionList(sessions: importSessions),
-                        ),
+                        Expanded(child: SessionList(sessions: importSessions)),
                         const SizedBox(height: 16),
                         Padding(
-                          padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom + 76),
+                          padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).padding.bottom + 76,
+                          ),
                           child: ImportActions(
                             onImportDocument: () =>
                                 _handleImportDocument(context),
@@ -215,7 +217,7 @@ class _ImportViewState extends State<ImportView> with DocumentHandler {
       final result = await FilePicker.platform.pickFiles(
         allowMultiple: true,
         allowCompression: false,
-        withData: false,
+        withData: kIsWeb,
         withReadStream: false,
         type: FileType.custom,
         allowedExtensions: [
@@ -226,28 +228,45 @@ class _ImportViewState extends State<ImportView> with DocumentHandler {
           'gif',
           'bmp',
           'webp',
-          'tiff'
+          'tiff',
         ],
       );
 
-      if (result != null && result.files.isNotEmpty) {
-        final validPaths = <String>[];
+      if (result == null || result.files.isEmpty) return;
 
-        for (final file in result.files) {
-          if (file.path == null || file.path!.isEmpty) continue;
-          if (await File(file.path!).exists()) {
-            validPaths.add(file.path!);
-          }
+      if (kIsWeb) {
+        final pickedFiles = result.files
+            .map((file) => '${file.name} (${file.bytes?.length ?? 0} bytes)')
+            .join(', ');
+        logger.w('Web document import is not supported yet: $pickedFiles');
+        if (context.mounted) {
+          _showMessage(
+            context,
+            'Document import is not available in the web version yet. '
+            'Please use the mobile or desktop app.',
+          );
         }
+        return;
+      }
 
-        if (validPaths.isNotEmpty && context.mounted) {
-          context.read<ScanBloc>().add(
-                DocumentImported(filePaths: validPaths),
-              );
+      final validPaths = <String>[];
+
+      for (final file in result.files) {
+        final path = file.path;
+        if (path == null || path.isEmpty) continue;
+        if (await File(path).exists()) {
+          validPaths.add(path);
         }
       }
-    } catch (e) {
-      // Handle error silently
+
+      if (validPaths.isNotEmpty && context.mounted) {
+        context.read<ScanBloc>().add(DocumentImported(filePaths: validPaths));
+      }
+    } catch (e, stackTrace) {
+      logger.e('Failed to import documents', e, stackTrace);
+      if (context.mounted) {
+        _showMessage(context, 'Failed to import documents. Please try again.');
+      }
     }
   }
 
@@ -260,6 +279,23 @@ class _ImportViewState extends State<ImportView> with DocumentHandler {
 
       if (images.isEmpty) return;
 
+      if (kIsWeb) {
+        final pickedImages = <String>[];
+        for (final image in images) {
+          final bytes = await image.readAsBytes();
+          pickedImages.add('${image.name} (${bytes.length} bytes)');
+        }
+        logger.w('Web image import is not supported yet: $pickedImages');
+        if (context.mounted) {
+          _showMessage(
+            context,
+            'Image import is not available in the web version yet. '
+            'Please use the mobile or desktop app.',
+          );
+        }
+        return;
+      }
+
       final validPaths = <String>[];
       for (final image in images) {
         if (await File(image.path).exists()) {
@@ -268,12 +304,19 @@ class _ImportViewState extends State<ImportView> with DocumentHandler {
       }
 
       if (validPaths.isNotEmpty && context.mounted) {
-        context.read<ScanBloc>().add(
-              DocumentImported(filePaths: validPaths),
-            );
+        context.read<ScanBloc>().add(DocumentImported(filePaths: validPaths));
       }
-    } catch (e) {
-      // Handle error silently
+    } catch (e, stackTrace) {
+      logger.e('Failed to import images', e, stackTrace);
+      if (context.mounted) {
+        _showMessage(context, 'Failed to import images. Please try again.');
+      }
     }
+  }
+
+  void _showMessage(BuildContext context, String message) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 }

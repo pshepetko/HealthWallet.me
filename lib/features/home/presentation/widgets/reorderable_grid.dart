@@ -11,6 +11,7 @@ class ReorderableGrid<T> extends StatelessWidget {
   final double crossAxisSpacing;
   final double mainAxisSpacing;
   final double childAspectRatio;
+  final double? mainAxisExtent;
   final bool enabled;
   final ScrollPhysics? physics;
   final bool shrinkWrap;
@@ -25,6 +26,7 @@ class ReorderableGrid<T> extends StatelessWidget {
     this.crossAxisSpacing = 12,
     this.mainAxisSpacing = 12,
     this.childAspectRatio = 2,
+    this.mainAxisExtent,
     this.enabled = true,
     this.physics,
     this.shrinkWrap = true,
@@ -43,6 +45,7 @@ class ReorderableGrid<T> extends StatelessWidget {
           crossAxisSpacing: crossAxisSpacing,
           mainAxisSpacing: mainAxisSpacing,
           childAspectRatio: childAspectRatio,
+          mainAxisExtent: mainAxisExtent,
         ),
         itemCount: items.length,
         dragStartDelay: const Duration(milliseconds: 100),
@@ -69,6 +72,7 @@ class ReorderableGrid<T> extends StatelessWidget {
           crossAxisSpacing: crossAxisSpacing,
           mainAxisSpacing: mainAxisSpacing,
           childAspectRatio: childAspectRatio,
+          mainAxisExtent: mainAxisExtent,
         ),
         itemCount: items.length,
         itemBuilder: (context, index) {

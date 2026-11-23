@@ -1,0 +1,658 @@
+{
+    "appTitle": "HealthWallet.me",
+    "homeTitle": "Головна",
+    "profileTitle": "Профіль",
+    "settingsTitle": "Налаштування",
+    "welcomeMessage": "Ласкаво просимо до HealthWallet.me!",
+    "@appTitle": {
+        "description": "The title of the application"
+    },
+    "@homeTitle": {
+        "description": "The title of the home screen"
+    },
+    "@profileTitle": {
+        "description": "The title of the profile screen"
+    },
+    "@settingsTitle": {
+        "description": "The title of the settings screen"
+    },
+    "@welcomeMessage": {
+        "description": "The welcome message shown to users"
+    },
+    "onboardingBack": "Назад",
+    "onboardingGetStarted": "Почати",
+    "onboardingNext": "Далі",
+    "onboardingWelcomeTitle": "твій медичний гаманець!",
+    "onboardingWelcomeSubtitle": "<link>HealthWallet.me</link> уже підключається до понад 100 000 медичних закладів у США, і ми розширюємося на нові країни.",
+    "onboardingWelcomeDescription": "Додавайте записи від будь-якого постачальника медичних послуг, імпортуйте документи вручну або попросіть підтримку для вашої країни.",
+    "onboardingRecordsTitle": "Ваше здоров'я — завжди синхронізоване",
+    "onboardingRecordsSubtitle": "<link>HealthWallet.me</link> пропонує гнучкі способи зібрати всю вашу медичну історію:",
+    "onboardingRecordsDescription": "• Скануйте документи камерою телефона\n• Завантажуйте PDF, зображення чи лабораторні файли напряму\n• Імпортуйте записи, поділившись напряму з <link>HealthWallet.me</link> з будь-якого застосунку на смартфоні.\n• Скануйте QR-код Fasten Health OnPrem і отримайте всі записи з медичних систем США у свій гаманець.",
+    "onboardingRecordsContent": "• Скануйте документи камерою телефона\n• Завантажуйте PDF, зображення чи лабораторні файли напряму\n• Імпортуйте записи, поділившись напряму з <link>HealthWallet.me</link> з будь-якого застосунку на смартфоні.\n• Скануйте QR-код <link>Fasten Health OnPrem</link> і отримайте всі записи з медичних систем США у свій гаманець.",
+    "onboardingRecordsBottom": "Усе безпечно впорядковано на вашому пристрої.",
+    "onboardingRequestIntegration": "Запросити інтеграцію",
+    "onboardingScanButton": "Сканувати",
+    "onboardingSyncTitle": "Безпека та конфіденційність",
+    "onboardingSyncSubtitle": "<link>HealthWallet.me</link> створено з пріоритетом конфіденційності. Ваші медичні дані зашифровані та зберігаються лише на телефоні, ніколи на хмарних серверах.",
+    "onboardingSyncDescription": "Переглядайте історію здоров'я в режимі польоту, за кордоном чи без інтернету — ваші записи завжди з вами. Додайте додатковий рівень безпеки, увімкнувши біометричну автентифікацію.",
+    "onboardingBiometricText": "Ви можете захистити HealthWallet біометричним захистом, як-от Face ID чи сканування відбитка пальця.",
+    "homeHi": "Привіт, ",
+    "homeLastSynced": "Остання синхронізація: ",
+    "homeNever": "Ніколи",
+    "homeVitalSigns": "Показники",
+    "homeOverview": "Медичні записи",
+    "homeSource": "Джерело:",
+    "homeAll": "Усі",
+    "homeRecentRecords": "Останні записи",
+    "homeViewAll": "Переглянути всі",
+    "homeNA": "Н/Д",
+    "bluetoothRequired": "Увімкніть Bluetooth, щоб користуватися Спільним доступом поблизу",
+    "dashboardTitle": "Панель",
+    "recordsTitle": "Записи",
+    "goToRecords": "Перейти до записів",
+    "syncTitle": "Синхронізація",
+    "syncSuccessful": "Синхронізацію завершено!",
+    "syncDataLoadedSuccessfully": "Ваші медичні записи синхронізовано. Вас буде перенаправлено на головну сторінку.",
+    "cancelSyncTitle": "Скасувати синхронізацію?",
+    "cancelSyncMessage": "Ви впевнені, що хочете скасувати синхронізацію? Це зупинить поточний процес синхронізації.",
+    "yesCancel": "Так, скасувати",
+    "continueSync": "Продовжити синхронізацію",
+    "syncAgain": "Синхронізувати знову",
+    "syncFailed": "Не вдалося синхронізувати: ",
+    "tryAgain": "Спробувати знову",
+    "syncedAt": "Синхронізовано: ",
+    "pasteSyncData": "Вставити дані синхронізації",
+    "submit": "Надіслати",
+    "hideManualEntry": "Приховати ручне введення",
+    "enterDataManually": "Ввести дані вручну",
+    "medicalRecords": "Медичні записи",
+    "searchRecordsHint": "Пошук записів, лікарів, місць...",
+    "detailsFor": "Деталі для ",
+    "patientId": "НЗ: ",
+    "age": "Вік",
+    "sex": "Стать",
+    "bloodType": "Група крові",
+    "lastSyncedProfile": "Остання синхронізація: 2 години тому",
+    "syncLatestRecords": "Синхронізуйте найновіші медичні записи від вашого постачальника медичних послуг.",
+    "scanToSync": "Сканувати для синхронізації",
+    "theme": "Тема",
+    "pleaseAuthenticate": "Будь ласка, автентифікуйтеся, щоб продовжити",
+    "authenticate": "Автентифікація",
+    "bypass": "Пропустити",
+    "onboardingAuthTitle": "Увімкнути біометричну автентифікацію",
+    "onboardingAuthDescription": "Додайте додатковий рівень безпеки до вашого акаунта, увімкнувши біометричну автентифікацію.",
+    "onboardingAuthEnable": "Увімкнути зараз",
+    "onboardingAuthSkip": "Пропустити поки що",
+    "biometricAuthentication": "Біометрична автентифікація",
+    "privacyPolicy": "Політика конфіденційності",
+
+    "setupDeviceSecurity": "Налаштуйте безпеку пристрою",
+    "deviceSecurityMessage": "На вашому пристрої не налаштовано захист. Для вашої безпеки налаштуйте захист пристрою перед використанням цього застосунку:",
+    "deviceSettingsStep1": "Перейдіть до Налаштувань пристрою",
+    "deviceSettingsStep2": "Відкрийте розділ Безпека або Блокування екрана",
+    "deviceSettingsStep3": "Налаштуйте блокування екрана (PIN-код, графічний ключ або пароль)",
+    "deviceSettingsStep4": "За бажанням додайте розблокування відбитком пальця чи обличчям для зручності",
+    "deviceSecurityReturnMessage": "Після налаштування захисту пристрою поверніться до цього застосунку та спробуйте знову.",
+    "cancel": "Скасувати",
+    "openSettings": "Відкрити налаштування",
+    "settingsNotAvailable": "Налаштування недоступні",
+    "settingsNotAvailableMessage": "Не вдалося автоматично відкрити налаштування пристрою. Будь ласка, вручну:\n\n1. Відкрийте Налаштування\n2. Перейдіть до Безпека → Біометрія\n3. Додайте розблокування відбитком пальця чи обличчям\n4. Поверніться до цього застосунку та спробуйте знову",
+    "ok": "OK",
+
+    "scanCode": "Сканувати код",
+    "or": "або",
+    "manualSyncMessage": "Необроблений QR-код",
+    "pasteSyncDataHint": "Вставте необроблений QR-код",
+    "connect": "Підключитися",
+    "scanNewQRCode": "Сканувати новий QR-код",
+    "loadDemoData": "Завантажити демо-дані",
+    "syncData": "Синхронізувати дані",
+    "noMedicalRecordsYet": "Медичних записів ще немає",
+    "noRecordTypeYet": "{recordType} ще немає",
+    "loadDemoDataMessage": "Завантажте демо-дані, щоб дослідити застосунок, або синхронізуйте свої реальні медичні записи",
+    "syncDataMessage": "Синхронізуйте чи оновіть дані, щоб переглянути записи {recordType}",
+    "retry": "Повторити",
+
+    "pleaseEnterSourceName": "Будь ласка, введіть назву джерела",
+    "selectBirthDate": "Виберіть дату народження",
+    "years": "років",
+    "male": "Чоловіча",
+    "female": "Жіноча",
+    "preferNotToSay": "Не хочу вказувати",
+
+    "errorUpdatingSourceLabel": "Помилка оновлення назви джерела",
+    "noChangesDetected": "Змін не виявлено",
+    "pleaseSelectBirthDate": "Будь ласка, виберіть дату народження",
+    "errorSavingPatientData": "Помилка збереження даних пацієнта",
+    "walletHolder": "Власник гаманця",
+    "walletHolderDescription": "Цей пацієнт є основним власником цього медичного гаманця",
+    "getStarted": "Почати",
+    "failedToUpdateDisplayName": "Не вдалося оновити відображуване ім'я",
+    "actionCannotBeUndone": "Цю дію неможливо скасувати.",
+    "deleteRecordConfirm": "Ви впевнені, що хочете видалити цей запис?",
+    "deleteNoteConfirm": "Ви впевнені, що хочете видалити цю нотатку?",
+    "deleteAttachmentConfirm": "Ви впевнені, що хочете видалити це вкладення?",
+    "deleteRecordsConfirm": "Ви впевнені, що хочете видалити {count} елементів?",
+    "@deleteRecordsConfirm": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "confirmDeleteFile": "Ви впевнені, що хочете видалити \"{filename}\"?",
+    "selectAtLeastOne": "Виберіть принаймні один {type}, щоб продовжити.",
+
+    "editSourceLabel": "Редагувати назву джерела",
+    "saveDetails": "Зберегти деталі",
+    "editDetails": "Редагувати деталі",
+    "done": "Готово",
+    "page": "Сторінка",
+    "reorderPages": "Змінити порядок сторінок",
+    "attachments": "Вкладення",
+    "noFilesAttached": "До цього запису не додано файлів",
+    "attachFile": "Прикріпити файл",
+    "overview": "Огляд",
+    "recentRecords": "Останні записи",
+    "chooseToDisplay": "Виберіть {type}, які хочете бачити на панелі.",
+    "displayName": "Відображуване ім'я",
+
+    "bloodTypeAPositive": "A позитивна",
+    "bloodTypeANegative": "A негативна",
+    "bloodTypeBPositive": "B позитивна",
+    "bloodTypeBNegative": "B негативна",
+    "bloodTypeABPositive": "AB позитивна",
+    "bloodTypeABNegative": "AB негативна",
+    "bloodTypeOPositive": "O позитивна",
+    "bloodTypeONegative": "O негативна",
+
+    "serverError": "Щось пішло не так на сервері",
+    "serverTimeout": "Час очікування сервера вичерпано",
+    "connectionError": "Помилка з'єднання",
+    "unknownSource": "Невідоме джерело",
+
+    "synchronization": "Синхронізація",
+    "syncMedicalRecords": "Синхронізувати медичні записи",
+    "syncLatestMedicalRecords": "Синхронізуйте найновіші медичні записи від постачальника медичних послуг за допомогою безпечного JWT-токена.",
+    "neverSynced": "Ніколи не синхронізовано",
+    "lastSynced": "Остання синхронізація",
+    "tapToSelectPatient": "Торкніться, щоб вибрати пацієнта",
+    "preferences": "Налаштування",
+    "version": "Версія",
+    "on": "УВІМК.",
+    "off": "ВИМК.",
+
+    "confirmDisableBiometric": "Ви впевнені, що хочете вимкнути біометричну автентифікацію (FaceID / код-пароль)?",
+    "disable": "Вимкнути",
+
+    "continueButton": "Продовжити",
+    "enableBiometricAuth": "Увімкнути біометричну автентифікацію (FaceID / код-пароль)",
+    "disableBiometricAuth": "Вимкнути біометричну автентифікацію (FaceID / код-пароль)",
+
+    "patient": "Пацієнт",
+
+    "noPatientsFound": "Пацієнтів не знайдено",
+    "id": "ID",
+    "gender": "Стать",
+    "loading": "Завантаження...",
+    "source": "Джерело",
+    "showAll": "Показати всі",
+    "records": "Записи",
+    "vitals": "Показники",
+    "selectAll": "Вибрати все",
+    "clearAll": "Очистити все",
+    "save": "Зберегти",
+    "noRecordsFound": "Записів не знайдено",
+    "noRecords": "Немає записів",
+    "tryDifferentKeywords": "Спробуйте пошукати з іншими ключовими словами",
+    "clearAllFilters": "Очистити все",
+    "syncingData": "Синхронізація даних",
+    "syncingMessage": "Це може зайняти деякий час. Будь ласка, зачекайте.",
+    "scanQRMessage": "Відскануйте QR-код із вашого сервера Fasten Health, щоб створити нове з'єднання для синхронізації.",
+    "viewAll": "Переглянути всі",
+    "vitalSigns": "Показники життєдіяльності",
+    "longPressToReorder": "Утримуйте, щоб переміщати та змінювати порядок карток, або відфільтруйте, які з них показувати на панелі.",
+
+    "finishProcessing": "Завершити обробку",
+    "finishProcessingMessage": "Ви впевнені, що хочете завершити цей сеанс обробки?",
+    "finishProcessingWarning": "Це очистить поточний сеанс.",
+    "fieldCannotBeEmpty": "Це поле не може бути порожнім",
+    "selectDate": "Виберіть дату",
+    "attachToEncounter": "Прикріпити до візиту",
+    "continueProcessing": "Продовжити обробку",
+    "recordsSavedTitle": "Успішно збережено",
+    "recordsSavedMessage": "Ваші медичні записи успішно збережено.",
+    "whatNextQuestion": "Що б ви хотіли зробити далі?",
+    "continueScanning": "Продовжити сканування",
+
+    "effectiveDate": "Дата набрання чинності",
+    "privacyIntro": "Ваша конфіденційність — наш найвищий пріоритет.",
+    "privacyDescription": "— це простий і безпечний інструмент, створений, щоб допомогти вам легко впорядковувати медичні записи безпосередньо на вашому пристрої. Ця політика пояснює наше зобов'язання щодо вашої конфіденційності: ми не збираємо ваші дані та не відстежуємо вас. Ви повністю контролюєте ситуацію.",
+    "corePrinciple": "Наш основний принцип: ваші дані залишаються на вашому пристрої",
+    "whatInformationHandled": "Яка інформація обробляється?",
+    "informationWeDoNotCollect": "Інформація, яку ми не збираємо та до якої не маємо доступу",
+    "informationYouManage": "Інформація, якою ви керуєте",
+    "importingDocuments": "Імпорт документів із вашого пристрою",
+    "connectingFastenHealth": "Підключення до FastenHealth OnPrem",
+    "howInformationUsed": "Як використовується ваша інформація",
+    "dataStorageSecurity": "Зберігання, безпека та обмін даними",
+    "childrensPrivacy": "Конфіденційність дітей",
+    "changesToPolicy": "Зміни до цієї Політики конфіденційності",
+    "contactUs": "Зв'яжіться з нами",
+    "builtWithLove": "Створено з любов'ю командою Life Value!",
+
+    "sourceName": "Назва джерела",
+    "provideCustomLabel": "Надайте власну назву для:",
+    "success": "Успішно",
+    "demoDataLoadedSuccessfully": "Демо-дані успішно завантажено. Вас буде перенаправлено на головну сторінку.",
+
+    "documentScanTitle": "Сканувати",
+
+    "onboardingAiModelTitle": "Увімкнути AI-модель",
+    "onboardingAiModelDescription": "Завантажте безпечну AI-модель на пристрої, щоб автоматично аналізувати та впорядковувати ваші медичні записи. Виберіть один із двох варіантів залежно від ваших потреб і можливостей пристрою. Це одноразове налаштування.\n\n**Ваші дані залишаються приватними на вашому пристрої.**",
+    "onboardingAiModelSubtitle": "Відкрийте сканування на базі ШІ",
+    "aiModelReady": "ШІ готовий! Ви можете почати сканування.",
+    "aiModelDownloading": "Завантаження...",
+    "aiModelEnableDownload": "Вибрати й завантажити",
+    "aiModelError": "Не вдалося перевірити. Спробуйте знову.",
+    "aiModelMissing": "Не завантажено.",
+    "aiModelTitle": "Завантажити AI-модель",
+    "aiModelUnlockTitle": "Відкрийте сканування на базі ШІ",
+    "aiModelUnlockDescription": "Щоб автоматично читати та впорядковувати ваші медичні документи, ця функція використовує безпечну AI-модель на пристрої.\n\n**Ваші дані залишаються приватними на вашому пристрої.**",
+    "aiModelDownloadInfo": "Щоб почати, виберіть і завантажте один із двох доступних AI-варіантів. Це одноразове налаштування.",
+
+    "setup": "Налаштування",
+    "patientSetupTitle": "Налаштуйте свій профіль",
+    "patientSetupSubtitle": "Персоналізуйте свій медичний гаманець своєю інформацією",
+
+    "onboardingSetupTitle": "Налаштувати мій медичний гаманець",
+    "onboardingSetupBody": "Створіть свій особистий медичний профіль, щоб почати користуватися HealthWallet",
+    "onboardingDemoTitle": "Спробувати демо-дані",
+    "onboardingDemoBody": "Дослідіть застосунок на прикладі медичних записів, щоб побачити, як він працює",
+    "onboardingSyncTitle2": "Синхронізуйте свої записи",
+    "onboardingSyncBody": "Підключіться до своїх постачальників медичних послуг, щоб імпортувати реальні медичні записи",
+
+    "givenName": "Ім'я",
+    "familyName": "Прізвище",
+    "skipForNow": "Пропустити поки що",
+
+    "setUpProfile": "Налаштувати",
+    "useDefaults": "За замовчуванням",
+
+    "syncPlaceholderTutorialStep1": "Заповніть свій профіль, щоб відкрити всі функції.",
+    "syncPlaceholderTutorialStep2": "Не готові до імпорту? Завантажте демо-дані, щоб побачити застосунок у дії.",
+    "syncPlaceholderTutorialStep3": "Тримайте настільний і мобільний гаманець актуальними.",
+    "tapToContinue": "Торкніться, щоб продовжити",
+
+    "homeOnboardingReorderMessage": "Утримуйте, щоб змінити їхній порядок на власний розсуд.",
+
+    "processing": "Обробка",
+    "sessionNotFound": "Сеанс не знайдено!",
+    "preparingPreview": "Підготовка попереднього перегляду...",
+    "processingFailed": "Не вдалося обробити",
+    "processingCancelled": "Обробку скасовано",
+    "processingBasicDetails": "Обробка основних даних...",
+    "processingPages": "Обробка сторінок...",
+    "extractingPatientInfo": "Вилучення інформації про пацієнта та візит.",
+    "pleaseWait": "Це може зайняти деякий час. Будь ласка, зачекайте.",
+    "focusMode": "Режим фокусування",
+    "onlyOneSessionAtTime": "Одночасно може виконуватися лише один сеанс обробки",
+    "aiModelNotAvailable": "Розумне сканування недоступне",
+    "addResources": "Додати ресурси",
+    "addResourcesTitle": "Додати ресурси",
+    "chooseResourcesDescription": "Виберіть ресурси, які хочете додати для обробки.",
+    "add": "Додати",
+    "allergyIntolerance": "Алергічна непереносимість",
+    "condition": "Стан здоров'я",
+    "diagnosticReport": "Діагностичний звіт",
+    "medicationStatement": "Запис про ліки",
+    "observation": "Спостереження",
+    "organization": "Організація",
+    "practitioner": "Лікар",
+    "procedure": "Процедура",
+    "tapToViewProgress": "Торкніться будь-де, щоб переглянути прогрес",
+    "screenWillDarkenInSeconds": "Екран потемніє через {remainingSeconds} секунд.",
+    "@screenWillDarkenInSeconds": {
+        "placeholders": {
+            "remainingSeconds": {
+                "type": "int"
+            }
+        }
+    },
+    "screenWillDarkenInZeroSeconds": "Екран потемніє через 0 секунд.",
+    "whileDocumentsProcessed": "Поки ваші документи обробляються:",
+    "doNotLockScreen": "Не блокуйте екран і не виходьте із застосунку.",
+    "plugInCharger": "Підключіть зарядний пристрій.",
+    "exitFocusMode": "Вийти з режиму фокусування",
+    "chargerPluggedIn": "Зарядний пристрій підключено.",
+    "plugInChargerEllipsis": "Підключіть зарядний пристрій...",
+
+    "processingFailedCapacity": "Документ завеликий для поточного розміру AI-контексту.",
+    "processingFailedCapacitySuggestion": "Торкніться іконки налаштувань вище та збільште розмір контексту до 2048 або більше, потім повторіть спробу.",
+    "increaseAiModelCapacity": "Збільшити AI-потужність",
+    "goBack": "Назад",
+
+    "aiModelManage": "Керувати AI-варіантами",
+    "aiModelNotSelected": "Варіант не вибрано",
+    "aiModelSelect": "Вибрати варіант",
+    "aiSettings": "Налаштування ШІ",
+    "aiSettingsDescription": "Налаштуйте продуктивність ШІ для вашого пристрою. Рекомендовані значення попередньо вибрано.",
+    "setAiTokensUsage": "Налаштувати використання AI-токенів",
+    "tokenUsageDescription": "Керуйте тим, скільки обчислювальних ресурсів може використовувати ШІ. Вища потужність дозволяє більші файли та складніші завдання, але використовує більше ресурсів і триває довше.",
+    "gpuLayersLabel": "GPU-шари",
+    "gpuLayersDescription": "Перенесіть шари моделі на GPU для швидшої обробки зображень. Більше шарів = швидше, але більше пам'яті. Встановіть 0, якщо застосунок аварійно завершується.",
+    "threadsLabel": "Потоки CPU",
+    "threadsDescription": "Кількість потоків CPU для обчислень. Більше потоків = швидше, але більше витрата батареї.",
+    "recommended": "Рекомендовано",
+    "tokenPresetLow": "Низький",
+    "tokenPresetLowDescription": "Найкраще для малих файлів і швидких завдань.\nВикористовує найменше ресурсів і обробляє найшвидше.",
+    "tokenPresetMedium": "Середній",
+    "tokenPresetMediumDescription": "Добре для більшості випадків.\nБалансує розмір файлу, час обробки та використання ресурсів.",
+    "tokenPresetHigh": "Високий",
+    "tokenPresetHighDescription": "Найкраще для великих файлів і складної обробки.\nВикористовує більше ресурсів і батареї та триває довше.",
+    "tokenPresetCustom": "Власний",
+    "tokenPresetCustomDescription": "Встановіть власну кількість токенів для використання.",
+    "setTokens": "Встановити",
+    "tokens": "токенів",
+    "contextSizeLabel": "Розмір контексту",
+    "contextSizeDescription": "Обсяг тексту, який ШІ може обробити за раз. Більший контекст обробляє більші документи, але використовує більше пам'яті.",
+    "useVisionLabel": "Глибоке сканування",
+    "useVisionDescription": "Читає зображення для глибшого аналізу (напр., рукописний текст). Використовує більше пам'яті та потребує продуктивнішого пристрою.",
+
+    "aiModelNotAvailableForDevice": "Недоступно для цього телефона",
+    "aiModelNotAvailableForDeviceDescription": "На жаль, на вашому пристрої недостатньо пам'яті для запуску AI-моделі. Ви все ще можете користуватися застосунком без розумного сканування.",
+    "noInternetConnectionTitle": "Немає підключення до інтернету",
+    "noInternetConnectionDescription": "Перевірте підключення до інтернету та спробуйте знову.",
+    "processingStep2NotAvailableTitle": "Глибоке сканування недоступне на цьому пристрої",
+    "processingStep2NotEnoughRam": "На цьому пристрої недостатньо пам'яті для глибокого сканування. Обробка на основі тексту все ще доступна і добре працює для більшості документів.",
+    "emergencyContact": "Екстрений телефонний контакт",
+    "emergencyContactHint": "Номер телефону",
+    "searchCountry": "Пошук країни...",
+    "rotatePage": "Повернути",
+    "deletePage": "Видалити",
+    "deletePageConfirmTitle": "Видалити сторінку",
+    "deletePageConfirmMessage": "Цю сторінку буде видалено з документа.",
+    "cannotDeleteLastPage": "Неможливо видалити останню сторінку",
+    "pageRotated": "Сторінку повернено",
+    "regionAndUnits": "Мова та одиниці",
+    "country": "Країна",
+    "patientModifiedNewWillBeCreated": "Змінено — буде створено нового пацієнта",
+    "patientModifiedUpdating": "Зміна існуючого пацієнта: {name}",
+    "@patientModifiedUpdating": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "patientSavingModified": "Збереження зміненого пацієнта: {name}",
+    "@patientSavingModified": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "dropModificationsTitle": "Скасувати зміни?",
+    "dropModificationsMessage": "Ваші зміни в полях пацієнта буде відхилено.",
+    "modifyPatientTitle": "Змінити пацієнта?",
+    "modifyPatientMessage": "Це оновить наявний запис пацієнта вашими змінами.",
+    "scanIdCard": "Сканувати ID-картку або паспорт",
+    "scanIdCardDescription": "Автозаповнення з вашого документа. Дані залишаються на вашому пристрої.",
+    "newLabel": "Нове",
+    "newPatient": "Новий пацієнт",
+    "patientChangedTo": "Змінено на: {name}",
+    "@patientChangedTo": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "patientMatchFound": "Наявний пацієнт: {name}",
+    "@patientMatchFound": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "language": "Мова",
+    "systemDefault": "Системна",
+    "regionUS": "США",
+    "regionEurope": "Європа",
+    "regionUK": "Велика Британія",
+    "medGemmaIncompatibleDevice": "Ця модель потребує більше пам'яті, ніж доступно на вашому пристрої. Використовуйте натомість стандартну модель.",
+    "deepScanDownloadTitle": "Завантажити модель зору",
+    "deepScanDownloadMessage": "Глибоке сканування потребує додаткового завантаження (~{size} МБ). Завантажити зараз?",
+    "@deepScanDownloadMessage": {
+        "placeholders": {
+            "size": {
+                "type": "int"
+            }
+        }
+    },
+    "downloadingVisionModel": "Завантаження моделі зору...",
+
+    "shareUnknownDevice": "Невідомий пристрій",
+    "shareViewOnlyBanner": "ТІЛЬКИ ПЕРЕГЛЯД — дані буде видалено, коли ви закриєте сеанс або залишите зону поблизу",
+    "shareViewOnlyBannerViewing": "ТІЛЬКИ ПЕРЕГЛЯД — дані буде видалено після виходу",
+    "shareInfoBannerMessage": "Спільні записи доступні лише для перегляду. Усі дані автоматично видаляються після завершення сеансу або закінчення ліміту часу.",
+    "shareTitle": "Поділитися",
+    "shareFindDevices": "Знайти пристрої",
+    "shareWaiting": "Очікування...",
+    "shareConnectingTitle": "Підключення",
+    "shareSending": "Надсилання",
+    "shareReceiving": "Отримання",
+    "shareSessionActive": "Сеанс активний",
+    "shareViewingRecords": "Перегляд записів",
+    "shareComplete": "Завершено",
+    "shareError": "Помилка",
+    "sharePermissionsRequired": "Потрібні дозволи",
+    "shareHealthWalletDevice": "Пристрій HealthWallet",
+    "shareInvitationDeclined": "Запрошення відхилено",
+    "shareSessionComplete": "Сеанс завершено",
+    "shareInvitationDeclinedMessage": "Отримувач відхилив ваше запрошення переглянути записи.",
+    "shareSessionCompleteMessage": "Усі спільні дані безпечно видалено з цього пристрою",
+    "shareBackHome": "На головну",
+    "shareConnectionFailed": "Не вдалося підключитися",
+    "shareUnableToConnect": "Не вдалося підключитися. Спробуйте знову.",
+    "shareNoDataReceived": "Дані не отримано",
+    "shareSearchRecords": "Пошук записів",
+    "shareNoRecordsMatchFilters": "Жоден запис не відповідає фільтрам",
+    "shareNoRecordsAvailable": "Немає доступних записів",
+    "shareReceiverViewingRecords": "Отримувач переглядає записи",
+    "shareSessionAutoExpire": "Сеанс автоматично завершиться, коли таймер досягне нуля",
+    "shareRecordsDelivered": "Записи успішно доставлено",
+    "shareConnecting": "Підключення...",
+    "shareConnectionInterrupted": "З'єднання перервано, повторне підключення",
+    "shareSendingRecords": "Надсилання записів...",
+    "shareReceivingRecords": "Отримання записів...",
+    "shareConfirmExit": "Підтвердити вихід",
+    "shareDeleteSharedRecords": "Видалити спільні записи?",
+    "shareDeleteWarning": "Спільний запис буде назавжди видалено з цього пристрою. Дію неможливо скасувати",
+    "shareDeleteAndExit": "Видалити й вийти",
+    "shareIncomingTransfer": "Вхідне передавання",
+    "shareViewOnlyWarning": "Записи будуть лише для перегляду та автоматично видаляться після виходу",
+    "shareDecline": "Відхилити",
+    "shareAccept": "Прийняти",
+    "shareSearchingForDevices": "Пошук пристроїв поблизу...",
+    "shareSearchForDevices": "Пошук пристроїв...",
+    "shareNoDevicesFound": "Пристроїв не знайдено",
+    "shareConnectionIssue": "Проблема зі з'єднанням",
+    "shareWifiDirectUnresponsive": "WiFi Direct не відповідає на цьому пристрої.",
+    "shareWifiToggleHint": "WiFi Direct не відповідає. Вимкніть і знову увімкніть WiFi, потім торкніться Повторити.",
+    "shareDiscoveryHint": "Переконайтеся, що на іншому пристрої відкрито застосунок HealthWallet.me",
+    "shareProximityHint": "Щоб пристрій-отримувач був видимим, у його налаштуваннях має бути увімкнено Спільний доступ поблизу.",
+    "shareNoRecordsMatchSelectedFilters": "Жоден запис не відповідає вибраним фільтрам",
+    "shareNoRecordsForAppliedFilters": "Записів для застосованих фільтрів не знайдено",
+    "shareTryClearingFilters": "Спробуйте очистити деякі фільтри",
+    "shareRecordsPageFiltersNoResults": "Фільтри сторінки записів не дали результатів",
+    "shareImportOrSyncRecords": "Імпортуйте або синхронізуйте записи, щоб поділитися ними",
+    "shareSessionTime": "Час сеансу",
+    "shareSetAsDefault": "Встановити за замовчуванням",
+    "shareRecordsButton": "Поділитися записами",
+    "shareSelectRecordsToShare": "Виберіть записи для спільного доступу",
+    "shareEndSession": "Завершити сеанс",
+    "shareRequestTenMin": "Запросити +10 хв",
+    "shareWaitingForResponse": "Очікування відповіді...",
+    "shareAddMoreTime": "Додати більше часу",
+    "shareSessionExpiresIn": "Сеанс завершиться через",
+    "shareExtensionRequestedTitle": "Запитано продовження",
+    "shareHoursLabel": "год",
+    "shareMinLabel": "хв",
+    "shareSelectedCount": "Вибрано {count}",
+    "@shareSelectedCount": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "shareRecordCount": "{recordCount} запис(ів)",
+    "@shareRecordCount": {
+        "placeholders": {
+            "recordCount": {
+                "type": "int"
+            }
+        }
+    },
+    "shareSharedFrom": "поділено з {source}",
+    "@shareSharedFrom": {
+        "placeholders": {
+            "source": {
+                "type": "String"
+            }
+        }
+    },
+    "shareFoundDevices": "Знайдено {count} пристрій(ів)",
+    "@shareFoundDevices": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "shareRetryingCount": "Повторна спроба ({retryCount}/3)...",
+    "@shareRetryingCount": {
+        "placeholders": {
+            "retryCount": {
+                "type": "int"
+            }
+        }
+    },
+    "shareDeviceWantsToShare": "{deviceName} хоче поділитися з вами записами",
+    "@shareDeviceWantsToShare": {
+        "placeholders": {
+            "deviceName": {
+                "type": "String"
+            }
+        }
+    },
+    "shareExtensionsUsed": "Використано {used}/{max} продовжень",
+    "@shareExtensionsUsed": {
+        "placeholders": {
+            "used": {
+                "type": "int"
+            },
+            "max": {
+                "type": "int"
+            }
+        }
+    },
+    "shareDurationHoursMinutes": "{hours} год {minutes} хв",
+    "@shareDurationHoursMinutes": {
+        "placeholders": {
+            "hours": {
+                "type": "int"
+            },
+            "minutes": {
+                "type": "int"
+            }
+        }
+    },
+    "shareDurationHours": "{hours} год",
+    "@shareDurationHours": {
+        "placeholders": {
+            "hours": {
+                "type": "int"
+            }
+        }
+    },
+    "shareDurationMinutes": "{minutes} хв",
+    "@shareDurationMinutes": {
+        "placeholders": {
+            "minutes": {
+                "type": "int"
+            }
+        }
+    },
+    "shareTimerHoursMinutesSeconds": "{hours} год {minutes} хв {seconds} с",
+    "@shareTimerHoursMinutesSeconds": {
+        "placeholders": {
+            "hours": {
+                "type": "int"
+            },
+            "minutes": {
+                "type": "int"
+            },
+            "seconds": {
+                "type": "int"
+            }
+        }
+    },
+    "shareTimerMinutesSeconds": "{minutes} хв {seconds} с",
+    "@shareTimerMinutesSeconds": {
+        "placeholders": {
+            "minutes": {
+                "type": "int"
+            },
+            "seconds": {
+                "type": "int"
+            }
+        }
+    },
+    "shareTimerSeconds": "{seconds} с",
+    "@shareTimerSeconds": {
+        "placeholders": {
+            "seconds": {
+                "type": "int"
+            }
+        }
+    },
+    "shareMinuteCount": "{minutes} хв",
+    "@shareMinuteCount": {
+        "placeholders": {
+            "minutes": {
+                "type": "int"
+            }
+        }
+    },
+    "shareSecondsCount": "{seconds} с",
+    "@shareSecondsCount": {
+        "placeholders": {
+            "seconds": {
+                "type": "int"
+            }
+        }
+    },
+    "shareExtensionRequestMessage": "{peerRole} хоче продовжити сеанс на {duration}",
+    "@shareExtensionRequestMessage": {
+        "placeholders": {
+            "peerRole": {
+                "type": "String"
+            },
+            "duration": {
+                "type": "String"
+            }
+        }
+    },
+    "shareExtensionDurationRequested": "Запитано {duration}",
+    "@shareExtensionDurationRequested": {
+        "placeholders": {
+            "duration": {
+                "type": "String"
+            }
+        }
+    }
+}

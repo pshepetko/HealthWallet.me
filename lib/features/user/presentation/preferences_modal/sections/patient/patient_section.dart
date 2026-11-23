@@ -29,19 +29,20 @@ class _PatientSectionState extends State<PatientSection> {
         final currentSelectedPatientId = patientBloc.state.selectedPatientId;
 
         context.read<PatientBloc>().add(
-              PatientPatientsLoaded(
-                preserveOrder: true,
-                preservePatientId: currentSelectedPatientId,
-              ),
-            );
+          PatientPatientsLoaded(
+            preserveOrder: true,
+            preservePatientId: currentSelectedPatientId,
+          ),
+        );
       });
     }
   }
 
   void _handlePatientTap(String patientId) {
     final currentState = context.read<PatientBloc>().state;
-    final isCurrentlyExpanded =
-        currentState.expandedPatientIds.contains(patientId);
+    final isCurrentlyExpanded = currentState.expandedPatientIds.contains(
+      patientId,
+    );
 
     if (isCurrentlyExpanded) {
       return;
@@ -98,28 +99,30 @@ class _PatientSectionState extends State<PatientSection> {
       children: [
         Text(
           context.l10n.patient,
-          style: AppTextStyle.bodySmall.copyWith(
-            color: textColor,
-          ),
+          style: AppTextStyle.bodySmall.copyWith(color: textColor),
         ),
-        Row(
-          children: [
-            Assets.icons.information.svg(
-              width: 16,
-              height: 16,
-              colorFilter: ColorFilter.mode(
-                iconColor,
-                BlendMode.srcIn,
+        const SizedBox(width: Insets.small),
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Assets.icons.information.svg(
+                width: 16,
+                height: 16,
+                colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
               ),
-            ),
-            const SizedBox(width: Insets.extraSmall),
-            Text(
-              context.l10n.tapToSelectPatient,
-              style: AppTextStyle.labelMedium.copyWith(
-                color: iconColor,
+              const SizedBox(width: Insets.extraSmall),
+              Flexible(
+                child: Text(
+                  context.l10n.tapToSelectPatient,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.end,
+                  style: AppTextStyle.labelMedium.copyWith(color: iconColor),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );
@@ -179,17 +182,12 @@ class _PatientSectionState extends State<PatientSection> {
           Assets.icons.user.svg(
             width: 16,
             height: 16,
-            colorFilter: ColorFilter.mode(
-              iconColor,
-              BlendMode.srcIn,
-            ),
+            colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
           ),
           const SizedBox(width: Insets.small),
           Text(
             context.l10n.noPatientsFound,
-            style: AppTextStyle.bodySmall.copyWith(
-              color: textColor,
-            ),
+            style: AppTextStyle.bodySmall.copyWith(color: textColor),
           ),
         ],
       ),

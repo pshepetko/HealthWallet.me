@@ -2,11 +2,13 @@ import 'dart:async';
 import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:health_wallet/core/di/injection.dart';
 import 'package:health_wallet/core/navigation/app_router.dart';
 import 'package:health_wallet/core/theme/app_text_style.dart';
+import 'package:health_wallet/core/utils/logger.dart';
 import 'package:health_wallet/features/dashboard/presentation/helpers/page_view_navigation_controller.dart';
 import 'package:health_wallet/features/home/presentation/bloc/home_bloc.dart';
 import 'package:health_wallet/features/records/domain/entity/entity.dart';
@@ -22,7 +24,6 @@ import 'package:health_wallet/features/records/presentation/widgets/search_widge
 import 'package:health_wallet/features/sync/presentation/widgets/sync_placeholder_widget.dart';
 import 'package:health_wallet/core/utils/responsive.dart';
 import 'package:health_wallet/features/user/presentation/preferences_modal/sections/patient/bloc/patient_bloc.dart';
-import 'package:health_wallet/core/theme/app_color.dart';
 import 'package:health_wallet/features/records/presentation/widgets/fhir_cards/resource_card.dart';
 
 import 'package:health_wallet/core/theme/app_insets.dart';
@@ -46,7 +47,9 @@ class RecordsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RecordsView(
-        initFilters: initFilters, pageController: pageController);
+      initFilters: initFilters,
+      pageController: pageController,
+    );
   }
 }
 
@@ -78,17 +81,20 @@ class _RecordsViewState extends State<RecordsView> {
 
     context.read<RecordsBloc>().add(const RecordsInitialised());
     context.read<RecordsBloc>().add(
-        RecordsSourceChanged(selectedSourceId, sourceIds: patientSourceIds));
+      RecordsSourceChanged(selectedSourceId, sourceIds: patientSourceIds),
+    );
 
     if (widget.initFilters != null) {
-      context
-          .read<RecordsBloc>()
-          .add(RecordsFiltersApplied(widget.initFilters!));
+      context.read<RecordsBloc>().add(
+        RecordsFiltersApplied(widget.initFilters!),
+      );
     }
   }
 
   List<String>? _resolvePatientSourceIds(
-      BuildContext context, String? selectedSource) {
+    BuildContext context,
+    String? selectedSource,
+  ) {
     if (selectedSource != 'All') return null;
 
     try {
@@ -96,8 +102,7 @@ class _RecordsViewState extends State<RecordsView> {
       final patientState = patientBloc.state;
       final selectedPatientId = patientState.selectedPatientId;
 
-      if (selectedPatientId != null &&
-          patientState.patientGroups.isNotEmpty) {
+      if (selectedPatientId != null && patientState.patientGroups.isNotEmpty) {
         final patientGroup = patientState.patientGroups[selectedPatientId];
         if (patientGroup != null) {
           return patientGroup.sourceIds;
@@ -105,7 +110,8 @@ class _RecordsViewState extends State<RecordsView> {
       }
     } catch (e) {
       debugPrint(
-          'PatientBloc not available, continue without patient source IDs');
+        'PatientBloc not available, continue without patient source IDs',
+      );
     }
     return null;
   }
@@ -184,29 +190,53 @@ class _RecordsViewState extends State<RecordsView> {
       final result = await FilePicker.platform.pickFiles(
         allowMultiple: true,
         allowCompression: false,
-        withData: false,
+        withData: kIsWeb,
         withReadStream: false,
         type: FileType.custom,
         allowedExtensions: [
-          'pdf', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'tiff'
+          'pdf',
+          'jpg',
+          'jpeg',
+          'png',
+          'gif',
+          'bmp',
+          'webp',
+          'tiff',
         ],
       );
-      if (result != null && result.files.isNotEmpty) {
-        final validPaths = <String>[];
-        for (final file in result.files) {
-          if (file.path == null || file.path!.isEmpty) continue;
-          if (await File(file.path!).exists()) {
-            validPaths.add(file.path!);
-          }
-        }
-        if (validPaths.isNotEmpty && mounted) {
-          context
-              .read<ScanBloc>()
-              .add(DocumentImported(filePaths: validPaths));
-          getIt<PageViewNavigationController>().navigateToPage(3);
+      if (result == null || result.files.isEmpty) return;
+
+      if (kIsWeb) {
+        final pickedFiles = result.files
+            .map((file) => '${file.name} (${file.bytes?.length ?? 0} bytes)')
+            .join(', ');
+        logger.w('Web document import is not supported yet: $pickedFiles');
+        if (!mounted) return;
+        _showMessage(
+          'Document import is not available in the web version yet. '
+          'Please use the mobile or desktop app.',
+        );
+        return;
+      }
+
+      final validPaths = <String>[];
+      for (final file in result.files) {
+        final path = file.path;
+        if (path == null || path.isEmpty) continue;
+        if (await File(path).exists()) {
+          validPaths.add(path);
         }
       }
-    } catch (_) {}
+      if (validPaths.isNotEmpty && mounted) {
+        context.read<ScanBloc>().add(DocumentImported(filePaths: validPaths));
+        getIt<PageViewNavigationController>().navigateToPage(3);
+      }
+    } catch (e, stackTrace) {
+      logger.e('Failed to import documents', e, stackTrace);
+      if (mounted) {
+        _showMessage('Failed to import documents. Please try again.');
+      }
+    }
   }
 
   Future<void> _handlePickImage() async {
@@ -215,6 +245,22 @@ class _RecordsViewState extends State<RecordsView> {
       final picker = ImagePicker();
       final images = await picker.pickMultiImage();
       if (images.isEmpty) return;
+
+      if (kIsWeb) {
+        final pickedImages = <String>[];
+        for (final image in images) {
+          final bytes = await image.readAsBytes();
+          pickedImages.add('${image.name} (${bytes.length} bytes)');
+        }
+        logger.w('Web image import is not supported yet: $pickedImages');
+        if (!mounted) return;
+        _showMessage(
+          'Image import is not available in the web version yet. '
+          'Please use the mobile or desktop app.',
+        );
+        return;
+      }
+
       final validPaths = <String>[];
       for (final image in images) {
         if (await File(image.path).exists()) {
@@ -222,12 +268,21 @@ class _RecordsViewState extends State<RecordsView> {
         }
       }
       if (validPaths.isNotEmpty && mounted) {
-        context
-            .read<ScanBloc>()
-            .add(DocumentImported(filePaths: validPaths));
+        context.read<ScanBloc>().add(DocumentImported(filePaths: validPaths));
         getIt<PageViewNavigationController>().navigateToPage(3);
       }
-    } catch (_) {}
+    } catch (e, stackTrace) {
+      logger.e('Failed to import images', e, stackTrace);
+      if (mounted) {
+        _showMessage('Failed to import images. Please try again.');
+      }
+    }
+  }
+
+  void _showMessage(String message) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   void _handleScanDocument() {
@@ -249,14 +304,20 @@ class _RecordsViewState extends State<RecordsView> {
       listeners: [
         BlocListener<HomeBloc, HomeState>(
           listener: (context, state) {
-            final selectedSourceId =
-                state.selectedSource == 'All' ? null : state.selectedSource;
-            final patientSourceIds =
-                _resolvePatientSourceIds(context, state.selectedSource);
+            final selectedSourceId = state.selectedSource == 'All'
+                ? null
+                : state.selectedSource;
+            final patientSourceIds = _resolvePatientSourceIds(
+              context,
+              state.selectedSource,
+            );
 
-            context.read<RecordsBloc>().add(RecordsSourceChanged(
+            context.read<RecordsBloc>().add(
+              RecordsSourceChanged(
                 selectedSourceId,
-                sourceIds: patientSourceIds));
+                sourceIds: patientSourceIds,
+              ),
+            );
           },
         ),
         BlocListener<SyncBloc, SyncState>(
@@ -268,12 +329,17 @@ class _RecordsViewState extends State<RecordsView> {
               final selectedSourceId = homeState.selectedSource == 'All'
                   ? null
                   : homeState.selectedSource;
-              final patientSourceIds =
-                  _resolvePatientSourceIds(context, homeState.selectedSource);
+              final patientSourceIds = _resolvePatientSourceIds(
+                context,
+                homeState.selectedSource,
+              );
 
-              context.read<RecordsBloc>().add(RecordsSourceChanged(
+              context.read<RecordsBloc>().add(
+                RecordsSourceChanged(
                   selectedSourceId,
-                  sourceIds: patientSourceIds));
+                  sourceIds: patientSourceIds,
+                ),
+              );
             }
           },
         ),
@@ -335,15 +401,12 @@ class _RecordsViewState extends State<RecordsView> {
           child: TextButton(
             onPressed: () {
               CustomArrowTooltip.dismiss();
-              context
-                  .read<RecordsBloc>()
-                  .add(const RecordsSelectionModeToggled());
+              context.read<RecordsBloc>().add(
+                const RecordsSelectionModeToggled(),
+              );
             },
             style: TextButton.styleFrom(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 8,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
               minimumSize: Size.zero,
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
@@ -374,15 +437,18 @@ class _RecordsViewState extends State<RecordsView> {
                 showModalBottomSheet(
                   context: context,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   builder: (context) => RecordsFilterBottomSheet(
                     activeFilters: filterState.activeFilters,
                     currentDateFilter: filterState.dateFilter,
                     onApply: (filters, dateFilter) =>
-                        context.read<RecordsBloc>().add(RecordsFiltersApplied(
-                              filters,
-                              dateFilter: dateFilter,
-                            )),
+                        context.read<RecordsBloc>().add(
+                          RecordsFiltersApplied(
+                            filters,
+                            dateFilter: dateFilter,
+                          ),
+                        ),
                   ),
                   isScrollControlled: true,
                 );
@@ -426,9 +492,9 @@ class _RecordsViewState extends State<RecordsView> {
         }
         break;
       case PermissionDenied(:final message):
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(message)),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(message)));
         return;
       case PermissionPermanentlyDenied(:final message):
         _showPermissionsSettingsDialog(context, message);
@@ -477,8 +543,7 @@ class _RecordsViewState extends State<RecordsView> {
                 previous.status != current.status ||
                 previous.resources != current.resources ||
                 previous.searchQuery != current.searchQuery ||
-                previous.selectedResourceIds !=
-                    current.selectedResourceIds ||
+                previous.selectedResourceIds != current.selectedResourceIds ||
                 previous.isSelectionMode != current.isSelectionMode,
             builder: (context, state) {
               if (state.status == const RecordsStatus.loading()) {
@@ -494,8 +559,9 @@ class _RecordsViewState extends State<RecordsView> {
                 return Center(child: Text(state.status.toString()));
               }
 
-              final timelineResources =
-                  List<IFhirResource>.from(state.resources);
+              final timelineResources = List<IFhirResource>.from(
+                state.resources,
+              );
 
               if (timelineResources.isEmpty) {
                 return _buildEmptyState(context, state);
@@ -551,10 +617,8 @@ class _RecordsViewState extends State<RecordsView> {
           pageController: widget.pageController,
           recordTypeName: state.activeFilters.isNotEmpty
               ? state.activeFilters.length == 1
-                  ? state.activeFilters.first.display
-                  : state.activeFilters
-                      .map((f) => f.display)
-                      .join(', ')
+                    ? state.activeFilters.first.display
+                    : state.activeFilters.map((f) => f.display).join(', ')
               : null,
           onImportDocument: _handleImportDocument,
           onPickImage: _handlePickImage,
@@ -565,13 +629,9 @@ class _RecordsViewState extends State<RecordsView> {
           controller: _scrollController,
           physics: const ClampingScrollPhysics(),
           child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minHeight: constraints.maxHeight,
-            ),
+            constraints: BoxConstraints(minHeight: constraints.maxHeight),
             child: Padding(
-              padding: const EdgeInsets.only(
-                bottom: bottomNavBarSpacing,
-              ),
+              padding: const EdgeInsets.only(bottom: bottomNavBarSpacing),
               child: context.isTablet
                   ? Align(
                       alignment: const Alignment(0, -0.3),
@@ -599,13 +659,10 @@ class _RecordsViewState extends State<RecordsView> {
       controller: _scrollController,
       padding: EdgeInsets.only(
         top: 8,
-        bottom: bottomSafeInset +
-            bottomBarHeight +
-            bottomBarOffset +
-            extraSpacing,
+        bottom:
+            bottomSafeInset + bottomBarHeight + bottomBarOffset + extraSpacing,
       ),
-      itemCount:
-          timelineResources.length + (state.hasMorePages ? 1 : 0),
+      itemCount: timelineResources.length + (state.hasMorePages ? 1 : 0),
       itemBuilder: (context, index) {
         if (index == timelineResources.length) {
           return Padding(
@@ -621,22 +678,18 @@ class _RecordsViewState extends State<RecordsView> {
 
         final resource = timelineResources[index];
         return TimelineEntry(
-          key: ValueKey(
-              'timeline-${resource.fhirType}-${resource.id}-$index'),
+          key: ValueKey('timeline-${resource.fhirType}-${resource.id}-$index'),
           isFirst: index == 0,
           isLast: index == timelineResources.length - 1,
-          isSelected:
-              state.selectedResourceIds.contains(resource.id),
+          isSelected: state.selectedResourceIds.contains(resource.id),
           isSelectionMode: state.isSelectionMode,
           onTap: () {
             if (state.isSelectionMode) {
               context.read<RecordsBloc>().add(
-                    RecordsSelectionToggled(resource.id),
-                  );
-            } else {
-              context.router.push(
-                RecordDetailsRoute(resource: resource),
+                RecordsSelectionToggled(resource.id),
               );
+            } else {
+              context.router.push(RecordDetailsRoute(resource: resource));
             }
           },
           onLongPress: state.isSelectionMode
@@ -656,9 +709,8 @@ class _RecordsViewState extends State<RecordsView> {
                     ? null
                     : () {
                         context.read<RecordsBloc>().add(
-                              RecordsFiltersApplied(
-                                  [resource.fhirType]),
-                            );
+                          RecordsFiltersApplied([resource.fhirType]),
+                        );
                       },
               ),
               const SizedBox(height: Insets.small),

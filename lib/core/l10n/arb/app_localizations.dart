@@ -9,6 +9,7 @@ import 'app_localizations_de.dart';
 import 'app_localizations_en.dart';
 import 'app_localizations_es.dart';
 import 'app_localizations_ro.dart';
+import 'app_localizations_uk.dart';
 
 // ignore_for_file: type=lint
 
@@ -99,6 +100,7 @@ abstract class AppLocalizations {
     Locale('en'),
     Locale('es'),
     Locale('de'),
+    Locale('uk'),
     Locale('ro'),
   ];
 
@@ -2676,7 +2678,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['de', 'en', 'es', 'ro'].contains(locale.languageCode);
+      <String>['de', 'en', 'es', 'ro', 'uk'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -2693,6 +2695,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       return AppLocalizationsEs();
     case 'ro':
       return AppLocalizationsRo();
+    case 'uk':
+      return AppLocalizationsUk();
   }
 
   throw FlutterError(

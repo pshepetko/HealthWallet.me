@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:health_wallet/core/theme/app_text_style.dart';
 import 'package:health_wallet/features/home/presentation/widgets/reorderable_grid.dart';
@@ -48,6 +50,30 @@ class VitalsSection extends StatelessWidget {
     return screenWidth < _breakpoint ? 1.88 : 2.0;
   }
 
+  double _getMainAxisExtent(double screenWidth, TextScaler textScaler) {
+    final bool isSmall = screenWidth < _breakpoint;
+    final double iconSize = isSmall ? 14 : 16;
+    final double titleFontSize = isSmall ? 12 : 14;
+    final double valueFontSize = isSmall ? 20 : 18;
+    final double valueHeightFactor = isSmall ? 1.2 : 1.22;
+    final double unitFontSize = isSmall ? 11 : 14;
+
+    final double titleLineHeight = math.max(
+      iconSize,
+      textScaler.scale(titleFontSize) * 1.29,
+    );
+    final double valueLineHeight =
+        textScaler.scale(valueFontSize) * valueHeightFactor;
+    final double unitLineHeight = textScaler.scale(unitFontSize) * 1.29;
+    final double valueRowHeight = math.max(valueLineHeight, unitLineHeight);
+
+    return Insets.normal * 2 +
+        titleLineHeight +
+        Insets.smallNormal +
+        valueRowHeight +
+        6;
+  }
+
   @override
   Widget build(BuildContext context) {
     final vitalsToShow = vitalsExpanded ? allAvailableVitals : vitals;
@@ -64,10 +90,12 @@ class VitalsSection extends StatelessWidget {
               onReorder?.call(oldIndex, newIndex);
             } else {
               final vitalToMove = vitals[oldIndex];
-              final oldMasterIndex = allAvailableVitals
-                  .indexWhere((v) => v.title == vitalToMove.title);
-              final newMasterIndex = allAvailableVitals
-                  .indexWhere((v) => v.title == vitals[newIndex].title);
+              final oldMasterIndex = allAvailableVitals.indexWhere(
+                (v) => v.title == vitalToMove.title,
+              );
+              final newMasterIndex = allAvailableVitals.indexWhere(
+                (v) => v.title == vitals[newIndex].title,
+              );
 
               if (oldMasterIndex != -1 && newMasterIndex != -1) {
                 onReorder?.call(oldMasterIndex, newMasterIndex);
@@ -78,6 +106,10 @@ class VitalsSection extends StatelessWidget {
           crossAxisSpacing: _getCrossAxisSpacing(screenWidth),
           mainAxisSpacing: _getCrossAxisSpacing(screenWidth),
           childAspectRatio: _getChildAspectRatio(screenWidth),
+          mainAxisExtent: _getMainAxisExtent(
+            screenWidth,
+            MediaQuery.textScalerOf(context),
+          ),
           shrinkWrap: true,
           padding: EdgeInsets.zero,
           itemBuilder: (context, vital, index) {
@@ -146,8 +178,11 @@ class VitalsSection extends StatelessWidget {
   }
 
   Widget _buildVitalSignCard(
-      BuildContext context, PatientVital vital, double screenWidth,
-      {Key? key}) {
+    BuildContext context,
+    PatientVital vital,
+    double screenWidth, {
+    Key? key,
+  }) {
     final String title = vital.title;
     final String value = vital.value;
     final String unit = vital.unit;
@@ -335,9 +370,7 @@ class VitalsSection extends StatelessWidget {
             fontSize: 12,
             color: context.colorScheme.onSurface,
           )
-        : AppTextStyle.bodySmall.copyWith(
-            color: context.colorScheme.onSurface,
-          );
+        : AppTextStyle.bodySmall.copyWith(color: context.colorScheme.onSurface);
 
     final TextStyle valueStyle = isSmall
         ? AppTextStyle.titleLarge.copyWith(
@@ -362,10 +395,7 @@ class VitalsSection extends StatelessWidget {
       decoration: BoxDecoration(
         color: cardColor,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: context.theme.dividerColor,
-          width: 1,
-        ),
+        border: Border.all(color: context.theme.dividerColor, width: 1),
       ),
       child: Padding(
         padding: EdgeInsets.all(cardPadding),
@@ -395,26 +425,28 @@ class VitalsSection extends StatelessWidget {
               ],
             ),
             const SizedBox(height: Insets.smallNormal),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.baseline,
-              textBaseline: TextBaseline.alphabetic,
-              children: [
-                Flexible(
-                  child: Text(
-                    value,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: valueStyle,
-                  ),
+            Flexible(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                    Text(
+                      value,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: valueStyle,
+                    ),
+                    if (unit.isNotEmpty && !value.contains(unit)) ...[
+                      const SizedBox(width: 4),
+                      Text(unit, maxLines: 1, style: unitStyle),
+                    ],
+                  ],
                 ),
-                if (unit.isNotEmpty && !value.contains(unit)) ...[
-                  const SizedBox(width: 4),
-                  Text(
-                    unit,
-                    style: unitStyle,
-                  ),
-                ],
-              ],
+              ),
             ),
           ],
         ),

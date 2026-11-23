@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:health_wallet/core/theme/app_text_style.dart';
 import 'package:health_wallet/features/home/domain/entities/overview_card.dart';
@@ -41,6 +43,19 @@ class MedicalRecordsSection extends StatelessWidget {
     return screenWidth < _breakpoint ? 2.07 : 2.1;
   }
 
+  double _getMainAxisExtent(double screenWidth, TextScaler textScaler) {
+    final bool isSmall = screenWidth < _breakpoint;
+    final double iconSize = isSmall ? 14 : 16;
+    final double categoryFontSize = isSmall ? 10 : 14;
+    const double countFontSize = 18;
+
+    final double categoryHeight = textScaler.scale(categoryFontSize) * 1.29;
+    final double countHeight = textScaler.scale(countFontSize) * 1.22;
+    final double contentHeight = categoryHeight + Insets.small + countHeight;
+
+    return Insets.normal * 2 + math.max(iconSize, contentHeight) + 6;
+  }
+
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.sizeOf(context).width;
@@ -53,6 +68,10 @@ class MedicalRecordsSection extends StatelessWidget {
       crossAxisSpacing: _getCrossAxisSpacing(screenWidth),
       mainAxisSpacing: _getCrossAxisSpacing(screenWidth),
       childAspectRatio: _getChildAspectRatio(screenWidth),
+      mainAxisExtent: _getMainAxisExtent(
+        screenWidth,
+        MediaQuery.textScalerOf(context),
+      ),
       itemBuilder: (context, card, index) {
         final isFirstCard = index == 0 && !editMode;
         final cardContent = _buildOverviewCard(
@@ -73,10 +92,7 @@ class MedicalRecordsSection extends StatelessWidget {
         }
 
         return editMode
-            ? ShakingCard(
-                isShaking: true,
-                child: cardWidget,
-              )
+            ? ShakingCard(isShaking: true, child: cardWidget)
             : ShakingCard(
                 isShaking: false,
                 child: GestureDetector(
@@ -90,8 +106,11 @@ class MedicalRecordsSection extends StatelessWidget {
   }
 
   Widget _buildOverviewCard(
-      BuildContext context, OverviewCard card, double screenWidth,
-      {Key? key}) {
+    BuildContext context,
+    OverviewCard card,
+    double screenWidth, {
+    Key? key,
+  }) {
     final bool isSmall = screenWidth < _breakpoint;
     final double iconSize = isSmall ? 14 : 16;
 
@@ -105,9 +124,7 @@ class MedicalRecordsSection extends StatelessWidget {
           );
 
     final TextStyle countStyle = isSmall
-        ? AppTextStyle.titleSmall.copyWith(
-            color: context.colorScheme.onSurface,
-          )
+        ? AppTextStyle.titleSmall.copyWith(color: context.colorScheme.onSurface)
         : AppTextStyle.titleSmall.copyWith(
             color: context.colorScheme.onSurface,
           );
@@ -117,10 +134,7 @@ class MedicalRecordsSection extends StatelessWidget {
       decoration: BoxDecoration(
         color: context.colorScheme.surface,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: context.theme.dividerColor,
-          width: 1,
-        ),
+        border: Border.all(color: context.theme.dividerColor, width: 1),
       ),
       child: Padding(
         padding: const EdgeInsets.all(Insets.normal),
