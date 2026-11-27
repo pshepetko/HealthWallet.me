@@ -10,12 +10,12 @@ import 'package:flutter/foundation.dart';
 ///
 /// TODO(firebase): wire up real Firebase configuration before enabling cloud
 /// AI (Gemini / Vertex AI via Firebase AI Logic):
-///   1. Add `android/app/google-services.json` (and `GoogleService-Info.plist`
-///      for iOS) from the Firebase console.
-///   2. Run `flutterfire configure` to generate `lib/firebase_options.dart`.
-///   3. Apply the `com.google.gms.google-services` Gradle plugin and pass
-///      `options: DefaultFirebaseOptions.currentPlatform` to
-///      `Firebase.initializeApp` below.
+///   1. Add `google-services.json` / `GoogleService-Info.plist` from the
+///      Firebase console (Android is configured).
+///   2. Run `flutterfire configure` to generate `lib/firebase_options.dart`
+///      (generated).
+///   3. Apply the `com.google.gms.google-services` Gradle plugin (applied) and
+///      pass `optionsBuilder: () => DefaultFirebaseOptions.currentPlatform`.
 class FirebaseBootstrap {
   FirebaseBootstrap._();
 
@@ -23,10 +23,17 @@ class FirebaseBootstrap {
 
   static bool get isInitialized => _initialized;
 
-  static Future<bool> initializeSafely() async {
+  /// Resolves [FirebaseOptions] lazily inside the guarded block so that platform
+  /// configuration errors (e.g. unsupported platforms) also fall back to
+  /// offline mode instead of crashing startup.
+  static Future<bool> initializeSafely({
+    FirebaseOptions Function()? optionsBuilder,
+  }) async {
     if (_initialized) return true;
     try {
-      await Firebase.initializeApp();
+      await Firebase.initializeApp(
+        options: optionsBuilder?.call(),
+      );
       _initialized = true;
       return true;
     } catch (error, stackTrace) {

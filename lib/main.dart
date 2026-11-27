@@ -7,13 +7,16 @@ import 'package:healthwithme/core/di/injection.dart';
 import 'package:healthwithme/core/services/deep_link_service.dart';
 import 'package:healthwithme/core/services/share_intent_service.dart';
 import 'package:healthwithme/features/scan/presentation/bloc/scan_bloc.dart';
+import 'package:healthwithme/firebase_options.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-  await FirebaseBootstrap.initializeSafely();
+  await FirebaseBootstrap.initializeSafely(
+    optionsBuilder: () => DefaultFirebaseOptions.currentPlatform,
+  );
 
   await configureDependencies();
 
