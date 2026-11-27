@@ -1,7 +1,12 @@
-# Claude Code
+# AI / IDE / Editor
 .claude/
+.idea/
+.vscode/settings.json
+*.iml
+*.ipr
+*.iws
 
-# Secrets & Signing Keys - NEVER commit these
+# Secrets, Signing Keys & Environment
 **/private_keys/
 **/service-account*.json
 *.p8
@@ -13,9 +18,47 @@ assets/certs/*
 *.jks
 *.keystore
 **/key.properties
+*.env
 **/fastlane/.env
 **/fastlane/.env.*
 !**/fastlane/.env.example
+
+# Firebase Configuration (generated per environment)
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+lib/firebase_options.dart
+
+# Flutter / Dart / Pub
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+.fvm/
+.fvmrc
+
+# Code Generation
+**/*.freezed.dart
+**/*.g.dart
+**/*.config.dart
+**/*.gr.dart
+
+# Android Build Artifacts
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# Symbolication & Obfuscation
+app.*.symbols
+app.*.map.json
+
+# Fastlane
+ios/fastlane/Appfile
+ios/fastlane/Matchfile
 
 # Miscellaneous
 *.class
@@ -30,57 +73,3 @@ assets/certs/*
 .svn/
 .swiftpm/
 migrate_working_dir/
-
-# exclude the API key from version control
-env.g.dart
-*.env
-
-# IntelliJ related
-*.iml
-*.ipr
-*.iws
-.idea/
-
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
-
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
-.dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-.packages
-.pub-cache/
-.pub/
-/build/
-
-# Symbolication related
-app.*.symbols
-
-# Obfuscation related
-app.*.map.json
-
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
-
-
-
-**/*.freezed.dart
-**/*.g.dart
-**/*.config.dart
-**/*.gr.dart
-
-# FVM Version Cache
-.fvm/
-.fvmrc
-
-.vscode/settings.json
-
-# Fastlane
-ios/fastlane/Appfile
-ios/fastlane/Matchfile
