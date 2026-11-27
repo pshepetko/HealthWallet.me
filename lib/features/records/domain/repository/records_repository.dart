@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
-import 'package:health_wallet/features/records/domain/entity/record_note/record_note.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/features/records/domain/entity/record_note/record_note.dart';
 
 abstract class RecordsRepository {
   Future<List<IFhirResource>> getResources({

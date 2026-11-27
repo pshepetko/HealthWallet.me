@@ -1,9 +1,9 @@
-import 'package:health_wallet/core/config/constants/shared_prefs_constants.dart';
-import 'package:health_wallet/features/scan/data/services/ai_provider_resolver.dart';
-import 'package:health_wallet/features/scan/data/services/local_ai_generation_service.dart';
-import 'package:health_wallet/features/scan/data/services/vertex_ai_generation_service.dart';
-import 'package:health_wallet/features/scan/domain/services/ai_generation_service.dart';
-import 'package:health_wallet/features/scan/domain/services/scan_log_buffer.dart';
+import 'package:healthwithme/core/config/constants/shared_prefs_constants.dart';
+import 'package:healthwithme/features/scan/data/services/ai_provider_resolver.dart';
+import 'package:healthwithme/features/scan/data/services/local_ai_generation_service.dart';
+import 'package:healthwithme/features/scan/data/services/vertex_ai_generation_service.dart';
+import 'package:healthwithme/features/scan/domain/services/ai_generation_service.dart';
+import 'package:healthwithme/features/scan/domain/services/scan_log_buffer.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

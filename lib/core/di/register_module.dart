@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:health_wallet/core/data/local/app_database.dart';
-import 'package:health_wallet/core/services/biometric_auth_service.dart';
+import 'package:healthwithme/core/data/local/app_database.dart';
+import 'package:healthwithme/core/services/biometric_auth_service.dart';
 
-// import 'package:health_wallet/features/user/data/data_source/local/user_local_data_source.dart';
-import 'package:health_wallet/features/user/data/data_source/remote/user_remote_data_source.dart';
+// import 'package:healthwithme/features/user/data/data_source/local/user_local_data_source.dart';
+import 'package:healthwithme/features/user/data/data_source/remote/user_remote_data_source.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

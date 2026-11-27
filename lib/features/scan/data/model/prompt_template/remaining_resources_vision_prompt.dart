@@ -1,4 +1,4 @@
-import 'package:health_wallet/features/scan/data/model/prompt_template/correction_template_loader.dart';
+import 'package:healthwithme/features/scan/data/model/prompt_template/correction_template_loader.dart';
 
 class RemainingResourcesVisionPrompt {
   final String? documentCategory;

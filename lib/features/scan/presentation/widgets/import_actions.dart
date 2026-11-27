@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/widgets/app_button.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/core/widgets/app_button.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 
 class ImportActions extends StatelessWidget {
   final VoidCallback? onImportFile;

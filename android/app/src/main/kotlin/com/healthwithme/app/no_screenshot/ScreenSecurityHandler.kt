@@ -1,4 +1,4 @@
-package com.techstackapps.healthwallet.no_screenshot
+package com.healthwithme.app.no_screenshot
 
 import android.view.Window
 import android.view.WindowManager

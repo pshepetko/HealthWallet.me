@@ -1,4 +1,4 @@
-package com.techstackapps.healthwallet
+package com.healthwithme.app
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
@@ -6,7 +6,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import com.techstackapps.healthwallet.no_screenshot.ScreenSecurityHandler
+import com.healthwithme.app.no_screenshot.ScreenSecurityHandler
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.EventChannel
@@ -19,7 +19,7 @@ class MainActivity : FlutterFragmentActivity() {
         super.configureFlutterEngine(flutterEngine)
         ScreenSecurityHandler(window).register(flutterEngine)
 
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "com.techstackapps.healthwallet/bluetooth")
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "com.healthwithme.app/bluetooth")
             .setMethodCallHandler { call, result ->
                 when (call.method) {
                     "isBluetoothEnabled" -> {
@@ -36,7 +36,7 @@ class MainActivity : FlutterFragmentActivity() {
                 }
             }
 
-        EventChannel(flutterEngine.dartExecutor.binaryMessenger, "com.techstackapps.healthwallet/bluetooth_state")
+        EventChannel(flutterEngine.dartExecutor.binaryMessenger, "com.healthwithme.app/bluetooth_state")
             .setStreamHandler(object : EventChannel.StreamHandler {
                 override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
                     bluetoothReceiver = object : BroadcastReceiver() {

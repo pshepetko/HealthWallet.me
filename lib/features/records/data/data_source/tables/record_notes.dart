@@ -1,5 +1,5 @@
 import 'package:drift/drift.dart';
-import 'package:health_wallet/features/sync/data/data_source/local/tables/source_table.dart';
+import 'package:healthwithme/features/sync/data/data_source/local/tables/source_table.dart';
 
 @DataClassName('RecordNoteDto')
 class RecordNotes extends Table {

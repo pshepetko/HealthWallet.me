@@ -1,4 +1,4 @@
-import 'package:health_wallet/features/user/domain/entity/user.dart';
+import 'package:healthwithme/features/user/domain/entity/user.dart';
 
 abstract class UserRepository {
   Future<User> getCurrentUser({bool fetchFromNetwork = false});

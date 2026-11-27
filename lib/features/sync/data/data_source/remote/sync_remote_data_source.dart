@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:health_wallet/features/sync/data/dto/fhir_resource_dto.dart';
+import 'package:healthwithme/features/sync/data/dto/fhir_resource_dto.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

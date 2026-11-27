@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:health_wallet/core/config/constants/shared_prefs_constants.dart';
-import 'package:health_wallet/core/di/injection.dart';
+import 'package:healthwithme/core/config/constants/shared_prefs_constants.dart';
+import 'package:healthwithme/core/di/injection.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AccessTokenInterceptor extends InterceptorsWrapper {

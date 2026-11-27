@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/features/records/domain/entity/patient/patient.dart';
-import 'package:health_wallet/features/user/presentation/preferences_modal/sections/patient/bloc/patient_bloc.dart';
-import 'package:health_wallet/features/user/presentation/preferences_modal/sections/patient/utils/animated_reorderable_list.dart';
-import 'package:health_wallet/features/user/presentation/preferences_modal/sections/patient/widgets/unified_patient_card.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/features/records/domain/entity/patient/patient.dart';
+import 'package:healthwithme/features/user/presentation/preferences_modal/sections/patient/bloc/patient_bloc.dart';
+import 'package:healthwithme/features/user/presentation/preferences_modal/sections/patient/utils/animated_reorderable_list.dart';
+import 'package:healthwithme/features/user/presentation/preferences_modal/sections/patient/widgets/unified_patient_card.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 
 class PatientSection extends StatefulWidget {
   const PatientSection({super.key});

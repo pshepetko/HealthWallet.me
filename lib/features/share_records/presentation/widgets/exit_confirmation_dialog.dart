@@ -1,10 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/theme/app_color.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/core/theme/app_color.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 
 class ExitConfirmationDialog extends StatelessWidget {
   final VoidCallback onCancel;

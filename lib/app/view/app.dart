@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_wallet/core/di/injection.dart';
-import 'package:health_wallet/core/l10n/l10n.dart';
-import 'package:health_wallet/core/navigation/app_router.dart';
-import 'package:health_wallet/core/services/bluetooth_state_service.dart';
-import 'package:health_wallet/features/share_records/core/share_permissions_helper.dart';
-import 'package:health_wallet/features/share_records/domain/services/receive_mode_service.dart';
-import 'package:health_wallet/features/user/domain/repository/user_repository.dart';
-import 'package:health_wallet/core/navigation/observers/order_route_observer.dart';
-import 'package:health_wallet/core/theme/theme.dart';
-import 'package:health_wallet/core/utils/patient_source_utils.dart';
-import 'package:health_wallet/features/notifications/bloc/notification_bloc.dart';
-import 'package:health_wallet/features/home/presentation/bloc/home_bloc.dart';
-import 'package:health_wallet/features/home/data/data_source/local/home_local_data_source.dart';
-import 'package:health_wallet/features/records/domain/repository/records_repository.dart';
-import 'package:health_wallet/features/records/presentation/bloc/records_bloc.dart';
-import 'package:health_wallet/features/scan/presentation/bloc/scan_bloc.dart';
-import 'package:health_wallet/features/sync/domain/repository/sync_repository.dart';
-import 'package:health_wallet/features/sync/presentation/bloc/sync_bloc.dart';
-import 'package:health_wallet/features/user/presentation/bloc/user_bloc.dart';
-import 'package:health_wallet/features/user/presentation/preferences_modal/sections/patient/bloc/patient_bloc.dart';
-import 'package:health_wallet/features/sync/domain/use_case/get_sources_use_case.dart';
-import 'package:health_wallet/features/user/domain/services/patient_deduplication_service.dart';
-import 'package:health_wallet/features/user/domain/services/patient_selection_service.dart';
-import 'package:health_wallet/features/wallet_pass/presentation/bloc/wallet_pass_bloc.dart';
+import 'package:healthwithme/core/di/injection.dart';
+import 'package:healthwithme/core/l10n/l10n.dart';
+import 'package:healthwithme/core/navigation/app_router.dart';
+import 'package:healthwithme/core/services/bluetooth_state_service.dart';
+import 'package:healthwithme/features/share_records/core/share_permissions_helper.dart';
+import 'package:healthwithme/features/share_records/domain/services/receive_mode_service.dart';
+import 'package:healthwithme/features/user/domain/repository/user_repository.dart';
+import 'package:healthwithme/core/navigation/observers/order_route_observer.dart';
+import 'package:healthwithme/core/theme/theme.dart';
+import 'package:healthwithme/core/utils/patient_source_utils.dart';
+import 'package:healthwithme/features/notifications/bloc/notification_bloc.dart';
+import 'package:healthwithme/features/home/presentation/bloc/home_bloc.dart';
+import 'package:healthwithme/features/home/data/data_source/local/home_local_data_source.dart';
+import 'package:healthwithme/features/records/domain/repository/records_repository.dart';
+import 'package:healthwithme/features/records/presentation/bloc/records_bloc.dart';
+import 'package:healthwithme/features/scan/presentation/bloc/scan_bloc.dart';
+import 'package:healthwithme/features/sync/domain/repository/sync_repository.dart';
+import 'package:healthwithme/features/sync/presentation/bloc/sync_bloc.dart';
+import 'package:healthwithme/features/user/presentation/bloc/user_bloc.dart';
+import 'package:healthwithme/features/user/presentation/preferences_modal/sections/patient/bloc/patient_bloc.dart';
+import 'package:healthwithme/features/sync/domain/use_case/get_sources_use_case.dart';
+import 'package:healthwithme/features/user/domain/services/patient_deduplication_service.dart';
+import 'package:healthwithme/features/user/domain/services/patient_selection_service.dart';
+import 'package:healthwithme/features/wallet_pass/presentation/bloc/wallet_pass_bloc.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -150,7 +150,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
         child: BlocBuilder<UserBloc, UserState>(
           builder: (context, state) {
             return MaterialApp.router(
-              title: 'HealthWallet.me',
+              title: 'healthwithme',
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
               themeMode:

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:health_wallet/core/utils/logger.dart';
-import 'package:health_wallet/features/sync/data/dto/source_dto.dart';
-import 'package:health_wallet/features/sync/data/mappers/source_mapper.dart';
-import 'package:health_wallet/features/sync/domain/entities/source.dart';
+import 'package:healthwithme/core/utils/logger.dart';
+import 'package:healthwithme/features/sync/data/dto/source_dto.dart';
+import 'package:healthwithme/features/sync/data/mappers/source_mapper.dart';
+import 'package:healthwithme/features/sync/domain/entities/source.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

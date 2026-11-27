@@ -1,4 +1,4 @@
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 
 class RecordInfoLine {
   const RecordInfoLine({

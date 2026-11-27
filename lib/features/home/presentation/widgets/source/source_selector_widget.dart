@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/features/sync/domain/entities/source.dart';
-import 'package:health_wallet/features/records/domain/entity/patient/patient.dart';
-import 'package:health_wallet/features/home/presentation/widgets/source/source_list_dialog.dart';
-import 'package:health_wallet/features/home/presentation/widgets/source/source_label_edit_dialog.dart';
-import 'package:health_wallet/features/user/presentation/preferences_modal/sections/patient/bloc/patient_bloc.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/features/sync/domain/entities/source.dart';
+import 'package:healthwithme/features/records/domain/entity/patient/patient.dart';
+import 'package:healthwithme/features/home/presentation/widgets/source/source_list_dialog.dart';
+import 'package:healthwithme/features/home/presentation/widgets/source/source_label_edit_dialog.dart';
+import 'package:healthwithme/features/user/presentation/preferences_modal/sections/patient/bloc/patient_bloc.dart';
 
 class SourceSelectorWidget extends StatelessWidget {
   final List<Source> sources;

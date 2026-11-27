@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
 
 part 'share_selection.freezed.dart';
 

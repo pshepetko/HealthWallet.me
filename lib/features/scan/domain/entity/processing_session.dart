@@ -3,15 +3,15 @@ import 'dart:convert';
 import 'package:drift/drift.dart' as drift;
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:health_wallet/core/data/local/app_database.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/features/records/domain/entity/encounter/encounter.dart';
-import 'package:health_wallet/features/records/domain/entity/patient/patient.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_diagnostic_report.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_encounter.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_patient.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_resource.dart';
-import 'package:health_wallet/features/scan/domain/entity/staged_resource.dart';
+import 'package:healthwithme/core/data/local/app_database.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/features/records/domain/entity/encounter/encounter.dart';
+import 'package:healthwithme/features/records/domain/entity/patient/patient.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_diagnostic_report.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_encounter.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_patient.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_resource.dart';
+import 'package:healthwithme/features/scan/domain/entity/staged_resource.dart';
 
 part 'processing_session.freezed.dart';
 

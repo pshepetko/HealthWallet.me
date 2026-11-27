@@ -3,17 +3,17 @@ import 'dart:ui';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_wallet/core/navigation/app_router.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
-import 'package:health_wallet/features/records/domain/services/fhir_resource_relationship_service.dart';
-import 'package:health_wallet/features/records/presentation/bloc/records_bloc.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/features/records/presentation/widgets/record_attachments/record_attachments_widget.dart';
-import 'package:health_wallet/features/records/presentation/widgets/record_notes/record_notes_widget.dart';
-import 'package:health_wallet/features/records/presentation/widgets/resource_info_content.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/core/navigation/app_router.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/features/records/domain/services/fhir_resource_relationship_service.dart';
+import 'package:healthwithme/features/records/presentation/bloc/records_bloc.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/features/records/presentation/widgets/record_attachments/record_attachments_widget.dart';
+import 'package:healthwithme/features/records/presentation/widgets/record_notes/record_notes_widget.dart';
+import 'package:healthwithme/features/records/presentation/widgets/resource_info_content.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 
 class ResourceCard extends StatefulWidget {
   final IFhirResource resource;

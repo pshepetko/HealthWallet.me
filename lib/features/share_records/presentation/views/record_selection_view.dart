@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:health_wallet/core/widgets/animated_sticky_header.dart';
-import 'package:health_wallet/core/widgets/custom_arrow_tooltip.dart';
-import 'package:health_wallet/core/widgets/record_filter_header.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
-import 'package:health_wallet/features/records/domain/entity/i_fhir_resource.dart';
-import 'package:health_wallet/features/records/presentation/bloc/records_bloc.dart';
-import 'package:health_wallet/features/share_records/presentation/bloc/share_records_bloc.dart';
-import 'package:health_wallet/features/share_records/presentation/bloc/share_records_state.dart';
-import 'package:health_wallet/features/share_records/presentation/widgets/selectable_records_list.dart';
-import 'package:health_wallet/features/share_records/presentation/widgets/selection_bottom_bar.dart';
+import 'package:healthwithme/core/widgets/animated_sticky_header.dart';
+import 'package:healthwithme/core/widgets/custom_arrow_tooltip.dart';
+import 'package:healthwithme/core/widgets/record_filter_header.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/features/records/domain/entity/i_fhir_resource.dart';
+import 'package:healthwithme/features/records/presentation/bloc/records_bloc.dart';
+import 'package:healthwithme/features/share_records/presentation/bloc/share_records_bloc.dart';
+import 'package:healthwithme/features/share_records/presentation/bloc/share_records_state.dart';
+import 'package:healthwithme/features/share_records/presentation/widgets/selectable_records_list.dart';
+import 'package:healthwithme/features/share_records/presentation/widgets/selection_bottom_bar.dart';
 
 class RecordSelectionView extends StatefulWidget {
   final List<FhirType>? appliedFilters;

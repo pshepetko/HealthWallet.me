@@ -1,4 +1,4 @@
-import 'package:health_wallet/features/share_records/domain/entity/entity.dart';
+import 'package:healthwithme/features/share_records/domain/entity/entity.dart';
 
 abstract class ReceiveModeService {
   bool get isListening;

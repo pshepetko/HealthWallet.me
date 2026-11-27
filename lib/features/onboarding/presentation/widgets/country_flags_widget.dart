@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 
 class CountryFlagsWidget extends StatelessWidget {
   const CountryFlagsWidget({super.key});

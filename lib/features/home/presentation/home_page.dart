@@ -1,21 +1,21 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_wallet/core/navigation/app_router.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/core/utils/patient_source_utils.dart';
-import 'package:health_wallet/core/widgets/custom_app_bar.dart';
-import 'package:health_wallet/core/widgets/overlay_annotations/overlay_annotations.dart';
-import 'package:health_wallet/features/home/core/constants/home_constants.dart';
-import 'package:health_wallet/features/home/presentation/bloc/home_bloc.dart';
-import 'package:health_wallet/features/home/presentation/widgets/home_dashboard_sections.dart';
-import 'package:health_wallet/features/home/presentation/widgets/home_greeting_title.dart';
-import 'package:health_wallet/features/home/presentation/widgets/home_patient_bar.dart';
-import 'package:health_wallet/features/sync/presentation/bloc/sync_bloc.dart';
-import 'package:health_wallet/features/sync/presentation/widgets/sync_placeholder_widget.dart';
-import 'package:health_wallet/core/utils/responsive.dart';
-import 'package:health_wallet/features/user/presentation/bloc/user_bloc.dart';
-import 'package:health_wallet/features/user/presentation/preferences_modal/sections/patient/bloc/patient_bloc.dart';
+import 'package:healthwithme/core/navigation/app_router.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/core/utils/patient_source_utils.dart';
+import 'package:healthwithme/core/widgets/custom_app_bar.dart';
+import 'package:healthwithme/core/widgets/overlay_annotations/overlay_annotations.dart';
+import 'package:healthwithme/features/home/core/constants/home_constants.dart';
+import 'package:healthwithme/features/home/presentation/bloc/home_bloc.dart';
+import 'package:healthwithme/features/home/presentation/widgets/home_dashboard_sections.dart';
+import 'package:healthwithme/features/home/presentation/widgets/home_greeting_title.dart';
+import 'package:healthwithme/features/home/presentation/widgets/home_patient_bar.dart';
+import 'package:healthwithme/features/sync/presentation/bloc/sync_bloc.dart';
+import 'package:healthwithme/features/sync/presentation/widgets/sync_placeholder_widget.dart';
+import 'package:healthwithme/core/utils/responsive.dart';
+import 'package:healthwithme/features/user/presentation/bloc/user_bloc.dart';
+import 'package:healthwithme/features/user/presentation/preferences_modal/sections/patient/bloc/patient_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @RoutePage()

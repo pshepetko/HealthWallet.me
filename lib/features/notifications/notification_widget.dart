@@ -5,16 +5,16 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Notification;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:health_wallet/core/theme/app_color.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/utils/responsive.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/core/widgets/dialogs/app_simple_dialog.dart';
-import 'package:health_wallet/features/notifications/domain/entities/notification.dart';
-import 'package:health_wallet/features/notifications/bloc/notification_bloc.dart';
-import 'package:health_wallet/features/scan/presentation/pages/load_model/bloc/load_model_bloc.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/core/theme/app_color.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/utils/responsive.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/core/widgets/dialogs/app_simple_dialog.dart';
+import 'package:healthwithme/features/notifications/domain/entities/notification.dart';
+import 'package:healthwithme/features/notifications/bloc/notification_bloc.dart';
+import 'package:healthwithme/features/scan/presentation/pages/load_model/bloc/load_model_bloc.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 
 class NotificationWidget extends StatefulWidget {
   const NotificationWidget({super.key});

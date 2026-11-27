@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math' as math;
 
-import 'package:health_wallet/core/config/constants/app_constants.dart';
-import 'package:health_wallet/features/scan/domain/services/scan_log_buffer.dart';
+import 'package:healthwithme/core/config/constants/app_constants.dart';
+import 'package:healthwithme/features/scan/domain/services/scan_log_buffer.dart';
 import 'package:image/image.dart' as img;
 import 'package:llamadart/llamadart.dart';
 import 'package:path_provider/path_provider.dart';

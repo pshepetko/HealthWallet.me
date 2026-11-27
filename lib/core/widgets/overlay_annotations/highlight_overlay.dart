@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/widgets/overlay_annotations/tooltip_position.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/widgets/overlay_annotations/tooltip_position.dart';
 
 class MultiHighlightOverlay extends StatefulWidget {
   final List<GlobalKey> targetKeys;

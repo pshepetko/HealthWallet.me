@@ -2,14 +2,14 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_wallet/core/config/constants/region_preset.dart';
-import 'package:health_wallet/core/theme/app_color.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/core/widgets/app_dropdown_field.dart';
-import 'package:health_wallet/features/user/presentation/bloc/user_bloc.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/core/config/constants/region_preset.dart';
+import 'package:healthwithme/core/theme/app_color.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/core/widgets/app_dropdown_field.dart';
+import 'package:healthwithme/features/user/presentation/bloc/user_bloc.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 
 class RegionDialog extends StatelessWidget {
   const RegionDialog({super.key});

@@ -1,11 +1,11 @@
-import 'package:health_wallet/features/records/domain/entity/patient/patient.dart'
+import 'package:healthwithme/features/records/domain/entity/patient/patient.dart'
     as entity;
-import 'package:health_wallet/features/records/domain/repository/records_repository.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
-import 'package:health_wallet/core/utils/logger.dart';
-import 'package:health_wallet/features/sync/domain/repository/sync_repository.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_patient.dart';
-import 'package:health_wallet/features/records/domain/utils/fhir_field_extractor.dart';
+import 'package:healthwithme/features/records/domain/repository/records_repository.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/core/utils/logger.dart';
+import 'package:healthwithme/features/sync/domain/repository/sync_repository.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_patient.dart';
+import 'package:healthwithme/features/records/domain/utils/fhir_field_extractor.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

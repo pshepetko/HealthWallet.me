@@ -3,8 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:injectable/injectable.dart';
-import 'package:health_wallet/core/services/path_resolver.dart';
-import 'package:health_wallet/core/utils/logger.dart';
+import 'package:healthwithme/core/services/path_resolver.dart';
+import 'package:healthwithme/core/utils/logger.dart';
 import 'package:path/path.dart' as path;
 
 @Injectable()

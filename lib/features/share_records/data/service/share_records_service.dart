@@ -2,15 +2,15 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:health_wallet/features/share_records/data/service/airdrop_stub.dart';
+import 'package:healthwithme/features/share_records/data/service/airdrop_stub.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
-import 'package:health_wallet/features/records/domain/entity/record_note/record_note.dart';
-import 'package:health_wallet/features/share_records/domain/entity/entity.dart';
-import 'package:health_wallet/features/share_records/data/mapper/fhir_bundle_mapper.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/features/records/domain/entity/record_note/record_note.dart';
+import 'package:healthwithme/features/share_records/domain/entity/entity.dart';
+import 'package:healthwithme/features/share_records/data/mapper/fhir_bundle_mapper.dart';
 
 @lazySingleton
 class ShareRecordsService {

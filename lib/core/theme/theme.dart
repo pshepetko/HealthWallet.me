@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/theme/app_color.dart';
+import 'package:healthwithme/core/theme/app_color.dart';
 
 class AppTheme {
   static ThemeData lightTheme = ThemeData(

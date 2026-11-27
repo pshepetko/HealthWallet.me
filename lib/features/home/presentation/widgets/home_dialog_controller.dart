@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/core/widgets/dialogs/app_dialog.dart';
-import 'package:health_wallet/features/home/domain/entities/overview_card.dart';
-import 'package:health_wallet/features/home/domain/entities/patient_vitals.dart';
-import 'package:health_wallet/features/home/presentation/bloc/home_bloc.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/core/widgets/dialogs/app_dialog.dart';
+import 'package:healthwithme/features/home/domain/entities/overview_card.dart';
+import 'package:healthwithme/features/home/domain/entities/patient_vitals.dart';
+import 'package:healthwithme/features/home/presentation/bloc/home_bloc.dart';
 
 class HomeDialogController {
   static void showEditRecordsDialog(

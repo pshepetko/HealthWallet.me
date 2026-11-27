@@ -1,13 +1,13 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/features/home/presentation/widgets/reorderable_grid.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
-import 'package:health_wallet/core/theme/app_color.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/features/home/domain/entities/patient_vitals.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/features/home/presentation/widgets/reorderable_grid.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
+import 'package:healthwithme/core/theme/app_color.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/features/home/domain/entities/patient_vitals.dart';
 
 class VitalsSection extends StatelessWidget {
   final List<PatientVital> vitals;

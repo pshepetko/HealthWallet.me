@@ -1,20 +1,20 @@
 import 'dart:convert';
 import 'package:collection/collection.dart';
-import 'package:health_wallet/features/scan/data/data_source/network/scan_network_data_source.dart';
-import 'package:health_wallet/features/scan/data/services/ai_generation_coordinator.dart';
-import 'package:health_wallet/features/scan/data/model/prompt_template/basic_info_prompt.dart';
-import 'package:health_wallet/features/scan/data/model/prompt_template/basic_info_vision_prompt.dart';
-import 'package:health_wallet/features/scan/data/model/prompt_template/remaining_resources_vision_prompt.dart';
-import 'package:health_wallet/features/scan/data/utils/observation_ocr_validator.dart';
-import 'package:health_wallet/features/scan/data/utils/patient_post_processor.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_diagnostic_report.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_encounter.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_patient.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_resource.dart';
-import 'package:health_wallet/features/scan/domain/repository/scan_repository.dart';
-import 'package:health_wallet/features/scan/domain/services/ai_generation_service.dart';
-import 'package:health_wallet/features/scan/domain/services/scan_log_buffer.dart';
-import 'package:health_wallet/features/scan/domain/services/text_recognition_service.dart';
+import 'package:healthwithme/features/scan/data/data_source/network/scan_network_data_source.dart';
+import 'package:healthwithme/features/scan/data/services/ai_generation_coordinator.dart';
+import 'package:healthwithme/features/scan/data/model/prompt_template/basic_info_prompt.dart';
+import 'package:healthwithme/features/scan/data/model/prompt_template/basic_info_vision_prompt.dart';
+import 'package:healthwithme/features/scan/data/model/prompt_template/remaining_resources_vision_prompt.dart';
+import 'package:healthwithme/features/scan/data/utils/observation_ocr_validator.dart';
+import 'package:healthwithme/features/scan/data/utils/patient_post_processor.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_diagnostic_report.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_encounter.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_patient.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_resource.dart';
+import 'package:healthwithme/features/scan/domain/repository/scan_repository.dart';
+import 'package:healthwithme/features/scan/domain/services/ai_generation_service.dart';
+import 'package:healthwithme/features/scan/domain/services/scan_log_buffer.dart';
+import 'package:healthwithme/features/scan/domain/services/text_recognition_service.dart';
 
 mixin ScanProcessingRepository {
   static final _markdownFenceRegex = RegExp(r'```(?:json)?\s*');

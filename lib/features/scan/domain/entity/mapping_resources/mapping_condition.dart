@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:health_wallet/core/utils/validator.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapped_property.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_resource.dart';
-import 'package:health_wallet/features/scan/domain/entity/text_field_descriptor.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/core/utils/validator.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapped_property.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_resource.dart';
+import 'package:healthwithme/features/scan/domain/entity/text_field_descriptor.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
 import 'package:fhir_r4/fhir_r4.dart' as fhir_r4;
 import 'package:uuid/uuid.dart';
 

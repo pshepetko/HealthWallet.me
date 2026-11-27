@@ -5,6 +5,6 @@ storage_mode("git")
 type("appstore")
 
 app_identifier([
-  "com.techstackapps.healthwallet",
-  "com.techstackapps.healthwallet.Share-Extension"
+  "com.healthwithme.app",
+  "com.healthwithme.app.Share-Extension"
 ])

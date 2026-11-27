@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
 
 class AnimatedReorderableList<T> extends StatefulWidget {
   final List<T> items;

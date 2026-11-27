@@ -1,7 +1,7 @@
-import 'package:health_wallet/features/user/data/data_source/local/user_local_data_source.dart';
-import 'package:health_wallet/features/user/data/data_source/remote/user_remote_data_source.dart';
-import 'package:health_wallet/features/user/domain/entity/user.dart';
-import 'package:health_wallet/features/user/domain/repository/user_repository.dart';
+import 'package:healthwithme/features/user/data/data_source/local/user_local_data_source.dart';
+import 'package:healthwithme/features/user/data/data_source/remote/user_remote_data_source.dart';
+import 'package:healthwithme/features/user/domain/entity/user.dart';
+import 'package:healthwithme/features/user/domain/repository/user_repository.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

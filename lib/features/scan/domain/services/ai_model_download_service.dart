@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:health_wallet/core/config/constants/ai_model_config.dart';
-import 'package:health_wallet/features/scan/domain/repository/scan_repository.dart';
+import 'package:healthwithme/core/config/constants/ai_model_config.dart';
+import 'package:healthwithme/features/scan/domain/repository/scan_repository.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

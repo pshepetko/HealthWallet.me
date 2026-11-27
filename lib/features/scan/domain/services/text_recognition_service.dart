@@ -7,7 +7,7 @@ import 'package:printing/printing.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
 import 'package:image/image.dart' as img;
-import 'package:health_wallet/core/utils/logger.dart';
+import 'package:healthwithme/core/utils/logger.dart';
 import 'package:crypto/crypto.dart';
 
 @injectable

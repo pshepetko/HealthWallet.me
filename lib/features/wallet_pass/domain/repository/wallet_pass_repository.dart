@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:health_wallet/features/wallet_pass/domain/entity/emergency_card_data.dart';
+import 'package:healthwithme/features/wallet_pass/domain/entity/emergency_card_data.dart';
 
 enum WalletPassType { apple, google }
 

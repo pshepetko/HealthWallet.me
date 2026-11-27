@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 
 class OnboardingScreenData {
   final String title;

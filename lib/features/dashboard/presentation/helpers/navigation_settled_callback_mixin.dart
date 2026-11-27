@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_wallet/features/dashboard/presentation/helpers/page_view_navigation_controller.dart';
+import 'package:healthwithme/features/dashboard/presentation/helpers/page_view_navigation_controller.dart';
 
 mixin NavigationSettledCallbackMixin<T extends StatefulWidget> on State<T> {
   PageViewNavigationController? get navigationController;

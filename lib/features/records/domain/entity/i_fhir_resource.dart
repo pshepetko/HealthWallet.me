@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:health_wallet/core/data/local/app_database.dart';
-import 'package:health_wallet/features/home/domain/entities/overview_card.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
-import 'package:health_wallet/features/records/presentation/models/record_info_line.dart';
-import 'package:health_wallet/features/sync/data/dto/fhir_resource_dto.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/core/data/local/app_database.dart';
+import 'package:healthwithme/features/home/domain/entities/overview_card.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/features/records/presentation/models/record_info_line.dart';
+import 'package:healthwithme/features/sync/data/dto/fhir_resource_dto.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 
 abstract class IFhirResource {
   String get id;

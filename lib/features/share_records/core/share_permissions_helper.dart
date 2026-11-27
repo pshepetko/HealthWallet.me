@@ -111,12 +111,12 @@ class SharePermissionsHelper {
 
   static String getPermissionExplanation() {
     if (!kIsWeb && Platform.isIOS) {
-      return 'To share records with nearby devices, HealthWallet needs access to:\n\n'
+      return 'To share records with nearby devices, healthwithme needs access to:\n\n'
           '• Bluetooth - to discover and connect to nearby devices\n\n'
           'This allows you to securely share health records with other devices nearby.';
     }
 
-    return 'To share records with nearby devices, HealthWallet needs access to:\n\n'
+    return 'To share records with nearby devices, healthwithme needs access to:\n\n'
         '• Bluetooth - to discover and connect to nearby devices\n'
         '• Location/Nearby Devices - required by Android to scan for Bluetooth and WiFi Direct devices\n\n'
         'Your location is never stored or transmitted.';

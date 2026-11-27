@@ -2,21 +2,21 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_wallet/core/di/injection.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/features/notifications/bloc/notification_bloc.dart';
-import 'package:health_wallet/features/notifications/utils/notification_utils.dart';
-import 'package:health_wallet/features/scan/presentation/bloc/scan_bloc.dart';
-import 'package:health_wallet/features/scan/presentation/pages/scan_page.dart';
-import 'package:health_wallet/features/scan/presentation/pages/import_page.dart';
-import 'package:health_wallet/features/home/presentation/home_page.dart';
-import 'package:health_wallet/features/records/presentation/pages/records_page.dart';
-import 'package:health_wallet/features/sync/presentation/bloc/sync_bloc.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/core/utils/responsive.dart';
-import 'package:health_wallet/features/dashboard/presentation/helpers/page_view_navigation_controller.dart';
+import 'package:healthwithme/core/di/injection.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/features/notifications/bloc/notification_bloc.dart';
+import 'package:healthwithme/features/notifications/utils/notification_utils.dart';
+import 'package:healthwithme/features/scan/presentation/bloc/scan_bloc.dart';
+import 'package:healthwithme/features/scan/presentation/pages/scan_page.dart';
+import 'package:healthwithme/features/scan/presentation/pages/import_page.dart';
+import 'package:healthwithme/features/home/presentation/home_page.dart';
+import 'package:healthwithme/features/records/presentation/pages/records_page.dart';
+import 'package:healthwithme/features/sync/presentation/bloc/sync_bloc.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/core/utils/responsive.dart';
+import 'package:healthwithme/features/dashboard/presentation/helpers/page_view_navigation_controller.dart';
 
 @RoutePage()
 class DashboardPage extends StatefulWidget {

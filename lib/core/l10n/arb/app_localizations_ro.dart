@@ -9,7 +9,7 @@ class AppLocalizationsRo extends AppLocalizations {
   AppLocalizationsRo([String locale = 'ro']) : super(locale);
 
   @override
-  String get appTitle => 'HealthWallet.me';
+  String get appTitle => 'healthwithme';
 
   @override
   String get homeTitle => 'Acasă';
@@ -21,7 +21,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get settingsTitle => 'Setări';
 
   @override
-  String get welcomeMessage => 'Bine ați venit la HealthWallet.me!';
+  String get welcomeMessage => 'Bine ați venit la healthwithme!';
 
   @override
   String get onboardingBack => 'Înapoi';
@@ -37,7 +37,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      '<link>HealthWallet.me</link> se conectează deja la peste 100.000 de furnizori de servicii medicale din SUA și ne extindem în noi țări.';
+      '<link>healthwithme</link> se conectează deja la peste 100.000 de furnizori de servicii medicale din SUA și ne extindem în noi țări.';
 
   @override
   String get onboardingWelcomeDescription =>
@@ -48,15 +48,15 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get onboardingRecordsSubtitle =>
-      '<link>HealthWallet.me</link> îți oferă modalități flexibile de a aduna tot istoricul tău medical:';
+      '<link>healthwithme</link> îți oferă modalități flexibile de a aduna tot istoricul tău medical:';
 
   @override
   String get onboardingRecordsDescription =>
-      '• Scanează documente cu camera telefonului\n• Încarcă PDF-uri, imagini sau fișiere de laborator direct\n• Importă înregistrări partajând direct cu <link>HealthWallet.me</link> din orice aplicație de pe smartphone.\n• Scanează codul QR al Fasten Health OnPrem și obține toate înregistrările din sistemele de sănătate din SUA în portofelul tău.';
+      '• Scanează documente cu camera telefonului\n• Încarcă PDF-uri, imagini sau fișiere de laborator direct\n• Importă înregistrări partajând direct cu <link>healthwithme</link> din orice aplicație de pe smartphone.\n• Scanează codul QR al Fasten Health OnPrem și obține toate înregistrările din sistemele de sănătate din SUA în portofelul tău.';
 
   @override
   String get onboardingRecordsContent =>
-      '• Scanează documente cu camera telefonului\n• Încarcă PDF-uri, imagini sau fișiere de laborator direct\n• Importă înregistrări partajând direct cu <link>HealthWallet.me</link> din orice aplicație de pe smartphone.\n• Scanează codul QR al <link>Fasten Health OnPrem</link> și obține toate înregistrările din sistemele de sănătate din SUA în portofelul tău.';
+      '• Scanează documente cu camera telefonului\n• Încarcă PDF-uri, imagini sau fișiere de laborator direct\n• Importă înregistrări partajând direct cu <link>healthwithme</link> din orice aplicație de pe smartphone.\n• Scanează codul QR al <link>Fasten Health OnPrem</link> și obține toate înregistrările din sistemele de sănătate din SUA în portofelul tău.';
 
   @override
   String get onboardingRecordsBottom =>
@@ -73,7 +73,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get onboardingSyncSubtitle =>
-      '<link>HealthWallet.me</link> este construit cu confidențialitatea în centru. Datele tale medicale sunt criptate și stocate doar pe telefonul tău, niciodată pe servere cloud.';
+      '<link>healthwithme</link> este construit cu confidențialitatea în centru. Datele tale medicale sunt criptate și stocate doar pe telefonul tău, niciodată pe servere cloud.';
 
   @override
   String get onboardingSyncDescription =>
@@ -81,7 +81,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get onboardingBiometricText =>
-      'Poți bloca HealthWallet cu securitate biometrică precum Face ID sau scanare de amprentă.';
+      'Poți bloca healthwithme cu securitate biometrică precum Face ID sau scanare de amprentă.';
 
   @override
   String get homeHi => 'Salut, ';
@@ -748,7 +748,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get onboardingSetupBody =>
-      'Creează-ți profilul personal de sănătate pentru a începe cu HealthWallet';
+      'Creează-ți profilul personal de sănătate pentru a începe cu healthwithme';
 
   @override
   String get onboardingDemoTitle => 'Încearcă Date Demo';
@@ -1193,7 +1193,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get sharePermissionsRequired => 'Permisiuni Necesare';
 
   @override
-  String get shareHealthWalletDevice => 'Dispozitiv HealthWallet';
+  String get shareHealthWalletDevice => 'Dispozitiv healthwithme';
 
   @override
   String get shareInvitationDeclined => 'Invitație Refuzată';
@@ -1304,7 +1304,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get shareDiscoveryHint =>
-      'Asigurați-vă că celălalt dispozitiv are aplicația HealthWallet.me deschisă';
+      'Asigurați-vă că celălalt dispozitiv are aplicația healthwithme deschisă';
 
   @override
   String get shareProximityHint =>

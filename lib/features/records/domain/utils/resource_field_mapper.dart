@@ -1,5 +1,5 @@
-import 'package:health_wallet/features/records/presentation/models/record_info_line.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/features/records/presentation/models/record_info_line.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 
 /// Utility class for mapping FHIR resource fields to icons and creating RecordInfoLine objects.
 /// Provides consistent icon usage and field formatting across all resource types.

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/theme/app_color.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/core/widgets/app_button.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapped_property.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_encounter.dart';
-import 'package:health_wallet/core/utils/date_format_utils.dart';
-import 'package:health_wallet/features/user/presentation/bloc/user_bloc.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/core/theme/app_color.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/core/widgets/app_button.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapped_property.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_encounter.dart';
+import 'package:healthwithme/core/utils/date_format_utils.dart';
+import 'package:healthwithme/features/user/presentation/bloc/user_bloc.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 

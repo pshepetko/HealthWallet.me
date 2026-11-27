@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/di/injection.dart';
-import 'package:health_wallet/core/navigation/app_router.dart';
-import 'package:health_wallet/core/services/biometric_auth_service.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/features/user/domain/repository/user_repository.dart';
+import 'package:healthwithme/core/di/injection.dart';
+import 'package:healthwithme/core/navigation/app_router.dart';
+import 'package:healthwithme/core/services/biometric_auth_service.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/features/user/domain/repository/user_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @RoutePage()

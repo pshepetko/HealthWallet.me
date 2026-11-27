@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:health_wallet/core/utils/logger.dart';
-import 'package:health_wallet/features/records/domain/entity/patient/patient.dart';
-import 'package:health_wallet/features/sync/data/data_source/local/sync_local_data_source.dart';
-import 'package:health_wallet/features/sync/data/dto/fhir_resource_dto.dart';
-import 'package:health_wallet/features/sync/domain/entities/source.dart';
-import 'package:health_wallet/features/sync/domain/services/demo_data_extractor.dart';
+import 'package:healthwithme/core/utils/logger.dart';
+import 'package:healthwithme/features/records/domain/entity/patient/patient.dart';
+import 'package:healthwithme/features/sync/data/data_source/local/sync_local_data_source.dart';
+import 'package:healthwithme/features/sync/data/dto/fhir_resource_dto.dart';
+import 'package:healthwithme/features/sync/domain/entities/source.dart';
+import 'package:healthwithme/features/sync/domain/services/demo_data_extractor.dart';
 import 'package:uuid/uuid.dart';
 
 /// Thrown when an imported file cannot be parsed or validated.

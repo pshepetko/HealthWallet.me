@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/config/constants/region_preset.dart';
-import 'package:health_wallet/core/utils/unit_converter.dart';
-import 'package:health_wallet/features/records/domain/entity/observation/observation.dart';
-import 'package:health_wallet/features/records/domain/utils/fhir_field_extractor.dart';
+import 'package:healthwithme/core/config/constants/region_preset.dart';
+import 'package:healthwithme/core/utils/unit_converter.dart';
+import 'package:healthwithme/features/records/domain/entity/observation/observation.dart';
+import 'package:healthwithme/features/records/domain/utils/fhir_field_extractor.dart';
 
 enum PatientVitalType {
   heartRate,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_wallet/features/records/domain/entity/encounter/encounter.dart';
+import 'package:healthwithme/features/records/domain/entity/encounter/encounter.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:health_wallet/features/scan/presentation/bloc/scan_bloc.dart';
+import 'package:healthwithme/features/scan/presentation/bloc/scan_bloc.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:health_wallet/core/navigation/app_router.dart';
+import 'package:healthwithme/core/navigation/app_router.dart';
 
 class DialogHelper {
   static void showPermissionRequiredDialog(

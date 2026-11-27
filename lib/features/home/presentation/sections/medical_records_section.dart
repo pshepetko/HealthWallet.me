@@ -1,12 +1,12 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/features/home/domain/entities/overview_card.dart';
-import 'package:health_wallet/features/home/presentation/widgets/reorderable_grid.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/features/home/presentation/widgets/shaking_card.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/features/home/domain/entities/overview_card.dart';
+import 'package:healthwithme/features/home/presentation/widgets/reorderable_grid.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/features/home/presentation/widgets/shaking_card.dart';
 
 class MedicalRecordsSection extends StatelessWidget {
   final List<OverviewCard> overviewCards;

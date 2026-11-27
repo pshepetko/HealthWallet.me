@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_wallet/core/di/injection.dart';
-import 'package:health_wallet/core/theme/app_color.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
-import 'package:health_wallet/features/records/domain/entity/record_note/record_note.dart';
-import 'package:health_wallet/features/records/presentation/widgets/record_notes/bloc/record_notes_bloc.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
-import 'package:health_wallet/core/utils/date_format_utils.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/core/widgets/dialogs/app_simple_dialog.dart';
+import 'package:healthwithme/core/di/injection.dart';
+import 'package:healthwithme/core/theme/app_color.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/features/records/domain/entity/record_note/record_note.dart';
+import 'package:healthwithme/features/records/presentation/widgets/record_notes/bloc/record_notes_bloc.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
+import 'package:healthwithme/core/utils/date_format_utils.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/core/widgets/dialogs/app_simple_dialog.dart';
 
 class RecordNotesWidget extends StatefulWidget {
   const RecordNotesWidget({

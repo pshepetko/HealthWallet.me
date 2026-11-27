@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/l10n/arb/app_localizations.dart';
-import 'package:health_wallet/core/theme/app_color.dart';
+import 'package:healthwithme/core/l10n/arb/app_localizations.dart';
+import 'package:healthwithme/core/theme/app_color.dart';
 
 extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);

@@ -1,5 +1,5 @@
-import 'package:health_wallet/features/records/domain/entity/observation/observation.dart';
-import 'package:health_wallet/core/constants/blood_types.dart';
+import 'package:healthwithme/features/records/domain/entity/observation/observation.dart';
+import 'package:healthwithme/core/constants/blood_types.dart';
 import 'package:fhir_r4/fhir_r4.dart' as fhir;
 
 class BloodObservationUtils {

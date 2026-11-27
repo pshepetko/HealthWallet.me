@@ -1,4 +1,4 @@
-import 'package:health_wallet/core/config/constants/country_identifier.dart';
+import 'package:healthwithme/core/config/constants/country_identifier.dart';
 
 class BasicInfoPrompt {
   final String? countryCode;

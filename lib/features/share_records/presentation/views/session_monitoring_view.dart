@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:health_wallet/core/theme/app_color.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/features/share_records/presentation/bloc/share_records_event.dart';
-import 'package:health_wallet/features/share_records/presentation/bloc/share_records_state.dart';
-import 'package:health_wallet/features/share_records/presentation/widgets/session/session_bottom_bar.dart';
+import 'package:healthwithme/core/theme/app_color.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/features/share_records/presentation/bloc/share_records_event.dart';
+import 'package:healthwithme/features/share_records/presentation/bloc/share_records_state.dart';
+import 'package:healthwithme/features/share_records/presentation/widgets/session/session_bottom_bar.dart';
 
 class SessionMonitoringView extends StatefulWidget {
   final ShareRecordsState state;

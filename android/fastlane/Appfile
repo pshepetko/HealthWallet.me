@@ -1,2 +1,2 @@
 json_key_file("fastlane/service-account.json")
-package_name("com.techstackapps.healthwallet")
+package_name("com.healthwithme.app")

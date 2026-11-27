@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/core/widgets/dialogs/app_simple_dialog.dart';
-import 'package:health_wallet/features/onboarding/presentation/bloc/onboarding_bloc.dart';
-import 'package:health_wallet/features/user/presentation/bloc/user_bloc.dart';
-import 'package:health_wallet/features/user/presentation/preferences_modal/widgets/biometrics_setup_dialog.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/core/widgets/dialogs/app_simple_dialog.dart';
+import 'package:healthwithme/features/onboarding/presentation/bloc/onboarding_bloc.dart';
+import 'package:healthwithme/features/user/presentation/bloc/user_bloc.dart';
+import 'package:healthwithme/features/user/presentation/preferences_modal/widgets/biometrics_setup_dialog.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   final String title;
@@ -197,7 +197,7 @@ class OnboardingScreen extends StatelessWidget {
                 ),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
-                    final url = linkText == 'HealthWallet.me'
+                    final url = linkText == 'healthwithme'
                         ? 'https://healthwallet.me'
                         : 'https://github.com/fastenhealth/fasten-onprem';
                     context.read<OnboardingBloc>().add(
@@ -289,7 +289,7 @@ class OnboardingScreen extends StatelessWidget {
                 ),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
-                    final url = linkText == 'HealthWallet.me'
+                    final url = linkText == 'healthwithme'
                         ? 'https://healthwallet.me'
                         : 'https://github.com/fastenhealth/fasten-onprem';
                     context.read<OnboardingBloc>().add(
@@ -376,7 +376,7 @@ class OnboardingScreen extends StatelessWidget {
               ),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  final url = linkText == 'HealthWallet.me'
+                  final url = linkText == 'healthwithme'
                       ? 'https://healthwallet.me'
                       : 'https://github.com/fastenhealth/fasten-onprem';
                   context.read<OnboardingBloc>().add(

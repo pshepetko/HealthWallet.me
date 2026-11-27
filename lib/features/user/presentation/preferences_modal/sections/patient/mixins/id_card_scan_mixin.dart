@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_doc_scanner/flutter_doc_scanner.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:health_wallet/core/di/injection.dart';
-import 'package:health_wallet/features/scan/domain/services/text_recognition_service.dart';
-import 'package:health_wallet/features/scan/presentation/helpers/scan_path_helper.dart';
-import 'package:health_wallet/features/user/domain/services/id_card_extractor.dart';
-import 'package:health_wallet/features/user/presentation/bloc/user_bloc.dart';
+import 'package:healthwithme/core/di/injection.dart';
+import 'package:healthwithme/features/scan/domain/services/text_recognition_service.dart';
+import 'package:healthwithme/features/scan/presentation/helpers/scan_path_helper.dart';
+import 'package:healthwithme/features/user/domain/services/id_card_extractor.dart';
+import 'package:healthwithme/features/user/presentation/bloc/user_bloc.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 mixin IdCardScanMixin<T extends StatefulWidget> on State<T> {

@@ -38,7 +38,7 @@
         android:usesPermissionFlags="neverForLocation"/>
     <application
         android:name="${applicationName}"
-        android:label="HealthWallet.me"
+        android:label="healthwithme"
         android:icon="@mipmap/health_wallet"
         android:largeHeap="true"
         android:enableOnBackInvokedCallback="true">

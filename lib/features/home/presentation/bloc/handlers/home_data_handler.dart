@@ -1,16 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_wallet/core/config/constants/region_preset.dart';
-import 'package:health_wallet/core/config/constants/shared_prefs_constants.dart';
-import 'package:health_wallet/core/utils/logger.dart';
-import 'package:health_wallet/features/home/domain/entities/overview_card.dart';
-import 'package:health_wallet/features/home/domain/entities/patient_vitals.dart';
-import 'package:health_wallet/features/home/domain/factory/patient_vitals_factory.dart';
-import 'package:health_wallet/features/home/domain/repository/home_preferences_repository.dart';
-import 'package:health_wallet/features/home/presentation/bloc/home_bloc.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
-import 'package:health_wallet/features/records/domain/repository/records_repository.dart';
-import 'package:health_wallet/features/user/domain/services/patient_deduplication_service.dart';
-import 'package:health_wallet/features/user/domain/services/patient_selection_service.dart';
+import 'package:healthwithme/core/config/constants/region_preset.dart';
+import 'package:healthwithme/core/config/constants/shared_prefs_constants.dart';
+import 'package:healthwithme/core/utils/logger.dart';
+import 'package:healthwithme/features/home/domain/entities/overview_card.dart';
+import 'package:healthwithme/features/home/domain/entities/patient_vitals.dart';
+import 'package:healthwithme/features/home/domain/factory/patient_vitals_factory.dart';
+import 'package:healthwithme/features/home/domain/repository/home_preferences_repository.dart';
+import 'package:healthwithme/features/home/presentation/bloc/home_bloc.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/features/records/domain/repository/records_repository.dart';
+import 'package:healthwithme/features/user/domain/services/patient_deduplication_service.dart';
+import 'package:healthwithme/features/user/domain/services/patient_selection_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 mixin HomeDataHandler on Bloc<HomeEvent, HomeState> {

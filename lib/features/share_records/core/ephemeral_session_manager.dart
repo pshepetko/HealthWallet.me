@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 
-import 'package:health_wallet/features/share_records/domain/entity/entity.dart';
+import 'package:healthwithme/features/share_records/domain/entity/entity.dart';
 
 typedef SessionDestroyedCallback = void Function(String sessionId);
 

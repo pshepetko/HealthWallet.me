@@ -1,4 +1,4 @@
-import 'package:health_wallet/features/scan/data/model/prompt_template/prompt_template.dart';
+import 'package:healthwithme/features/scan/data/model/prompt_template/prompt_template.dart';
 
 class ConditionPrompt extends PromptTemplate {
   @override

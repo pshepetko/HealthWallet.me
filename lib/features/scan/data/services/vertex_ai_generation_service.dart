@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:firebase_ai/firebase_ai.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:health_wallet/core/config/constants/shared_prefs_constants.dart';
-import 'package:health_wallet/features/scan/domain/services/ai_generation_service.dart';
-import 'package:health_wallet/features/scan/domain/services/scan_log_buffer.dart';
+import 'package:healthwithme/core/config/constants/shared_prefs_constants.dart';
+import 'package:healthwithme/features/scan/domain/services/ai_generation_service.dart';
+import 'package:healthwithme/features/scan/domain/services/scan_log_buffer.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path/path.dart' as path;
 import 'package:shared_preferences/shared_preferences.dart';

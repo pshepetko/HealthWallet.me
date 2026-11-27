@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:health_wallet/core/utils/fhir_reference_utils.dart';
+import 'package:healthwithme/core/utils/fhir_reference_utils.dart';
 
 void main() {
   group('FhirReferenceUtils.extractReferenceId', () {

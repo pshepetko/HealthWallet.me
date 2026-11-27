@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/core/utils/date_format_utils.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
-import 'package:health_wallet/features/records/presentation/models/record_info_line.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/core/utils/date_format_utils.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/features/records/presentation/models/record_info_line.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 
 class RecentRecordsSection extends StatelessWidget {
   final List<IFhirResource> recentRecords;

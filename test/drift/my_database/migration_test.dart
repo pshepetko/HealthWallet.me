@@ -3,7 +3,7 @@
 import 'package:drift/drift.dart';
 import 'package:drift_dev/api/migrations.dart';
 //import 'package:drift_dev/api/migrations_native.dart';
-import 'package:health_wallet/core/data/local/app_database.dart';
+import 'package:healthwithme/core/data/local/app_database.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'generated/schema.dart';
 

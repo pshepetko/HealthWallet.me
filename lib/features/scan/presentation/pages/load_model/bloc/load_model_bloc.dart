@@ -5,12 +5,12 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:health_wallet/features/notifications/domain/entities/notification.dart';
-import 'package:health_wallet/features/notifications/bloc/notification_bloc.dart';
-import 'package:health_wallet/core/config/constants/ai_model_config.dart';
-import 'package:health_wallet/core/config/constants/shared_prefs_constants.dart';
-import 'package:health_wallet/core/services/device_capability_service.dart';
-import 'package:health_wallet/features/scan/domain/services/ai_model_download_service.dart';
+import 'package:healthwithme/features/notifications/domain/entities/notification.dart';
+import 'package:healthwithme/features/notifications/bloc/notification_bloc.dart';
+import 'package:healthwithme/core/config/constants/ai_model_config.dart';
+import 'package:healthwithme/core/config/constants/shared_prefs_constants.dart';
+import 'package:healthwithme/core/services/device_capability_service.dart';
+import 'package:healthwithme/features/scan/domain/services/ai_model_download_service.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -4,16 +4,16 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_wallet/core/di/injection.dart';
-import 'package:health_wallet/core/services/bluetooth_state_service.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/core/widgets/app_button.dart';
-import 'package:health_wallet/features/share_records/core/share_permissions_helper.dart';
-import 'package:health_wallet/features/share_records/domain/services/receive_mode_service.dart';
-import 'package:health_wallet/features/user/presentation/bloc/user_bloc.dart';
-import 'package:health_wallet/features/user/presentation/preferences_modal/widgets/receive_mode_toggle_button.dart';
+import 'package:healthwithme/core/di/injection.dart';
+import 'package:healthwithme/core/services/bluetooth_state_service.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/core/widgets/app_button.dart';
+import 'package:healthwithme/features/share_records/core/share_permissions_helper.dart';
+import 'package:healthwithme/features/share_records/domain/services/receive_mode_service.dart';
+import 'package:healthwithme/features/user/presentation/bloc/user_bloc.dart';
+import 'package:healthwithme/features/user/presentation/preferences_modal/widgets/receive_mode_toggle_button.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class ShareProximityRow extends StatefulWidget {

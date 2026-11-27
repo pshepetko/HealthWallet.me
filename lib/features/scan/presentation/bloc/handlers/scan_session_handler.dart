@@ -1,17 +1,17 @@
 import 'dart:io';
 
 import 'package:collection/collection.dart';
-import 'package:health_wallet/features/scan/domain/services/scan_log_buffer.dart';
+import 'package:healthwithme/features/scan/domain/services/scan_log_buffer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_diagnostic_report.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_encounter.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_patient.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_resource.dart';
-import 'package:health_wallet/features/scan/domain/entity/processing_session.dart';
-import 'package:health_wallet/features/scan/domain/entity/staged_resource.dart';
-import 'package:health_wallet/features/scan/domain/repository/scan_repository.dart';
-import 'package:health_wallet/features/scan/domain/services/ocr_processing_service.dart';
-import 'package:health_wallet/features/scan/presentation/bloc/scan_bloc.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_diagnostic_report.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_encounter.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_patient.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_resource.dart';
+import 'package:healthwithme/features/scan/domain/entity/processing_session.dart';
+import 'package:healthwithme/features/scan/domain/entity/staged_resource.dart';
+import 'package:healthwithme/features/scan/domain/repository/scan_repository.dart';
+import 'package:healthwithme/features/scan/domain/services/ocr_processing_service.dart';
+import 'package:healthwithme/features/scan/presentation/bloc/scan_bloc.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 

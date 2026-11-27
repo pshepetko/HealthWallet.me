@@ -9,7 +9,7 @@ class AppLocalizationsUk extends AppLocalizations {
   AppLocalizationsUk([String locale = 'uk']) : super(locale);
 
   @override
-  String get appTitle => 'HealthWallet.me';
+  String get appTitle => 'healthwithme';
 
   @override
   String get homeTitle => 'Головна';
@@ -21,7 +21,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get settingsTitle => 'Налаштування';
 
   @override
-  String get welcomeMessage => 'Ласкаво просимо до HealthWallet.me!';
+  String get welcomeMessage => 'Ласкаво просимо до healthwithme!';
 
   @override
   String get onboardingBack => 'Назад';
@@ -37,7 +37,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      '<link>HealthWallet.me</link> уже підключається до понад 100 000 медичних закладів у США, і ми розширюємося на нові країни.';
+      '<link>healthwithme</link> уже підключається до понад 100 000 медичних закладів у США, і ми розширюємося на нові країни.';
 
   @override
   String get onboardingWelcomeDescription =>
@@ -48,15 +48,15 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get onboardingRecordsSubtitle =>
-      '<link>HealthWallet.me</link> пропонує гнучкі способи зібрати всю вашу медичну історію:';
+      '<link>healthwithme</link> пропонує гнучкі способи зібрати всю вашу медичну історію:';
 
   @override
   String get onboardingRecordsDescription =>
-      '• Скануйте документи камерою телефона\n• Завантажуйте PDF, зображення чи лабораторні файли напряму\n• Імпортуйте записи, поділившись напряму з <link>HealthWallet.me</link> з будь-якого застосунку на смартфоні.\n• Скануйте QR-код Fasten Health OnPrem і отримайте всі записи з медичних систем США у свій гаманець.';
+      '• Скануйте документи камерою телефона\n• Завантажуйте PDF, зображення чи лабораторні файли напряму\n• Імпортуйте записи, поділившись напряму з <link>healthwithme</link> з будь-якого застосунку на смартфоні.\n• Скануйте QR-код Fasten Health OnPrem і отримайте всі записи з медичних систем США у свій гаманець.';
 
   @override
   String get onboardingRecordsContent =>
-      '• Скануйте документи камерою телефона\n• Завантажуйте PDF, зображення чи лабораторні файли напряму\n• Імпортуйте записи, поділившись напряму з <link>HealthWallet.me</link> з будь-якого застосунку на смартфоні.\n• Скануйте QR-код <link>Fasten Health OnPrem</link> і отримайте всі записи з медичних систем США у свій гаманець.';
+      '• Скануйте документи камерою телефона\n• Завантажуйте PDF, зображення чи лабораторні файли напряму\n• Імпортуйте записи, поділившись напряму з <link>healthwithme</link> з будь-якого застосунку на смартфоні.\n• Скануйте QR-код <link>Fasten Health OnPrem</link> і отримайте всі записи з медичних систем США у свій гаманець.';
 
   @override
   String get onboardingRecordsBottom =>
@@ -73,7 +73,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get onboardingSyncSubtitle =>
-      '<link>HealthWallet.me</link> створено з пріоритетом конфіденційності. Ваші медичні дані зашифровані та зберігаються лише на телефоні, ніколи на хмарних серверах.';
+      '<link>healthwithme</link> створено з пріоритетом конфіденційності. Ваші медичні дані зашифровані та зберігаються лише на телефоні, ніколи на хмарних серверах.';
 
   @override
   String get onboardingSyncDescription =>
@@ -81,7 +81,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get onboardingBiometricText =>
-      'Ви можете захистити HealthWallet біометричним захистом, як-от Face ID чи сканування відбитка пальця.';
+      'Ви можете захистити healthwithme біометричним захистом, як-от Face ID чи сканування відбитка пальця.';
 
   @override
   String get homeHi => 'Привіт, ';
@@ -743,7 +743,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get onboardingSetupBody =>
-      'Створіть свій особистий медичний профіль, щоб почати користуватися HealthWallet';
+      'Створіть свій особистий медичний профіль, щоб почати користуватися healthwithme';
 
   @override
   String get onboardingDemoTitle => 'Спробувати демо-дані';
@@ -1186,7 +1186,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get sharePermissionsRequired => 'Потрібні дозволи';
 
   @override
-  String get shareHealthWalletDevice => 'Пристрій HealthWallet';
+  String get shareHealthWalletDevice => 'Пристрій healthwithme';
 
   @override
   String get shareInvitationDeclined => 'Запрошення відхилено';
@@ -1295,7 +1295,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get shareDiscoveryHint =>
-      'Переконайтеся, що на іншому пристрої відкрито застосунок HealthWallet.me';
+      'Переконайтеся, що на іншому пристрої відкрито застосунок healthwithme';
 
   @override
   String get shareProximityHint =>

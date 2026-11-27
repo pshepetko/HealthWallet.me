@@ -2,27 +2,27 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:health_wallet/core/di/injection.dart';
-import 'package:health_wallet/core/theme/app_color.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
-import 'package:health_wallet/features/records/domain/entity/i_fhir_resource.dart';
-import 'package:health_wallet/features/share_records/core/share_permissions_helper.dart';
-import 'package:health_wallet/features/share_records/presentation/bloc/share_records_bloc.dart';
-import 'package:health_wallet/features/share_records/presentation/bloc/share_records_event.dart';
-import 'package:health_wallet/features/share_records/presentation/bloc/share_records_state.dart';
-import 'package:health_wallet/features/share_records/presentation/views/ephemeral_viewer_view.dart';
-import 'package:health_wallet/features/share_records/presentation/views/peer_discovery_view.dart';
-import 'package:health_wallet/features/share_records/presentation/views/record_selection_view.dart';
-import 'package:health_wallet/features/share_records/presentation/views/session_ended_view.dart';
-import 'package:health_wallet/features/share_records/presentation/views/session_monitoring_view.dart';
-import 'package:health_wallet/features/share_records/presentation/views/transfer_views.dart';
-import 'package:health_wallet/features/share_records/presentation/widgets/exit_confirmation_dialog.dart';
-import 'package:health_wallet/core/widgets/custom_app_bar.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
-import 'package:health_wallet/core/widgets/custom_arrow_tooltip.dart';
-import 'package:health_wallet/features/records/presentation/bloc/records_bloc.dart';
+import 'package:healthwithme/core/di/injection.dart';
+import 'package:healthwithme/core/theme/app_color.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/features/records/domain/entity/i_fhir_resource.dart';
+import 'package:healthwithme/features/share_records/core/share_permissions_helper.dart';
+import 'package:healthwithme/features/share_records/presentation/bloc/share_records_bloc.dart';
+import 'package:healthwithme/features/share_records/presentation/bloc/share_records_event.dart';
+import 'package:healthwithme/features/share_records/presentation/bloc/share_records_state.dart';
+import 'package:healthwithme/features/share_records/presentation/views/ephemeral_viewer_view.dart';
+import 'package:healthwithme/features/share_records/presentation/views/peer_discovery_view.dart';
+import 'package:healthwithme/features/share_records/presentation/views/record_selection_view.dart';
+import 'package:healthwithme/features/share_records/presentation/views/session_ended_view.dart';
+import 'package:healthwithme/features/share_records/presentation/views/session_monitoring_view.dart';
+import 'package:healthwithme/features/share_records/presentation/views/transfer_views.dart';
+import 'package:healthwithme/features/share_records/presentation/widgets/exit_confirmation_dialog.dart';
+import 'package:healthwithme/core/widgets/custom_app_bar.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
+import 'package:healthwithme/core/widgets/custom_arrow_tooltip.dart';
+import 'package:healthwithme/features/records/presentation/bloc/records_bloc.dart';
 
 @RoutePage()
 class ShareRecordsPage extends StatelessWidget {

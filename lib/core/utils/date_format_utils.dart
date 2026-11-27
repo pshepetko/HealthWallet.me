@@ -1,4 +1,4 @@
-import 'package:health_wallet/core/config/constants/region_preset.dart';
+import 'package:healthwithme/core/config/constants/region_preset.dart';
 import 'package:intl/intl.dart';
 
 class DateFormatUtils {

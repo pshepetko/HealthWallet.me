@@ -1,5 +1,5 @@
 import 'package:fhir_r4/fhir_r4.dart' as fhir_r4;
-import 'package:health_wallet/core/l10n/arb/app_localizations.dart';
+import 'package:healthwithme/core/l10n/arb/app_localizations.dart';
 
 class GenderMapper {
   static String mapFhirGenderToDisplay(

@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/features/user/presentation/services/url_launcher.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/features/user/presentation/services/url_launcher.dart';
 
 @RoutePage()
 class PrivacyPolicyPage extends StatelessWidget {
@@ -42,7 +42,7 @@ class PrivacyPolicyPage extends StatelessWidget {
                 children: [
                   TextSpan(text: '${context.l10n.privacyIntro} '),
                   TextSpan(
-                    text: 'HealthWallet.me',
+                    text: 'healthwithme',
                     style: AppTextStyle.bodyMedium.copyWith(
                       fontWeight: FontWeight.bold,
                       color: context.colorScheme.onSurface,
@@ -67,7 +67,7 @@ class PrivacyPolicyPage extends StatelessWidget {
                       text:
                           'The most important thing to know is that we, the developers of '),
                   TextSpan(
-                    text: 'HealthWallet.me',
+                    text: 'healthwithme',
                     style: AppTextStyle.bodyMedium.copyWith(
                       fontWeight: FontWeight.bold,
                       color: context.colorScheme.onSurface,
@@ -171,7 +171,7 @@ class PrivacyPolicyPage extends StatelessWidget {
             _buildBulletPointWithBold(
                 context,
                 'Share Action Sheet: Selecting a file from another app (like your email, photos, or file manager) and "sharing" it directly to ',
-                'HealthWallet.me',
+                'healthwithme',
                 '.'),
             const SizedBox(height: Insets.small),
             RichText(

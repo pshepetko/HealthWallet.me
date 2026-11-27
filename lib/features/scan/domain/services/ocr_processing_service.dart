@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:health_wallet/core/utils/logger.dart';
+import 'package:healthwithme/core/utils/logger.dart';
 
-import 'package:health_wallet/features/scan/domain/services/text_recognition_service.dart';
+import 'package:healthwithme/features/scan/domain/services/text_recognition_service.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

@@ -1,4 +1,4 @@
-import 'package:health_wallet/core/constants/blood_types.dart';
+import 'package:healthwithme/core/constants/blood_types.dart';
 
 const String kLoincHeartRate = '8867-4';
 const String kLoincBloodPressurePanel = '85354-9';

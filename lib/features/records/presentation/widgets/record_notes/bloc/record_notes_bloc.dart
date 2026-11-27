@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
-import 'package:health_wallet/features/records/domain/entity/record_note/record_note.dart';
-import 'package:health_wallet/features/records/domain/repository/records_repository.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/features/records/domain/entity/record_note/record_note.dart';
+import 'package:healthwithme/features/records/domain/repository/records_repository.dart';
 import 'package:injectable/injectable.dart';
 
 part 'record_notes_event.dart';

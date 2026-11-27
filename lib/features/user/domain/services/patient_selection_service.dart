@@ -1,5 +1,5 @@
-import 'package:health_wallet/features/records/domain/entity/patient/patient.dart';
-import 'package:health_wallet/features/user/domain/services/patient_deduplication_service.dart';
+import 'package:healthwithme/features/records/domain/entity/patient/patient.dart';
+import 'package:healthwithme/features/user/domain/services/patient_deduplication_service.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 import 'date_field_dropdown.dart';
 import 'date_range_filter_model.dart';
 

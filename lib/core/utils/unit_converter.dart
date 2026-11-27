@@ -1,5 +1,5 @@
-import 'package:health_wallet/core/config/constants/region_preset.dart';
-import 'package:health_wallet/features/home/domain/entities/patient_vitals.dart';
+import 'package:healthwithme/core/config/constants/region_preset.dart';
+import 'package:healthwithme/features/home/domain/entities/patient_vitals.dart';
 
 class UnitConverter {
   UnitConverter._();

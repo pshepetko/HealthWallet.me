@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/core/widgets/app_button.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
-import 'package:health_wallet/features/share_records/presentation/bloc/share_records_bloc.dart';
-import 'package:health_wallet/features/share_records/presentation/bloc/share_records_event.dart';
-import 'package:health_wallet/features/share_records/presentation/bloc/share_records_state.dart';
-import 'package:health_wallet/features/share_records/presentation/widgets/duration_wheel_picker.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/core/widgets/app_button.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/features/share_records/presentation/bloc/share_records_bloc.dart';
+import 'package:healthwithme/features/share_records/presentation/bloc/share_records_event.dart';
+import 'package:healthwithme/features/share_records/presentation/bloc/share_records_state.dart';
+import 'package:healthwithme/features/share_records/presentation/widgets/duration_wheel_picker.dart';
 
 class SelectionBottomBar extends StatefulWidget {
   final ShareRecordsState shareState;

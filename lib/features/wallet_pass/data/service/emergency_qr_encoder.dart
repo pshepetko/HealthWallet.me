@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:health_wallet/features/wallet_pass/domain/entity/emergency_card_data.dart';
+import 'package:healthwithme/features/wallet_pass/domain/entity/emergency_card_data.dart';
 import 'package:intl/intl.dart';
 
 abstract final class EmergencyQrEncoder {

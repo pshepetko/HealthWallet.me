@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_wallet/core/di/injection.dart';
-import 'package:health_wallet/core/theme/app_color.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/features/scan/domain/entity/staged_resource.dart';
-import 'package:health_wallet/features/scan/presentation/widgets/attach_to_encounter/bloc/attach_to_encounter_bloc.dart';
-import 'package:health_wallet/features/scan/presentation/widgets/attach_to_encounter/encounter_selector.dart';
-import 'package:health_wallet/features/scan/presentation/widgets/attach_to_encounter/patient_selector.dart';
+import 'package:healthwithme/core/di/injection.dart';
+import 'package:healthwithme/core/theme/app_color.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/features/scan/domain/entity/staged_resource.dart';
+import 'package:healthwithme/features/scan/presentation/widgets/attach_to_encounter/bloc/attach_to_encounter_bloc.dart';
+import 'package:healthwithme/features/scan/presentation/widgets/attach_to_encounter/encounter_selector.dart';
+import 'package:healthwithme/features/scan/presentation/widgets/attach_to_encounter/patient_selector.dart';
 
 typedef AttachToEncounterResult = (StagedPatient, StagedEncounter);
 

@@ -3,10 +3,10 @@ import 'dart:typed_data';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart'
+import 'package:healthwithme/features/records/domain/entity/entity.dart'
     as entities;
-import 'package:health_wallet/features/scan/domain/services/document_reference_service.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/features/scan/domain/services/document_reference_service.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:path_provider/path_provider.dart';

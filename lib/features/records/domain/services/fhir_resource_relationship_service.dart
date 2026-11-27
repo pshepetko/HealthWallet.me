@@ -1,5 +1,5 @@
-import 'package:health_wallet/core/utils/fhir_reference_utils.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/core/utils/fhir_reference_utils.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
 
 class FhirResourceRelationshipService {
   static List<IFhirResource> findRelatedInMemory({

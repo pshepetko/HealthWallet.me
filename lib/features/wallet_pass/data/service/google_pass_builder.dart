@@ -6,10 +6,10 @@ import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 import 'package:pointycastle/export.dart';
 import 'package:pointycastle/asn1.dart';
-import 'package:health_wallet/core/config/env/env.dart';
-import 'package:health_wallet/features/wallet_pass/data/service/emergency_qr_encoder.dart';
-import 'package:health_wallet/core/utils/phone_formatter.dart';
-import 'package:health_wallet/features/wallet_pass/domain/entity/emergency_card_data.dart';
+import 'package:healthwithme/core/config/env/env.dart';
+import 'package:healthwithme/features/wallet_pass/data/service/emergency_qr_encoder.dart';
+import 'package:healthwithme/core/utils/phone_formatter.dart';
+import 'package:healthwithme/features/wallet_pass/domain/entity/emergency_card_data.dart';
 
 @injectable
 class GooglePassBuilder {
@@ -126,7 +126,7 @@ class GooglePassBuilder {
           'language': 'en-US',
           'value': subheaderParts.isNotEmpty
               ? subheaderParts.join('  •  ')
-              : 'HealthWallet',
+              : 'healthwithme',
         },
       },
       'hexBackgroundColor': '#5767FF',
@@ -137,7 +137,7 @@ class GooglePassBuilder {
         'contentDescription': {
           'defaultValue': {
             'language': 'en-US',
-            'value': 'HealthWallet',
+            'value': 'healthwithme',
           },
         },
       },

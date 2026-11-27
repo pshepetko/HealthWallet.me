@@ -1,4 +1,4 @@
-import 'package:health_wallet/core/utils/logger.dart';
+import 'package:healthwithme/core/utils/logger.dart';
 
 /// Helper class for extracting meaningful titles and dates from raw FHIR demo data
 class DemoDataExtractor {

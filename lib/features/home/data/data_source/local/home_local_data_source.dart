@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:health_wallet/core/config/constants/shared_prefs_constants.dart';
-import 'package:health_wallet/features/home/domain/repository/home_preferences_repository.dart';
+import 'package:healthwithme/core/config/constants/shared_prefs_constants.dart';
+import 'package:healthwithme/features/home/domain/repository/home_preferences_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeLocalDataSourceImpl implements HomePreferencesRepository {

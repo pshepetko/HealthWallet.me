@@ -107,7 +107,7 @@ abstract class AppLocalizations {
   /// The title of the application
   ///
   /// In en, this message translates to:
-  /// **'HealthWallet.me'**
+  /// **'healthwithme'**
   String get appTitle;
 
   /// The title of the home screen
@@ -131,7 +131,7 @@ abstract class AppLocalizations {
   /// The welcome message shown to users
   ///
   /// In en, this message translates to:
-  /// **'Welcome to HealthWallet.me!'**
+  /// **'Welcome to healthwithme!'**
   String get welcomeMessage;
 
   /// No description provided for @onboardingBack.
@@ -161,7 +161,7 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingWelcomeSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'<link>HealthWallet.me</link> already connects to 100,000+ US healthcare providers, and we\'re expanding to new countries.'**
+  /// **'<link>healthwithme</link> already connects to 100,000+ US healthcare providers, and we\'re expanding to new countries.'**
   String get onboardingWelcomeSubtitle;
 
   /// No description provided for @onboardingWelcomeDescription.
@@ -179,19 +179,19 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingRecordsSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'<link>HealthWallet.me</link> gives you flexible ways to bring all your medical history together:'**
+  /// **'<link>healthwithme</link> gives you flexible ways to bring all your medical history together:'**
   String get onboardingRecordsSubtitle;
 
   /// No description provided for @onboardingRecordsDescription.
   ///
   /// In en, this message translates to:
-  /// **'• Scan documents with your phone\'s camera\n• Upload PDFs, images, or lab files directly\n• Import records by sharing directly with <link>HealthWallet.me</link> from any app in your smartphone.\n• Scan the QR Code of Fasten Health OnPrem and get all your US healthcare systems records to your wallet.'**
+  /// **'• Scan documents with your phone\'s camera\n• Upload PDFs, images, or lab files directly\n• Import records by sharing directly with <link>healthwithme</link> from any app in your smartphone.\n• Scan the QR Code of Fasten Health OnPrem and get all your US healthcare systems records to your wallet.'**
   String get onboardingRecordsDescription;
 
   /// No description provided for @onboardingRecordsContent.
   ///
   /// In en, this message translates to:
-  /// **'• Scan documents with your phone\'s camera\n• Upload PDFs, images, or lab files directly\n• Import records by sharing directly with <link>HealthWallet.me</link> from any app in your smartphone.\n• Scan the QR Code of <link>Fasten Health OnPrem</link> and get all your US healthcare systems records to your wallet.'**
+  /// **'• Scan documents with your phone\'s camera\n• Upload PDFs, images, or lab files directly\n• Import records by sharing directly with <link>healthwithme</link> from any app in your smartphone.\n• Scan the QR Code of <link>Fasten Health OnPrem</link> and get all your US healthcare systems records to your wallet.'**
   String get onboardingRecordsContent;
 
   /// No description provided for @onboardingRecordsBottom.
@@ -221,7 +221,7 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingSyncSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'<link>HealthWallet.me</link> is built with privacy at its core. Your medical data is encrypted and stored only on your phone, never on cloud servers.'**
+  /// **'<link>healthwithme</link> is built with privacy at its core. Your medical data is encrypted and stored only on your phone, never on cloud servers.'**
   String get onboardingSyncSubtitle;
 
   /// No description provided for @onboardingSyncDescription.
@@ -233,7 +233,7 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingBiometricText.
   ///
   /// In en, this message translates to:
-  /// **'You can lock your HealthWallet with biometric security like Face ID or a fingerprint scan.'**
+  /// **'You can lock your healthwithme with biometric security like Face ID or a fingerprint scan.'**
   String get onboardingBiometricText;
 
   /// No description provided for @homeHi.
@@ -1463,7 +1463,7 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingSetupBody.
   ///
   /// In en, this message translates to:
-  /// **'Create your personal health profile to get started with HealthWallet'**
+  /// **'Create your personal health profile to get started with healthwithme'**
   String get onboardingSetupBody;
 
   /// No description provided for @onboardingDemoTitle.
@@ -2255,7 +2255,7 @@ abstract class AppLocalizations {
   /// No description provided for @shareHealthWalletDevice.
   ///
   /// In en, this message translates to:
-  /// **'HealthWallet Device'**
+  /// **'healthwithme Device'**
   String get shareHealthWalletDevice;
 
   /// No description provided for @shareInvitationDeclined.
@@ -2453,7 +2453,7 @@ abstract class AppLocalizations {
   /// No description provided for @shareDiscoveryHint.
   ///
   /// In en, this message translates to:
-  /// **'Make sure the other device has the HealthWallet.me app opened'**
+  /// **'Make sure the other device has the healthwithme app opened'**
   String get shareDiscoveryHint;
 
   /// No description provided for @shareProximityHint.

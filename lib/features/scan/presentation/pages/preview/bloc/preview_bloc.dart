@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/painting.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:health_wallet/features/scan/presentation/pages/preview/image_rotation_utils.dart';
+import 'package:healthwithme/features/scan/presentation/pages/preview/image_rotation_utils.dart';
 
 part 'preview_bloc.freezed.dart';
 part 'preview_event.dart';

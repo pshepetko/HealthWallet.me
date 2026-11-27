@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/core/widgets/app_button.dart';
-import 'package:health_wallet/features/scan/domain/entity/processing_session.dart';
-import 'package:health_wallet/features/scan/presentation/bloc/scan_bloc.dart';
-import 'package:health_wallet/features/scan/presentation/widgets/custom_progress_indicator.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/core/widgets/app_button.dart';
+import 'package:healthwithme/features/scan/domain/entity/processing_session.dart';
+import 'package:healthwithme/features/scan/presentation/bloc/scan_bloc.dart';
+import 'package:healthwithme/features/scan/presentation/widgets/custom_progress_indicator.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:health_wallet/core/navigation/app_router.dart';
+import 'package:healthwithme/core/navigation/app_router.dart';
 
 class ProcessingMappingSection extends StatelessWidget {
   final ScanState state;

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:health_wallet/features/share_records/data/service/airdrop_stub.dart';
+import 'package:healthwithme/features/share_records/data/service/airdrop_stub.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
@@ -9,18 +9,18 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:health_wallet/core/di/injection.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
-import 'package:health_wallet/features/records/domain/entity/record_note/record_note.dart';
-import 'package:health_wallet/features/records/domain/repository/records_repository.dart';
-import 'package:health_wallet/features/share_records/core/ephemeral_session_manager.dart';
-import 'package:health_wallet/features/share_records/core/share_permissions_helper.dart';
-import 'package:health_wallet/features/share_records/domain/services/receive_mode_service.dart';
-import 'package:health_wallet/features/share_records/data/service/share_preferences_service.dart';
-import 'package:health_wallet/features/share_records/data/service/share_records_service.dart';
-import 'package:health_wallet/features/share_records/domain/entity/entity.dart';
-import 'package:health_wallet/features/share_records/presentation/bloc/share_records_event.dart';
-import 'package:health_wallet/features/share_records/presentation/bloc/share_records_state.dart';
+import 'package:healthwithme/core/di/injection.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/features/records/domain/entity/record_note/record_note.dart';
+import 'package:healthwithme/features/records/domain/repository/records_repository.dart';
+import 'package:healthwithme/features/share_records/core/ephemeral_session_manager.dart';
+import 'package:healthwithme/features/share_records/core/share_permissions_helper.dart';
+import 'package:healthwithme/features/share_records/domain/services/receive_mode_service.dart';
+import 'package:healthwithme/features/share_records/data/service/share_preferences_service.dart';
+import 'package:healthwithme/features/share_records/data/service/share_records_service.dart';
+import 'package:healthwithme/features/share_records/domain/entity/entity.dart';
+import 'package:healthwithme/features/share_records/presentation/bloc/share_records_event.dart';
+import 'package:healthwithme/features/share_records/presentation/bloc/share_records_state.dart';
 
 part 'handlers/share_records_transfer_handler.dart';
 part 'handlers/share_records_session_handler.dart';
@@ -52,7 +52,7 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
   Timer? _monitoringFallbackTimer;
 
   String? _tempFilePath;
-  String _deviceName = 'HealthWallet Device';
+  String _deviceName = 'healthwithme Device';
   final List<int> _insertedEphemeralNoteIds = [];
 
   bool _isClosed = false;
@@ -339,7 +339,7 @@ class ShareRecordsBloc extends Bloc<ShareRecordsEvent, ShareRecordsState>
         _deviceName = androidInfo.model;
       }
     } catch (_) {
-      _deviceName = 'HealthWallet Device';
+      _deviceName = 'healthwithme Device';
     }
   }
 

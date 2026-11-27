@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/widgets/overlay_annotations/highlight_overlay.dart';
-import 'package:health_wallet/core/widgets/overlay_annotations/overlay_step.dart';
-import 'package:health_wallet/core/widgets/overlay_annotations/tooltip_position.dart';
+import 'package:healthwithme/core/widgets/overlay_annotations/highlight_overlay.dart';
+import 'package:healthwithme/core/widgets/overlay_annotations/overlay_step.dart';
+import 'package:healthwithme/core/widgets/overlay_annotations/tooltip_position.dart';
 
 /// Controller for showing a multi-highlight overlay using an Overlay entry.
 class MultiHighlightOverlayController {

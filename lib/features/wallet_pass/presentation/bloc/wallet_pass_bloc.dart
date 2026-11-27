@@ -7,9 +7,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/services.dart';
-import 'package:health_wallet/features/wallet_pass/domain/entity/emergency_card_data.dart';
-import 'package:health_wallet/features/wallet_pass/domain/repository/wallet_pass_repository.dart';
-import 'package:health_wallet/features/wallet_pass/domain/service/emergency_card_builder.dart';
+import 'package:healthwithme/features/wallet_pass/domain/entity/emergency_card_data.dart';
+import 'package:healthwithme/features/wallet_pass/domain/repository/wallet_pass_repository.dart';
+import 'package:healthwithme/features/wallet_pass/domain/service/emergency_card_builder.dart';
 
 part 'wallet_pass_event.dart';
 part 'wallet_pass_state.dart';
@@ -64,11 +64,11 @@ class WalletPassBloc extends Bloc<WalletPassEvent, WalletPassState> {
     ));
 
     final tempDir = await getTemporaryDirectory();
-    final filePath = '${tempDir.path}/HealthWallet_Emergency.pkpass';
+    final filePath = '${tempDir.path}/healthwithme_Emergency.pkpass';
     final file = File(filePath);
     await file.writeAsBytes(passBytes);
 
-    const channel = MethodChannel('com.techstackapps.healthwallet/apple_wallet');
+    const channel = MethodChannel('com.healthwithme.app/apple_wallet');
     await channel.invokeMethod('addPass', {'filePath': filePath});
 
     emit(state.copyWith(status: WalletPassStatus.passAddedToWallet));

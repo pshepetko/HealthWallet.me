@@ -1,5 +1,5 @@
-import 'package:health_wallet/features/user/data/dto/user_dto.dart';
-import 'package:health_wallet/features/user/domain/entity/user.dart';
+import 'package:healthwithme/features/user/data/dto/user_dto.dart';
+import 'package:healthwithme/features/user/domain/entity/user.dart';
 
 class UserMapper {
   static User fromDto(UserDto dto) {

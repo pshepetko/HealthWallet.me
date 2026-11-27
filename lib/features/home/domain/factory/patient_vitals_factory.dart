@@ -1,10 +1,10 @@
-import 'package:health_wallet/core/config/constants/region_preset.dart';
-import 'package:health_wallet/core/utils/unit_converter.dart';
-import 'package:health_wallet/features/home/domain/entities/patient_vitals.dart';
-import 'package:health_wallet/features/records/domain/entity/i_fhir_resource.dart';
-import 'package:health_wallet/features/records/domain/entity/observation/observation.dart';
+import 'package:healthwithme/core/config/constants/region_preset.dart';
+import 'package:healthwithme/core/utils/unit_converter.dart';
+import 'package:healthwithme/features/home/domain/entities/patient_vitals.dart';
+import 'package:healthwithme/features/records/domain/entity/i_fhir_resource.dart';
+import 'package:healthwithme/features/records/domain/entity/observation/observation.dart';
 import 'package:fhir_r4/fhir_r4.dart' as fhir_r4;
-import 'package:health_wallet/features/records/domain/utils/fhir_field_extractor.dart';
+import 'package:healthwithme/features/records/domain/utils/fhir_field_extractor.dart';
 
 class PatientVitalFactory {
   PatientVitalFactory();

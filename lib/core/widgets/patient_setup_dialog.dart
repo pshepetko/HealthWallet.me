@@ -2,21 +2,21 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_wallet/core/theme/app_color.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/features/sync/presentation/widgets/patient_dialog_card.dart';
-import 'package:health_wallet/features/records/domain/entity/patient/patient.dart';
-import 'package:health_wallet/core/constants/blood_types.dart';
-import 'package:health_wallet/features/home/presentation/bloc/home_bloc.dart';
-import 'package:health_wallet/features/user/presentation/bloc/user_bloc.dart';
-import 'package:health_wallet/features/user/presentation/preferences_modal/sections/patient/bloc/patient_bloc.dart';
-import 'package:health_wallet/features/user/presentation/preferences_modal/sections/patient/utils/dialog_content.dart';
-import 'package:health_wallet/core/config/constants/country_identifier.dart';
-import 'package:health_wallet/features/user/domain/services/id_card_extractor.dart';
-import 'package:health_wallet/core/l10n/arb/app_localizations.dart';
-import 'package:health_wallet/features/user/domain/utils/gender_mapper.dart';
-import 'package:health_wallet/features/user/presentation/preferences_modal/sections/patient/mixins/id_card_scan_mixin.dart';
+import 'package:healthwithme/core/theme/app_color.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/features/sync/presentation/widgets/patient_dialog_card.dart';
+import 'package:healthwithme/features/records/domain/entity/patient/patient.dart';
+import 'package:healthwithme/core/constants/blood_types.dart';
+import 'package:healthwithme/features/home/presentation/bloc/home_bloc.dart';
+import 'package:healthwithme/features/user/presentation/bloc/user_bloc.dart';
+import 'package:healthwithme/features/user/presentation/preferences_modal/sections/patient/bloc/patient_bloc.dart';
+import 'package:healthwithme/features/user/presentation/preferences_modal/sections/patient/utils/dialog_content.dart';
+import 'package:healthwithme/core/config/constants/country_identifier.dart';
+import 'package:healthwithme/features/user/domain/services/id_card_extractor.dart';
+import 'package:healthwithme/core/l10n/arb/app_localizations.dart';
+import 'package:healthwithme/features/user/domain/utils/gender_mapper.dart';
+import 'package:healthwithme/features/user/presentation/preferences_modal/sections/patient/mixins/id_card_scan_mixin.dart';
 
 class PatientSetupDialog extends StatefulWidget {
   final Patient patient;

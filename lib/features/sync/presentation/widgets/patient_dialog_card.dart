@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/features/user/presentation/preferences_modal/sections/patient/utils/dialog_header.dart';
-import 'package:health_wallet/features/user/presentation/preferences_modal/sections/patient/utils/form_fields.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/features/user/presentation/preferences_modal/sections/patient/utils/dialog_header.dart';
+import 'package:healthwithme/features/user/presentation/preferences_modal/sections/patient/utils/form_fields.dart';
 
 /// A reusable card widget for patient dialogs that can be used
 /// both inside dialogs and as a standalone card in other contexts.

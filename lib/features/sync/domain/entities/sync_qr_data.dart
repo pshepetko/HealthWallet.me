@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:health_wallet/features/sync/data/services/jwt_service.dart';
+import 'package:healthwithme/features/sync/data/services/jwt_service.dart';
 
 part 'sync_qr_data.freezed.dart';
 part 'sync_qr_data.g.dart';

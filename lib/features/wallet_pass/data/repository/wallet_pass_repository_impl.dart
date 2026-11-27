@@ -1,10 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:injectable/injectable.dart';
-import 'package:health_wallet/features/wallet_pass/data/service/apple_pass_builder.dart';
-import 'package:health_wallet/features/wallet_pass/data/service/google_pass_builder.dart';
-import 'package:health_wallet/features/wallet_pass/domain/entity/emergency_card_data.dart';
-import 'package:health_wallet/features/wallet_pass/domain/repository/wallet_pass_repository.dart';
+import 'package:healthwithme/features/wallet_pass/data/service/apple_pass_builder.dart';
+import 'package:healthwithme/features/wallet_pass/data/service/google_pass_builder.dart';
+import 'package:healthwithme/features/wallet_pass/domain/entity/emergency_card_data.dart';
+import 'package:healthwithme/features/wallet_pass/domain/repository/wallet_pass_repository.dart';
 
 @Injectable(as: WalletPassRepository)
 class WalletPassRepositoryImpl implements WalletPassRepository {

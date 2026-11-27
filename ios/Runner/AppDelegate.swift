@@ -18,7 +18,7 @@ import CoreBluetooth
         screenSecurity.register(with: controller, window: window)
 
         let walletChannel = FlutterMethodChannel(
-            name: "com.techstackapps.healthwallet/apple_wallet",
+            name: "com.healthwithme.app/apple_wallet",
             binaryMessenger: controller.binaryMessenger
         )
         walletChannel.setMethodCallHandler { [weak self] (call, result) in
@@ -37,7 +37,7 @@ import CoreBluetooth
         bluetoothDelegate = BluetoothStateDelegate()
 
         let bluetoothChannel = FlutterMethodChannel(
-            name: "com.techstackapps.healthwallet/bluetooth",
+            name: "com.healthwithme.app/bluetooth",
             binaryMessenger: controller.binaryMessenger
         )
         bluetoothChannel.setMethodCallHandler { [weak self] (call, result) in
@@ -55,7 +55,7 @@ import CoreBluetooth
         }
 
         let bluetoothEventChannel = FlutterEventChannel(
-            name: "com.techstackapps.healthwallet/bluetooth_state",
+            name: "com.healthwithme.app/bluetooth_state",
             binaryMessenger: controller.binaryMessenger
         )
         bluetoothEventChannel.setStreamHandler(bluetoothDelegate)

@@ -9,7 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appTitle => 'HealthWallet.me';
+  String get appTitle => 'healthwithme';
 
   @override
   String get homeTitle => 'Home';
@@ -21,7 +21,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsTitle => 'Settings';
 
   @override
-  String get welcomeMessage => 'Welcome to HealthWallet.me!';
+  String get welcomeMessage => 'Welcome to healthwithme!';
 
   @override
   String get onboardingBack => 'Back';
@@ -37,7 +37,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboardingWelcomeSubtitle =>
-      '<link>HealthWallet.me</link> already connects to 100,000+ US healthcare providers, and we\'re expanding to new countries.';
+      '<link>healthwithme</link> already connects to 100,000+ US healthcare providers, and we\'re expanding to new countries.';
 
   @override
   String get onboardingWelcomeDescription =>
@@ -48,15 +48,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboardingRecordsSubtitle =>
-      '<link>HealthWallet.me</link> gives you flexible ways to bring all your medical history together:';
+      '<link>healthwithme</link> gives you flexible ways to bring all your medical history together:';
 
   @override
   String get onboardingRecordsDescription =>
-      '• Scan documents with your phone\'s camera\n• Upload PDFs, images, or lab files directly\n• Import records by sharing directly with <link>HealthWallet.me</link> from any app in your smartphone.\n• Scan the QR Code of Fasten Health OnPrem and get all your US healthcare systems records to your wallet.';
+      '• Scan documents with your phone\'s camera\n• Upload PDFs, images, or lab files directly\n• Import records by sharing directly with <link>healthwithme</link> from any app in your smartphone.\n• Scan the QR Code of Fasten Health OnPrem and get all your US healthcare systems records to your wallet.';
 
   @override
   String get onboardingRecordsContent =>
-      '• Scan documents with your phone\'s camera\n• Upload PDFs, images, or lab files directly\n• Import records by sharing directly with <link>HealthWallet.me</link> from any app in your smartphone.\n• Scan the QR Code of <link>Fasten Health OnPrem</link> and get all your US healthcare systems records to your wallet.';
+      '• Scan documents with your phone\'s camera\n• Upload PDFs, images, or lab files directly\n• Import records by sharing directly with <link>healthwithme</link> from any app in your smartphone.\n• Scan the QR Code of <link>Fasten Health OnPrem</link> and get all your US healthcare systems records to your wallet.';
 
   @override
   String get onboardingRecordsBottom =>
@@ -73,7 +73,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboardingSyncSubtitle =>
-      '<link>HealthWallet.me</link> is built with privacy at its core. Your medical data is encrypted and stored only on your phone, never on cloud servers.';
+      '<link>healthwithme</link> is built with privacy at its core. Your medical data is encrypted and stored only on your phone, never on cloud servers.';
 
   @override
   String get onboardingSyncDescription =>
@@ -81,7 +81,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboardingBiometricText =>
-      'You can lock your HealthWallet with biometric security like Face ID or a fingerprint scan.';
+      'You can lock your healthwithme with biometric security like Face ID or a fingerprint scan.';
 
   @override
   String get homeHi => 'Hi, ';
@@ -738,7 +738,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboardingSetupBody =>
-      'Create your personal health profile to get started with HealthWallet';
+      'Create your personal health profile to get started with healthwithme';
 
   @override
   String get onboardingDemoTitle => 'Try Demo Data';
@@ -1181,7 +1181,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sharePermissionsRequired => 'Permissions Required';
 
   @override
-  String get shareHealthWalletDevice => 'HealthWallet Device';
+  String get shareHealthWalletDevice => 'healthwithme Device';
 
   @override
   String get shareInvitationDeclined => 'Invitation Declined';
@@ -1289,7 +1289,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get shareDiscoveryHint =>
-      'Make sure the other device has the HealthWallet.me app opened';
+      'Make sure the other device has the healthwithme app opened';
 
   @override
   String get shareProximityHint =>

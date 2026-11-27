@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:health_wallet/features/scan/domain/repository/scan_repository.dart';
+import 'package:healthwithme/features/scan/domain/repository/scan_repository.dart';
 
 class ScanPathHelper {
   static final RegExp _uriPattern =

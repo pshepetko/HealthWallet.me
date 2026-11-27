@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:health_wallet/features/records/presentation/models/encounter_display_model.dart';
-import 'package:health_wallet/features/records/presentation/models/fhir_resource_display_model.dart';
+import 'package:healthwithme/features/records/presentation/models/encounter_display_model.dart';
+import 'package:healthwithme/features/records/presentation/models/fhir_resource_display_model.dart';
 import 'package:intl/intl.dart';
 
 part 'timeline_resource_model.freezed.dart';

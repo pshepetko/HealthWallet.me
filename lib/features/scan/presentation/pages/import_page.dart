@@ -4,23 +4,23 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:health_wallet/core/di/injection.dart';
-import 'package:health_wallet/core/services/external_files_service.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/logger.dart';
-import 'package:health_wallet/features/scan/domain/entity/processing_session.dart';
-import 'package:health_wallet/features/scan/presentation/widgets/session_list.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/core/di/injection.dart';
+import 'package:healthwithme/core/services/external_files_service.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/logger.dart';
+import 'package:healthwithme/features/scan/domain/entity/processing_session.dart';
+import 'package:healthwithme/features/scan/presentation/widgets/session_list.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:health_wallet/core/widgets/custom_app_bar.dart';
-import 'package:health_wallet/features/scan/presentation/bloc/scan_bloc.dart';
-import 'package:health_wallet/features/scan/presentation/widgets/dialog_helper.dart';
-import 'package:health_wallet/features/scan/presentation/widgets/fhir_file_import_dialog.dart';
-import 'package:health_wallet/features/scan/presentation/widgets/import_actions.dart';
-import 'package:health_wallet/features/scan/presentation/helpers/document_handler.dart';
-import 'package:health_wallet/features/dashboard/presentation/helpers/page_view_navigation_controller.dart';
-import 'package:health_wallet/core/utils/responsive.dart';
+import 'package:healthwithme/core/widgets/custom_app_bar.dart';
+import 'package:healthwithme/features/scan/presentation/bloc/scan_bloc.dart';
+import 'package:healthwithme/features/scan/presentation/widgets/dialog_helper.dart';
+import 'package:healthwithme/features/scan/presentation/widgets/fhir_file_import_dialog.dart';
+import 'package:healthwithme/features/scan/presentation/widgets/import_actions.dart';
+import 'package:healthwithme/features/scan/presentation/helpers/document_handler.dart';
+import 'package:healthwithme/features/dashboard/presentation/helpers/page_view_navigation_controller.dart';
+import 'package:healthwithme/core/utils/responsive.dart';
 
 @RoutePage()
 class ImportPage extends StatelessWidget {

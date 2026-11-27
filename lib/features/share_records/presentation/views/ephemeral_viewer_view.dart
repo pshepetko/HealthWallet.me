@@ -1,21 +1,21 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import 'package:health_wallet/core/navigation/app_router.dart';
-import 'package:health_wallet/core/services/screen_security_service.dart';
-import 'package:health_wallet/core/theme/app_insets.dart';
-import 'package:health_wallet/core/theme/app_text_style.dart';
-import 'package:health_wallet/core/utils/build_context_extension.dart';
-import 'package:health_wallet/core/widgets/animated_sticky_header.dart';
-import 'package:health_wallet/core/widgets/record_filter_header.dart';
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
-import 'package:health_wallet/features/records/domain/entity/i_fhir_resource.dart';
-import 'package:health_wallet/features/records/presentation/widgets/record_type_header.dart';
-import 'package:health_wallet/features/records/presentation/widgets/fhir_cards/resource_card.dart';
-import 'package:health_wallet/features/records/presentation/widgets/timeline_entry.dart';
-import 'package:health_wallet/features/share_records/presentation/bloc/share_records_event.dart';
-import 'package:health_wallet/features/share_records/presentation/bloc/share_records_state.dart';
-import 'package:health_wallet/features/share_records/presentation/widgets/session/session_bottom_bar.dart';
+import 'package:healthwithme/core/navigation/app_router.dart';
+import 'package:healthwithme/core/services/screen_security_service.dart';
+import 'package:healthwithme/core/theme/app_insets.dart';
+import 'package:healthwithme/core/theme/app_text_style.dart';
+import 'package:healthwithme/core/utils/build_context_extension.dart';
+import 'package:healthwithme/core/widgets/animated_sticky_header.dart';
+import 'package:healthwithme/core/widgets/record_filter_header.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/features/records/domain/entity/i_fhir_resource.dart';
+import 'package:healthwithme/features/records/presentation/widgets/record_type_header.dart';
+import 'package:healthwithme/features/records/presentation/widgets/fhir_cards/resource_card.dart';
+import 'package:healthwithme/features/records/presentation/widgets/timeline_entry.dart';
+import 'package:healthwithme/features/share_records/presentation/bloc/share_records_event.dart';
+import 'package:healthwithme/features/share_records/presentation/bloc/share_records_state.dart';
+import 'package:healthwithme/features/share_records/presentation/widgets/session/session_bottom_bar.dart';
 
 class EphemeralViewerView extends StatefulWidget {
   final ShareRecordsState state;

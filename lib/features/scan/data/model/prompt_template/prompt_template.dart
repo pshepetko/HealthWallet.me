@@ -1,11 +1,11 @@
-import 'package:health_wallet/features/scan/data/model/prompt_template/allergy_intolerance_prompt.dart';
-import 'package:health_wallet/features/scan/data/model/prompt_template/condition_prompt.dart';
-import 'package:health_wallet/features/scan/data/model/prompt_template/diagnostic_report_prompt.dart';
-import 'package:health_wallet/features/scan/data/model/prompt_template/medication_statement_prompt.dart';
-import 'package:health_wallet/features/scan/data/model/prompt_template/observation_prompt.dart';
-import 'package:health_wallet/features/scan/data/model/prompt_template/organization_prompt.dart';
-import 'package:health_wallet/features/scan/data/model/prompt_template/practitioner_prompt.dart';
-import 'package:health_wallet/features/scan/data/model/prompt_template/procedure_prompt.dart';
+import 'package:healthwithme/features/scan/data/model/prompt_template/allergy_intolerance_prompt.dart';
+import 'package:healthwithme/features/scan/data/model/prompt_template/condition_prompt.dart';
+import 'package:healthwithme/features/scan/data/model/prompt_template/diagnostic_report_prompt.dart';
+import 'package:healthwithme/features/scan/data/model/prompt_template/medication_statement_prompt.dart';
+import 'package:healthwithme/features/scan/data/model/prompt_template/observation_prompt.dart';
+import 'package:healthwithme/features/scan/data/model/prompt_template/organization_prompt.dart';
+import 'package:healthwithme/features/scan/data/model/prompt_template/practitioner_prompt.dart';
+import 'package:healthwithme/features/scan/data/model/prompt_template/procedure_prompt.dart';
 
 abstract class PromptTemplate {
   String buildPrompt(String medicalText) {

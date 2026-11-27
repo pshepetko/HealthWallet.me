@@ -1,5 +1,5 @@
-import 'package:health_wallet/features/records/domain/entity/entity.dart';
-import 'package:health_wallet/gen/assets.gen.dart';
+import 'package:healthwithme/features/records/domain/entity/entity.dart';
+import 'package:healthwithme/gen/assets.gen.dart';
 
 class OverviewCard {
   final HomeRecordsCategory category;

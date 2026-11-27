@@ -5,10 +5,10 @@ import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 import 'package:csslib/parser.dart' as css;
 import 'package:passkit/passkit.dart';
-import 'package:health_wallet/core/config/env/env.dart';
-import 'package:health_wallet/features/wallet_pass/data/service/emergency_qr_encoder.dart';
-import 'package:health_wallet/core/utils/phone_formatter.dart';
-import 'package:health_wallet/features/wallet_pass/domain/entity/emergency_card_data.dart';
+import 'package:healthwithme/core/config/env/env.dart';
+import 'package:healthwithme/features/wallet_pass/data/service/emergency_qr_encoder.dart';
+import 'package:healthwithme/core/utils/phone_formatter.dart';
+import 'package:healthwithme/features/wallet_pass/domain/entity/emergency_card_data.dart';
 
 @injectable
 class ApplePassBuilder {
@@ -29,12 +29,12 @@ class ApplePassBuilder {
       passTypeIdentifier: Env.applePassTypeId,
       serialNumber: 'emergency_$patientId',
       teamIdentifier: Env.appleTeamId,
-      organizationName: 'HealthWallet.me',
+      organizationName: 'healthwithme',
       description: 'Emergency Medical ID',
       foregroundColor: css.Color.createRgba(255, 255, 255),
       backgroundColor: css.Color.createRgba(87, 103, 255),
       labelColor: css.Color.createRgba(200, 210, 255),
-      logoText: 'HealthWallet.me',
+      logoText: 'healthwithme',
       generic: _buildPassStructure(cardData),
       barcodes: [
         Barcode(

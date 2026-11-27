@@ -8,9 +8,9 @@ import 'package:injectable/injectable.dart';
 @lazySingleton
 class BluetoothStateService {
   static const _methodChannel =
-      MethodChannel('com.techstackapps.healthwallet/bluetooth');
+      MethodChannel('com.healthwithme.app/bluetooth');
   static const _eventChannel =
-      EventChannel('com.techstackapps.healthwallet/bluetooth_state');
+      EventChannel('com.healthwithme.app/bluetooth_state');
 
   StreamSubscription<dynamic>? _subscription;
   final _controller = StreamController<bool>.broadcast();

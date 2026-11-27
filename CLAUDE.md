@@ -22,7 +22,7 @@ Health Wallet is a Flutter mobile app for patient-controlled health record manag
 - **Flutter 3.38.7** (managed via FVM — see `.fvmrc`)
 - **Dart SDK:** >=3.10.7 <4.0.0
 - **Platforms:** iOS (16.0+), Android (SDK 24+)
-- **Package name:** `com.techstackapps.healthwallet`
+- **Package name:** `com.healthwithme.app`
 
 ## Common Commands
 

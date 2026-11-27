@@ -1,15 +1,15 @@
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_allergy_intolerance.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_condition.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_diagnostic_report.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_encounter.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_medication_statement.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_observation.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_organization.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_patient.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_practitioner.dart';
-import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_procedure.dart';
-import 'package:health_wallet/features/scan/domain/entity/text_field_descriptor.dart';
-import 'package:health_wallet/features/records/domain/entity/i_fhir_resource.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_allergy_intolerance.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_condition.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_diagnostic_report.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_encounter.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_medication_statement.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_observation.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_organization.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_patient.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_practitioner.dart';
+import 'package:healthwithme/features/scan/domain/entity/mapping_resources/mapping_procedure.dart';
+import 'package:healthwithme/features/scan/domain/entity/text_field_descriptor.dart';
+import 'package:healthwithme/features/records/domain/entity/i_fhir_resource.dart';
 
 abstract class MappingResource {
   factory MappingResource.fromJson(Map<String, dynamic> json) {
