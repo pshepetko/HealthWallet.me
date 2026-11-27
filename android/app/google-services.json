@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "115072289022",
+    "project_id": "healthwithme",
+    "storage_bucket": "healthwithme.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115072289022:android:f37ae67b6fe1117b4b3daf",
+        "android_client_info": {
+          "package_name": "com.healthwithme.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeKSEbw_oSMWjBS6Y0xE03t5OqjLP2PnY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
