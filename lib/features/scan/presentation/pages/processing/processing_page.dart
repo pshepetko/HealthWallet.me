@@ -11,8 +11,10 @@ import 'package:health_wallet/features/dashboard/presentation/helpers/page_view_
 import 'package:health_wallet/core/theme/app_insets.dart';
 import 'package:health_wallet/core/theme/app_text_style.dart';
 import 'package:health_wallet/core/utils/build_context_extension.dart';
+import 'package:health_wallet/features/scan/data/services/ai_provider_resolver.dart';
 import 'package:health_wallet/features/scan/domain/entity/processing_session.dart';
 import 'package:health_wallet/features/scan/domain/repository/scan_repository.dart';
+import 'package:health_wallet/features/scan/domain/services/ai_generation_service.dart';
 import 'package:health_wallet/features/scan/presentation/bloc/scan_bloc.dart';
 import 'package:health_wallet/features/scan/presentation/pages/processing/widgets/processing_mapping_section.dart';
 import 'package:health_wallet/features/scan/presentation/pages/processing/widgets/processing_resources_section.dart';
@@ -43,19 +45,30 @@ class _ProcessingPageState extends State<ProcessingPage> {
   final _encounterNameController = TextEditingController();
   final _pageController = PageController();
   DeviceAiCapability _deviceCapability = DeviceAiCapability.full;
+  bool _isCloudActive = false;
 
   @override
   void initState() {
+    super.initState();
     context
         .read<ScanBloc>()
         .add(ScanSessionActivated(sessionId: widget.sessionId));
     _checkDeviceCapability();
-    super.initState();
+    _checkCloudProvider();
   }
 
   void _checkDeviceCapability() async {
     final capability = await getIt<DeviceCapabilityService>().getCapability();
     if (mounted) setState(() => _deviceCapability = capability);
+  }
+
+  void _checkCloudProvider() async {
+    try {
+      final selection = await getIt<AiProviderResolver>().resolve();
+      if (mounted) {
+        setState(() => _isCloudActive = selection.kind == AiProviderKind.cloud);
+      }
+    } catch (_) {}
   }
 
   @override
@@ -279,7 +292,8 @@ class _ProcessingPageState extends State<ProcessingPage> {
                   onCancel: () => context.read<ScanBloc>().add(
                         ScanMappingCancelled(sessionId: widget.sessionId),
                       ),
-                  checkModelExistence: () => getIt<ScanRepository>().checkModelExistence(),
+                  checkModelExistence: () =>
+                      getIt<ScanRepository>().canProcessDocuments(),
                 ),
                 ProcessingResourcesSection(
                   state: state,
@@ -288,6 +302,7 @@ class _ProcessingPageState extends State<ProcessingPage> {
                   formKey: _formKey,
                   encounterSectionKey: _encounterSectionKey,
                   deviceCapability: _deviceCapability,
+                  isCloudProviderActive: _isCloudActive,
                   onScrollToFormErrors: _scrollToFormErrors,
                   onSaveResources: () => _saveResources(state),
                 ),

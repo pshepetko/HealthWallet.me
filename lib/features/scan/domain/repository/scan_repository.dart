@@ -33,6 +33,12 @@ abstract class ScanRepository {
 
   Stream<double> downloadModelForVariant(AiModelVariant variant);
 
+  /// Whether documents can be processed by any available provider (cloud with
+  /// consent + Firebase, or a compatible on-device model). Provider-agnostic.
+  Future<bool> canProcessDocuments();
+
+  /// Whether the on-device GGUF model file exists. Intended for explicit
+  /// download / local model management flows, not as a processing gate.
   Future<bool> checkModelExistence();
 
   Future<bool> checkModelExistenceForVariant(AiModelVariant variant);

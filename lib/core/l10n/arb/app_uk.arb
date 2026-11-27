@@ -654,5 +654,22 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "aiProviderSectionTitle": "Провайдер ШІ",
+    "aiProviderSectionDescription": "Оберіть, як оброблятимуться медичні документи. Хмарний ШІ надсилає дані документів до Google Vertex AI (Gemini). Локальний ШІ залишає все на вашому пристрої.",
+    "aiProviderAuto": "Авто",
+    "aiProviderAutoDescription": "Використовувати хмарний ШІ, коли доступний, інакше — локальний.",
+    "aiProviderOnDevice": "На пристрої",
+    "aiProviderOnDeviceDescription": "Обробляти документи локально завантаженою моделлю.",
+    "aiProviderCloud": "Хмара",
+    "aiProviderCloudDescription": "Обробляти документи через Google Vertex AI (Gemini).",
+    "aiCloudConsentTitle": "Дозволити хмарну обробку медичних даних",
+    "aiCloudConsentDescription": "Зображення та текст документів буде надіслано до Google Vertex AI для обробки. Ці дані можуть залишити ваш пристрій і підпадають під умови Google. Увімкніть, лише якщо ви надаєте згоду.",
+    "aiCloudConsentRequired": "Для використання хмарного ШІ потрібна згода.",
+    "aiCloudFallbackTitle": "Повертатися до локального ШІ",
+    "aiCloudFallbackDescription": "Якщо хмарний запит не вдасться, повторіть на телефоні (потрібна завантажена модель).",
+    "aiCloudActiveTitle": "Хмарний ШІ активний",
+    "aiCloudActiveDescription": "Документи оброблятимуться в хмарі. Локальна модель не потрібна.",
+    "aiCloudModelLabel": "Хмарна модель",
+    "aiLocalSettingsCloudInfo": "Локальні параметри продуктивності приховані, поки активний хмарний ШІ."
 }

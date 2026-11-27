@@ -10,6 +10,8 @@ import 'package:health_wallet/core/theme/app_text_style.dart';
 import 'package:health_wallet/core/utils/build_context_extension.dart';
 import 'package:health_wallet/core/utils/responsive.dart';
 import 'package:health_wallet/core/services/device_capability_service.dart';
+import 'package:health_wallet/features/scan/data/services/ai_provider_resolver.dart';
+import 'package:health_wallet/features/scan/domain/services/ai_generation_service.dart';
 import 'package:health_wallet/features/scan/presentation/pages/load_model/bloc/load_model_bloc.dart';
 import 'package:health_wallet/features/scan/presentation/widgets/custom_progress_indicator.dart';
 import 'package:health_wallet/features/scan/presentation/widgets/dialog_helper.dart';
@@ -28,12 +30,23 @@ class LoadModelPage extends StatefulWidget {
 
 class _LoadModelPageState extends State<LoadModelPage> {
   late final LoadModelBloc _bloc;
+  bool _isCloudActive = false;
 
   @override
   void initState() {
     super.initState();
     _bloc = getIt.get<LoadModelBloc>();
     _bloc.add(const LoadModelInitialized());
+    _resolveCloudProvider();
+  }
+
+  Future<void> _resolveCloudProvider() async {
+    try {
+      final selection = await getIt<AiProviderResolver>().resolve();
+      if (mounted) {
+        setState(() => _isCloudActive = selection.kind == AiProviderKind.cloud);
+      }
+    } catch (_) {}
   }
 
   @override
@@ -211,7 +224,56 @@ class _LoadModelPageState extends State<LoadModelPage> {
             ),
           ),
         ] else ...[
-          if (state.deviceCapability == DeviceAiCapability.unsupported) ...[
+          if (state.deviceCapability == DeviceAiCapability.unsupported &&
+              _isCloudActive) ...[
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              decoration: BoxDecoration(
+                color: context.colorScheme.primaryContainer.withValues(
+                  alpha: 0.4,
+                ),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: context.colorScheme.primary.withValues(alpha: 0.5),
+                ),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.cloud_done_outlined,
+                    color: context.colorScheme.primary,
+                    size: 20,
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          context.l10n.aiCloudActiveTitle,
+                          style: AppTextStyle.bodySmall.copyWith(
+                            color: context.colorScheme.primary,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          context.l10n.aiCloudActiveDescription,
+                          style: AppTextStyle.labelSmall.copyWith(
+                            color: context.colorScheme.primary
+                                .withOpacity(0.85),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ] else if (state.deviceCapability ==
+              DeviceAiCapability.unsupported) ...[
             Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),

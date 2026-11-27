@@ -4,6 +4,8 @@ import 'package:health_wallet/core/config/constants/ai_model_config.dart';
 import 'package:health_wallet/features/scan/data/data_source/local/scan_local_data_source.dart';
 import 'package:health_wallet/features/scan/data/data_source/network/scan_network_data_source.dart';
 import 'package:health_wallet/features/scan/data/repository/scan_processing_repository.dart';
+import 'package:health_wallet/features/scan/data/services/ai_generation_coordinator.dart';
+import 'package:health_wallet/features/scan/data/services/ai_provider_resolver.dart';
 import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_patient.dart';
 import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_resource.dart';
 import 'package:health_wallet/features/scan/domain/entity/processing_session.dart';
@@ -26,12 +28,16 @@ class ScanRepositoryImpl extends Object
     this._localDataSource,
     this._textRecognitionService,
     this._pathResolver,
+    this._aiGenerationCoordinator,
+    this._aiProviderResolver,
   );
 
   final ScanNetworkDataSource _networkDataSource;
   final ScanLocalDataSource _localDataSource;
   final TextRecognitionService _textRecognitionService;
   final PathResolver _pathResolver;
+  final AiGenerationCoordinator _aiGenerationCoordinator;
+  final AiProviderResolver _aiProviderResolver;
 
   bool _isStreamActive = false;
   Completer<void>? _streamCompleter;
@@ -39,6 +45,10 @@ class ScanRepositoryImpl extends Object
 
   @override
   ScanNetworkDataSource get networkDataSource => _networkDataSource;
+
+  @override
+  AiGenerationCoordinator get aiGenerationCoordinator =>
+      _aiGenerationCoordinator;
 
   @override
   TextRecognitionService get textRecognitionService => _textRecognitionService;
@@ -322,6 +332,9 @@ class ScanRepositoryImpl extends Object
   }
 
   @override
+  Future<bool> canProcessDocuments() => _aiProviderResolver.canProcessDocuments();
+
+  @override
   Future<bool> checkModelExistence() async {
     return _networkDataSource.checkModelExistence();
   }
@@ -442,5 +455,5 @@ class ScanRepositoryImpl extends Object
   }
 
   @override
-  Future disposeModel() => _networkDataSource.disposeModel();
+  Future disposeModel() => _aiGenerationCoordinator.disposeLocal();
 }

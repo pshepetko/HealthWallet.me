@@ -7,7 +7,9 @@ import 'package:health_wallet/core/navigation/app_router.dart';
 import 'package:health_wallet/core/theme/app_text_style.dart';
 import 'package:health_wallet/core/utils/build_context_extension.dart';
 import 'package:health_wallet/core/widgets/app_button.dart';
+import 'package:health_wallet/features/scan/data/services/ai_provider_resolver.dart';
 import 'package:health_wallet/features/scan/domain/entity/processing_session.dart';
+import 'package:health_wallet/features/scan/domain/services/ai_generation_service.dart';
 import 'package:health_wallet/features/scan/presentation/pages/load_model/bloc/load_model_bloc.dart';
 import 'package:health_wallet/features/scan/presentation/widgets/session_list.dart';
 import 'package:health_wallet/gen/assets.gen.dart';
@@ -44,6 +46,7 @@ class _ScanViewState extends State<ScanView>
     with DocumentHandler, NavigationSettledCallbackMixin {
   bool _hasAutoScanned = false;
   bool _isAttachingDocuments = false;
+  bool _isCloudProviderActive = false;
   late final PageViewNavigationController _navigationController;
 
   @override
@@ -53,6 +56,7 @@ class _ScanViewState extends State<ScanView>
   @override
   void onPageSettled() {
     context.read<LoadModelBloc>().add(const LoadModelInitialized());
+    _refreshCloudProvider();
     _autoStartScanning();
   }
 
@@ -68,6 +72,19 @@ class _ScanViewState extends State<ScanView>
     super.initState();
     _navigationController = GetIt.instance.get<PageViewNavigationController>();
     initializeNavigationSettledListener(2);
+    _refreshCloudProvider();
+  }
+
+  Future<void> _refreshCloudProvider() async {
+    try {
+      final selection = await GetIt.instance<AiProviderResolver>().resolve();
+      if (mounted) {
+        setState(
+          () => _isCloudProviderActive =
+              selection.kind == AiProviderKind.cloud,
+        );
+      }
+    } catch (_) {}
   }
 
   @override
@@ -146,7 +163,8 @@ class _ScanViewState extends State<ScanView>
         actions: [
           BlocBuilder<LoadModelBloc, LoadModelState>(
             builder: (context, state) {
-              if (state.status == LoadModelStatus.modelLoaded) {
+              if (state.status == LoadModelStatus.modelLoaded ||
+                  _isCloudProviderActive) {
                 return const SizedBox.shrink();
               }
 

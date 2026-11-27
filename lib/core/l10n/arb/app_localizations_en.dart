@@ -1433,4 +1433,63 @@ class AppLocalizationsEn extends AppLocalizations {
   String shareExtensionDurationRequested(String duration) {
     return '$duration requested';
   }
+
+  @override
+  String get aiProviderSectionTitle => 'AI Provider';
+
+  @override
+  String get aiProviderSectionDescription =>
+      'Choose how medical documents are processed. Cloud AI sends document data to Google Vertex AI (Gemini). On-device AI keeps everything on your phone.';
+
+  @override
+  String get aiProviderAuto => 'Auto';
+
+  @override
+  String get aiProviderAutoDescription =>
+      'Use cloud AI when available, otherwise on-device.';
+
+  @override
+  String get aiProviderOnDevice => 'On-device';
+
+  @override
+  String get aiProviderOnDeviceDescription =>
+      'Process documents locally with the downloaded model.';
+
+  @override
+  String get aiProviderCloud => 'Cloud';
+
+  @override
+  String get aiProviderCloudDescription =>
+      'Process documents with Google Vertex AI (Gemini).';
+
+  @override
+  String get aiCloudConsentTitle => 'Allow cloud processing of medical data';
+
+  @override
+  String get aiCloudConsentDescription =>
+      'Document images and text will be sent to Google Vertex AI for processing. This data may leave your device and is subject to Google\'s terms. Only enable if you consent.';
+
+  @override
+  String get aiCloudConsentRequired => 'Consent is required to use cloud AI.';
+
+  @override
+  String get aiCloudFallbackTitle => 'Fall back to on-device AI';
+
+  @override
+  String get aiCloudFallbackDescription =>
+      'If the cloud request fails, retry on your phone (requires a downloaded model).';
+
+  @override
+  String get aiCloudActiveTitle => 'Cloud AI active';
+
+  @override
+  String get aiCloudActiveDescription =>
+      'Documents will be processed in the cloud. A local model is not required.';
+
+  @override
+  String get aiCloudModelLabel => 'Cloud model';
+
+  @override
+  String get aiLocalSettingsCloudInfo =>
+      'Local performance settings are hidden while cloud AI is active.';
 }

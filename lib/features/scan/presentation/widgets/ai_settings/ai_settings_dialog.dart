@@ -14,6 +14,8 @@ import 'package:health_wallet/core/theme/app_text_style.dart';
 import 'package:health_wallet/core/utils/build_context_extension.dart';
 import 'package:health_wallet/core/config/constants/ai_model_config.dart';
 import 'package:health_wallet/core/widgets/dialogs/app_simple_dialog.dart';
+import 'package:health_wallet/features/scan/data/services/ai_provider_resolver.dart';
+import 'package:health_wallet/features/scan/domain/services/ai_generation_service.dart';
 import 'package:health_wallet/features/scan/domain/services/device_capability_service.dart';
 import 'package:health_wallet/features/scan/domain/services/ai_model_download_service.dart';
 import 'package:health_wallet/features/scan/presentation/widgets/ai_settings/ai_settings_token_section.dart';
@@ -47,6 +49,7 @@ class AiTokenSettingsDialog extends StatefulWidget {
   final int deviceRamMB;
   final AiModelConfig activeModelConfig;
   final bool currentUseVision;
+  final bool isCloudActive;
 
   const AiTokenSettingsDialog({
     required this.currentTokens,
@@ -59,6 +62,7 @@ class AiTokenSettingsDialog extends StatefulWidget {
     required this.deviceRamMB,
     required this.activeModelConfig,
     required this.currentUseVision,
+    this.isCloudActive = false,
     super.key,
   });
 
@@ -83,6 +87,14 @@ class AiTokenSettingsDialog extends StatefulWidget {
 
     final activeModelConfig = AiModelConfig.getActive(prefs);
 
+    var isCloudActive = false;
+    try {
+      final selection = await getIt<AiProviderResolver>().resolve();
+      isCloudActive = selection.kind == AiProviderKind.cloud;
+    } catch (_) {}
+
+    if (!context.mounted) return null;
+
     return showDialog<AiSettingsResult>(
       context: context,
       barrierColor: Colors.transparent,
@@ -97,6 +109,7 @@ class AiTokenSettingsDialog extends StatefulWidget {
         deviceRamMB: deviceRamMB,
         activeModelConfig: activeModelConfig,
         currentUseVision: useVision,
+        isCloudActive: isCloudActive,
       ),
     );
   }
@@ -291,64 +304,70 @@ class _AiTokenSettingsDialogState extends State<AiTokenSettingsDialog> {
                             .copyWith(color: secondaryTextColor),
                       ),
                       const SizedBox(height: Insets.small),
-                      _buildDeviceInfoChip(textColor, estimatedMB),
-                      const SizedBox(height: Insets.normal),
-                      AiVisionToggleSection(
-                        useVision: _useVision,
-                        isMmprojDownloading: _isMmprojDownloading,
-                        mmprojProgress: _mmprojProgress,
-                        onToggleOn: _handleVisionToggleOn,
-                        onToggleOff: () => setState(() => _useVision = false),
-                        textColor: textColor,
-                        secondaryTextColor: secondaryTextColor,
-                        borderColor: borderColor,
-                      ),
-                      const SizedBox(height: Insets.normal),
-                      _buildSliderSection(
-                        context.l10n.contextSizeLabel,
-                        context.l10n.contextSizeDescription,
-                        _contextStepIndex(),
-                        0,
-                        _contextSizeSteps.length - 1,
-                        _contextSizeSteps
-                            .indexOf(widget.recommendedContextSize)
-                            .clamp(0, _contextSizeSteps.length - 1),
-                        (v) =>
-                            setState(() => _contextSize = _contextSizeSteps[v]),
-                        textColor,
-                        secondaryTextColor,
-                        borderColor,
-                        label: '$_contextSize',
-                        stepValues: _contextSizeSteps,
-                      ),
-                      const SizedBox(height: Insets.normal),
-                      _buildSliderSection(
-                        context.l10n.gpuLayersLabel,
-                        context.l10n.gpuLayersDescription,
-                        _gpuLayers,
-                        0,
-                        8,
-                        widget.recommendedGpuLayers,
-                        (v) => setState(() => _gpuLayers = v),
-                        textColor,
-                        secondaryTextColor,
-                        borderColor,
-                      ),
-                      const SizedBox(height: Insets.normal),
-                      _buildSliderSection(
-                        context.l10n.threadsLabel,
-                        context.l10n.threadsDescription,
-                        _threads,
-                        1,
-                        (kIsWeb ? 4 : Platform.numberOfProcessors)
-                            .clamp(1, 8),
-                        widget.recommendedThreads,
-                        (v) => setState(() => _threads = v),
-                        textColor,
-                        secondaryTextColor,
-                        borderColor,
-                      ),
-                      const SizedBox(height: Insets.normal),
+                      if (widget.isCloudActive) ...[
+                        _buildCloudInfo(secondaryTextColor),
+                        const SizedBox(height: Insets.normal),
+                      ] else ...[
+                        _buildDeviceInfoChip(textColor, estimatedMB),
+                        const SizedBox(height: Insets.normal),
+                        AiVisionToggleSection(
+                          useVision: _useVision,
+                          isMmprojDownloading: _isMmprojDownloading,
+                          mmprojProgress: _mmprojProgress,
+                          onToggleOn: _handleVisionToggleOn,
+                          onToggleOff: () =>
+                              setState(() => _useVision = false),
+                          textColor: textColor,
+                          secondaryTextColor: secondaryTextColor,
+                          borderColor: borderColor,
+                        ),
+                        const SizedBox(height: Insets.normal),
+                        _buildSliderSection(
+                          context.l10n.contextSizeLabel,
+                          context.l10n.contextSizeDescription,
+                          _contextStepIndex(),
+                          0,
+                          _contextSizeSteps.length - 1,
+                          _contextSizeSteps
+                              .indexOf(widget.recommendedContextSize)
+                              .clamp(0, _contextSizeSteps.length - 1),
+                          (v) =>
+                              setState(() => _contextSize = _contextSizeSteps[v]),
+                          textColor,
+                          secondaryTextColor,
+                          borderColor,
+                          label: '$_contextSize',
+                          stepValues: _contextSizeSteps,
+                        ),
+                        const SizedBox(height: Insets.normal),
+                        _buildSliderSection(
+                          context.l10n.gpuLayersLabel,
+                          context.l10n.gpuLayersDescription,
+                          _gpuLayers,
+                          0,
+                          8,
+                          widget.recommendedGpuLayers,
+                          (v) => setState(() => _gpuLayers = v),
+                          textColor,
+                          secondaryTextColor,
+                          borderColor,
+                        ),
+                        const SizedBox(height: Insets.normal),
+                        _buildSliderSection(
+                          context.l10n.threadsLabel,
+                          context.l10n.threadsDescription,
+                          _threads,
+                          1,
+                          (kIsWeb ? 4 : Platform.numberOfProcessors)
+                              .clamp(1, 8),
+                          widget.recommendedThreads,
+                          (v) => setState(() => _threads = v),
+                          textColor,
+                          secondaryTextColor,
+                          borderColor,
+                        ),
+                        const SizedBox(height: Insets.normal),
+                      ],
                       _buildTokenSection(
                         textColor,
                         secondaryTextColor,
@@ -392,6 +411,33 @@ class _AiTokenSettingsDialogState extends State<AiTokenSettingsDialog> {
             child: Padding(
               padding: const EdgeInsets.all(9),
               child: Icon(Icons.close, size: 24, color: textColor),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCloudInfo(Color secondaryTextColor) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(Insets.smallNormal),
+      decoration: BoxDecoration(
+        color: AppColors.primary.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Icon(Icons.cloud_outlined, size: 18, color: AppColors.primary),
+          const SizedBox(width: Insets.small),
+          Expanded(
+            child: Text(
+              context.l10n.aiLocalSettingsCloudInfo,
+              style: AppTextStyle.labelSmall.copyWith(
+                color: secondaryTextColor,
+                height: 1.4,
+              ),
             ),
           ),
         ],

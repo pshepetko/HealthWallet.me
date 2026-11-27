@@ -612,5 +612,22 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "aiProviderSectionTitle": "AI Provider",
+    "aiProviderSectionDescription": "Choose how medical documents are processed. Cloud AI sends document data to Google Vertex AI (Gemini). On-device AI keeps everything on your phone.",
+    "aiProviderAuto": "Auto",
+    "aiProviderAutoDescription": "Use cloud AI when available, otherwise on-device.",
+    "aiProviderOnDevice": "On-device",
+    "aiProviderOnDeviceDescription": "Process documents locally with the downloaded model.",
+    "aiProviderCloud": "Cloud",
+    "aiProviderCloudDescription": "Process documents with Google Vertex AI (Gemini).",
+    "aiCloudConsentTitle": "Allow cloud processing of medical data",
+    "aiCloudConsentDescription": "Document images and text will be sent to Google Vertex AI for processing. This data may leave your device and is subject to Google's terms. Only enable if you consent.",
+    "aiCloudConsentRequired": "Consent is required to use cloud AI.",
+    "aiCloudFallbackTitle": "Fall back to on-device AI",
+    "aiCloudFallbackDescription": "If the cloud request fails, retry on your phone (requires a downloaded model).",
+    "aiCloudActiveTitle": "Cloud AI active",
+    "aiCloudActiveDescription": "Documents will be processed in the cloud. A local model is not required.",
+    "aiCloudModelLabel": "Cloud model",
+    "aiLocalSettingsCloudInfo": "Local performance settings are hidden while cloud AI is active."
 }

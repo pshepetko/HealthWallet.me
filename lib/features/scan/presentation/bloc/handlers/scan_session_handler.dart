@@ -193,9 +193,9 @@ mixin ScanSessionHandler on Bloc<ScanEvent, ScanState> {
 
       if (session.status == ProcessingStatus.pending) {
         try {
-          final isModelLoaded = await scanRepository.checkModelExistence();
+          final canProcess = await scanRepository.canProcessDocuments();
 
-          if (isModelLoaded) {
+          if (canProcess) {
             add(ScanMappingInitiated(sessionId: event.sessionId));
           } else {
             emit(state.copyWith(status: const ScanStatus.initial()));

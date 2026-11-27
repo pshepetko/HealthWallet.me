@@ -205,6 +205,9 @@ class FakeScanRepository extends Fake implements ScanRepository {
   Future<bool> checkModelExistence() async => false;
 
   @override
+  Future<bool> canProcessDocuments() async => false;
+
+  @override
   Stream<double> downloadMmprojForVariant(AiModelVariant variant) =>
       const Stream.empty();
 
@@ -344,7 +347,13 @@ void main() {
 
 class FakeBluetoothStateService extends Fake implements BluetoothStateService {
   @override
-  Stream<bool> get isBluetoothEnabledStream => const Stream<bool>.empty();
+  Stream<bool> get onStateChanged => const Stream<bool>.empty();
+
+  @override
+  Future<bool> isEnabled() async => true;
+
+  @override
+  Future<void> requestEnable() async {}
 
   @override
   void startListening() {}

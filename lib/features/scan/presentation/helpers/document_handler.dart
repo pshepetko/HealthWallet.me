@@ -23,11 +23,11 @@ mixin DocumentHandler<T extends StatefulWidget> on State<T> {
     try {
       final scanRepository = getIt<ScanRepository>();
 
-      final isModelLoaded = await scanRepository.checkModelExistence();
+      final canProcess = await scanRepository.canProcessDocuments();
 
       if (!context.mounted) return;
 
-      if (isModelLoaded) {
+      if (canProcess) {
         context.router.push(ProcessingRoute(sessionId: session.id));
         return;
       }

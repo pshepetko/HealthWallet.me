@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:collection/collection.dart';
 import 'package:health_wallet/features/scan/data/data_source/network/scan_network_data_source.dart';
+import 'package:health_wallet/features/scan/data/services/ai_generation_coordinator.dart';
 import 'package:health_wallet/features/scan/data/model/prompt_template/basic_info_prompt.dart';
 import 'package:health_wallet/features/scan/data/model/prompt_template/basic_info_vision_prompt.dart';
 import 'package:health_wallet/features/scan/data/model/prompt_template/remaining_resources_vision_prompt.dart';
@@ -11,6 +12,7 @@ import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapp
 import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_patient.dart';
 import 'package:health_wallet/features/scan/domain/entity/mapping_resources/mapping_resource.dart';
 import 'package:health_wallet/features/scan/domain/repository/scan_repository.dart';
+import 'package:health_wallet/features/scan/domain/services/ai_generation_service.dart';
 import 'package:health_wallet/features/scan/domain/services/scan_log_buffer.dart';
 import 'package:health_wallet/features/scan/domain/services/text_recognition_service.dart';
 
@@ -32,11 +34,19 @@ mixin ScanProcessingRepository {
   };
 
   ScanNetworkDataSource get networkDataSource;
+  AiGenerationCoordinator get aiGenerationCoordinator;
   TextRecognitionService get textRecognitionService;
   bool get shouldCancelGeneration;
   Future<void> disposeModel();
 
   String get _ts => DateTime.now().toIso8601String().substring(11, 23);
+
+  /// Cloud failures must be surfaced clearly and never treated as a local
+  /// capacity/token limit.
+  bool _isCloudFailure(Object error) =>
+      error is AiGenerationException &&
+      error.provider == AiProviderKind.cloud &&
+      !error.isCapacityFailure;
 
   String _stripMarkdownFences(String text) {
     return text.replaceAll(_markdownFenceRegex, '').trim();
@@ -231,11 +241,6 @@ mixin ScanProcessingRepository {
     ScanLogBuffer.instance.log('[$_ts][ScanAI] === CONTAINER-ONLY EXTRACTION (pre-matched patient) ===');
 
     final textCtx = (contextSize == null || contextSize < 2048) ? 2048 : contextSize;
-    await networkDataSource.initModel(
-      withVision: false,
-      threads: threads,
-      contextSize: textCtx,
-    );
 
     final truncated = ocrText.length > 1500 ? ocrText.substring(0, 1500) : ocrText;
     final prompt = '''What type of medical document is this? Return ONLY a single JSON object.
@@ -256,9 +261,13 @@ Rules:
 
     ScanLogBuffer.instance.log('[$_ts][ScanAI] running container-only inference, prompt ${prompt.length} chars...');
 
-    final response = await networkDataSource.runTextPrompt(
+    final response = await aiGenerationCoordinator.generateText(
       prompt: prompt,
       maxTokens: maxTokens ?? 256,
+      localOptions: AiLocalGenerationOptions(
+        contextSize: textCtx,
+        threads: threads,
+      ),
     );
 
     await disposeModel();
@@ -293,19 +302,18 @@ Rules:
     int? contextSize,
   ) async {
     final textCtx = (contextSize == null || contextSize < 2048) ? 2048 : contextSize;
-    ScanLogBuffer.instance.log('[$_ts][ScanAI] loading model (text-only, no vision projector)...');
-    await networkDataSource.initModel(
-      withVision: false,
-      threads: threads,
-      contextSize: textCtx,
-    );
+    ScanLogBuffer.instance.log('[$_ts][ScanAI] requesting text-only generation...');
 
     final prompt = BasicInfoPrompt().buildPrompt(ocrText);
     ScanLogBuffer.instance.log('[$_ts][ScanAI] running text inference, prompt ${prompt.length} chars...');
 
-    final response = await networkDataSource.runTextPrompt(
+    final response = await aiGenerationCoordinator.generateText(
       prompt: prompt,
       maxTokens: maxTokens,
+      localOptions: AiLocalGenerationOptions(
+        contextSize: textCtx,
+        threads: threads,
+      ),
     );
 
     ScanLogBuffer.instance.log('[$_ts][ScanAI] parsing text-only response...');
@@ -321,21 +329,21 @@ Rules:
     int? contextSize,
   ) async {
     ScanLogBuffer.instance.log('[$_ts][ScanAI] --- VISION FALLBACK ---');
-    ScanLogBuffer.instance.log('[$_ts][ScanAI] loading model + vision projector...');
-    await networkDataSource.initModel(
-      gpuLayers: gpuLayers,
-      threads: threads,
-      contextSize: contextSize,
-    );
+    ScanLogBuffer.instance.log('[$_ts][ScanAI] requesting vision generation...');
 
     try {
       final prompt = BasicInfoVisionPrompt(ocrText: ocrText).buildPrompt();
       ScanLogBuffer.instance.log('[$_ts][ScanAI] running vision inference...');
 
-      final response = await networkDataSource.runVisionPrompt(
+      final response = await aiGenerationCoordinator.generateVision(
         prompt: prompt,
         imagePaths: imagePaths,
         maxTokens: maxTokens,
+        localOptions: AiLocalGenerationOptions(
+          contextSize: contextSize,
+          gpuLayers: gpuLayers,
+          threads: threads,
+        ),
       );
 
       ScanLogBuffer.instance.log('[$_ts][ScanAI] parsing vision response...');
@@ -369,13 +377,15 @@ Rules:
     List<MappingResource> allResources = [];
     final confidenceText = ocrText.isNotEmpty ? ocrText : null;
 
-    if (useVision) {
-      await networkDataSource.initModel(
-        gpuLayers: gpuLayers,
-        threads: threads,
-        contextSize: contextSize,
-      );
+    // Local-only preflight (RAM/context) must not run on the cloud path.
+    final providerSelection =
+        await aiGenerationCoordinator.resolveProvider();
+    final isLocalProvider =
+        providerSelection.kind == AiProviderKind.onDevice;
+    ScanLogBuffer.instance.log(
+        '[$_ts][ScanAI] provider=${providerSelection.kind.name} (${providerSelection.reason.name})');
 
+    if (useVision) {
       final promptBuilder = await RemainingResourcesVisionPrompt.create(
         documentCategory: documentCategory,
         ocrText: ocrText,
@@ -401,23 +411,30 @@ Rules:
       for (var batchIdx = 0; batchIdx < batches.length; batchIdx++) {
         if (shouldCancelGeneration) return;
 
-        final health = await networkDataSource.checkMemoryHealth(
-          withVision: true,
-          contextSize: contextSize,
-        );
-        if (!health.canProceed) {
-          ScanLogBuffer.instance.log('[$_ts][ScanAI] memory too low (${health.availableMB}MB < ${health.requiredMB}MB), switching to text fallback');
-          break;
+        if (isLocalProvider) {
+          final health = await networkDataSource.checkMemoryHealth(
+            withVision: true,
+            contextSize: contextSize,
+          );
+          if (!health.canProceed) {
+            ScanLogBuffer.instance.log('[$_ts][ScanAI] memory too low (${health.availableMB}MB < ${health.requiredMB}MB), switching to text fallback');
+            break;
+          }
         }
 
         final batch = batches[batchIdx];
         try {
           ScanLogBuffer.instance.log('[$_ts][ScanAI] vision batch ${batchIdx + 1}/${batches.length} (${batch.length} images)...');
 
-          final response = await networkDataSource.runVisionPrompt(
+          final response = await aiGenerationCoordinator.generateVision(
             prompt: prompt,
             imagePaths: batch,
             maxTokens: maxTokens,
+            localOptions: AiLocalGenerationOptions(
+              contextSize: contextSize,
+              gpuLayers: gpuLayers,
+              threads: threads,
+            ),
           );
 
           final parsed = _parseResourcesFromResponse(response, confidenceText);
@@ -428,6 +445,7 @@ Rules:
           yield (allResources.toSet().toList(), progress);
         } catch (e) {
           ScanLogBuffer.instance.log('[$_ts][ScanAI] vision batch ${batchIdx + 1} failed: $e');
+          if (_isCloudFailure(e)) rethrow;
         }
       }
     } else {
@@ -447,23 +465,23 @@ Rules:
       final fallbackPrompt = fallbackPromptBuilder.buildPrompt();
 
       final textCtx = (contextSize == null || contextSize < 2048) ? 2048 : contextSize;
-      await networkDataSource.initModel(
-        withVision: false,
-        threads: threads,
-        contextSize: textCtx,
-      );
 
       try {
         ScanLogBuffer.instance.log('[$_ts][ScanAI] running text-only inference, prompt ${fallbackPrompt.length} chars...');
-        final response = await networkDataSource.runTextPrompt(
+        final response = await aiGenerationCoordinator.generateText(
           prompt: fallbackPrompt,
           maxTokens: maxTokens,
+          localOptions: AiLocalGenerationOptions(
+            contextSize: textCtx,
+            threads: threads,
+          ),
         );
 
         allResources = _parseResourcesFromResponse(response, confidenceText);
         ScanLogBuffer.instance.log('[$_ts][ScanAI] text fallback: ${allResources.length} resources');
       } catch (e) {
         ScanLogBuffer.instance.log('[$_ts][ScanAI] text fallback failed: $e');
+        if (_isCloudFailure(e)) rethrow;
         final msg = e.toString().toLowerCase();
         if (msg.contains('tokenization') || msg.contains('prompt too long')) {
           rethrow;

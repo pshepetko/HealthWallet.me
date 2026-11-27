@@ -22,6 +22,7 @@ class ProcessingResourcesSection extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final GlobalKey encounterSectionKey;
   final DeviceAiCapability deviceCapability;
+  final bool isCloudProviderActive;
   final VoidCallback onScrollToFormErrors;
   final VoidCallback onSaveResources;
 
@@ -32,6 +33,7 @@ class ProcessingResourcesSection extends StatelessWidget {
     required this.formKey,
     required this.encounterSectionKey,
     required this.deviceCapability,
+    this.isCloudProviderActive = false,
     required this.onScrollToFormErrors,
     required this.onSaveResources,
     super.key,
@@ -68,6 +70,7 @@ class ProcessingResourcesSection extends StatelessWidget {
             sessionId: sessionId,
             formKey: formKey,
             deviceCapability: deviceCapability,
+            isCloudProviderActive: isCloudProviderActive,
             onScrollToFormErrors: onScrollToFormErrors,
           ),
         ] else ...[
@@ -198,6 +201,7 @@ class _ScannedBasicButtons extends StatelessWidget {
   final String sessionId;
   final GlobalKey<FormState> formKey;
   final DeviceAiCapability deviceCapability;
+  final bool isCloudProviderActive;
   final VoidCallback onScrollToFormErrors;
 
   const _ScannedBasicButtons({
@@ -206,6 +210,7 @@ class _ScannedBasicButtons extends StatelessWidget {
     required this.sessionId,
     required this.formKey,
     required this.deviceCapability,
+    required this.isCloudProviderActive,
     required this.onScrollToFormErrors,
   });
 
@@ -214,8 +219,11 @@ class _ScannedBasicButtons extends StatelessWidget {
     final anotherSessionProcessing = state.sessions.any(
       (s) => s.id != session.id && s.isProcessing,
     );
-    final isVisionOnBasicDevice =
-        deviceCapability == DeviceAiCapability.basicOnly && state.useVision;
+    // Cloud vision does not need local RAM, so the device limitation and the
+    // RAM warning only apply to the on-device provider.
+    final isVisionOnBasicDevice = !isCloudProviderActive &&
+        deviceCapability == DeviceAiCapability.basicOnly &&
+        state.useVision;
     final isStep2Blocked = anotherSessionProcessing || isVisionOnBasicDevice;
 
     return Column(

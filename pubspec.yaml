@@ -31,6 +31,10 @@ dependencies:
   # Network
   dio: ^5.9.2
 
+  # Firebase (cloud AI / Vertex AI via Firebase AI Logic)
+  firebase_core: ^5.1.0
+  firebase_ai: ^5.1.0
+
   # Local Storage
   drift: ^2.15.0
   sqlite3_flutter_libs: ^0.5.20

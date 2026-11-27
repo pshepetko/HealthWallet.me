@@ -1441,4 +1441,64 @@ class AppLocalizationsUk extends AppLocalizations {
   String shareExtensionDurationRequested(String duration) {
     return 'Запитано $duration';
   }
+
+  @override
+  String get aiProviderSectionTitle => 'Провайдер ШІ';
+
+  @override
+  String get aiProviderSectionDescription =>
+      'Оберіть, як оброблятимуться медичні документи. Хмарний ШІ надсилає дані документів до Google Vertex AI (Gemini). Локальний ШІ залишає все на вашому пристрої.';
+
+  @override
+  String get aiProviderAuto => 'Авто';
+
+  @override
+  String get aiProviderAutoDescription =>
+      'Використовувати хмарний ШІ, коли доступний, інакше — локальний.';
+
+  @override
+  String get aiProviderOnDevice => 'На пристрої';
+
+  @override
+  String get aiProviderOnDeviceDescription =>
+      'Обробляти документи локально завантаженою моделлю.';
+
+  @override
+  String get aiProviderCloud => 'Хмара';
+
+  @override
+  String get aiProviderCloudDescription =>
+      'Обробляти документи через Google Vertex AI (Gemini).';
+
+  @override
+  String get aiCloudConsentTitle => 'Дозволити хмарну обробку медичних даних';
+
+  @override
+  String get aiCloudConsentDescription =>
+      'Зображення та текст документів буде надіслано до Google Vertex AI для обробки. Ці дані можуть залишити ваш пристрій і підпадають під умови Google. Увімкніть, лише якщо ви надаєте згоду.';
+
+  @override
+  String get aiCloudConsentRequired =>
+      'Для використання хмарного ШІ потрібна згода.';
+
+  @override
+  String get aiCloudFallbackTitle => 'Повертатися до локального ШІ';
+
+  @override
+  String get aiCloudFallbackDescription =>
+      'Якщо хмарний запит не вдасться, повторіть на телефоні (потрібна завантажена модель).';
+
+  @override
+  String get aiCloudActiveTitle => 'Хмарний ШІ активний';
+
+  @override
+  String get aiCloudActiveDescription =>
+      'Документи оброблятимуться в хмарі. Локальна модель не потрібна.';
+
+  @override
+  String get aiCloudModelLabel => 'Хмарна модель';
+
+  @override
+  String get aiLocalSettingsCloudInfo =>
+      'Локальні параметри продуктивності приховані, поки активний хмарний ШІ.';
 }

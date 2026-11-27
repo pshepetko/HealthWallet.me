@@ -2665,6 +2665,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{duration} requested'**
   String shareExtensionDurationRequested(String duration);
+
+  /// No description provided for @aiProviderSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'AI Provider'**
+  String get aiProviderSectionTitle;
+
+  /// No description provided for @aiProviderSectionDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose how medical documents are processed. Cloud AI sends document data to Google Vertex AI (Gemini). On-device AI keeps everything on your phone.'**
+  String get aiProviderSectionDescription;
+
+  /// No description provided for @aiProviderAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto'**
+  String get aiProviderAuto;
+
+  /// No description provided for @aiProviderAutoDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Use cloud AI when available, otherwise on-device.'**
+  String get aiProviderAutoDescription;
+
+  /// No description provided for @aiProviderOnDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'On-device'**
+  String get aiProviderOnDevice;
+
+  /// No description provided for @aiProviderOnDeviceDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Process documents locally with the downloaded model.'**
+  String get aiProviderOnDeviceDescription;
+
+  /// No description provided for @aiProviderCloud.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud'**
+  String get aiProviderCloud;
+
+  /// No description provided for @aiProviderCloudDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Process documents with Google Vertex AI (Gemini).'**
+  String get aiProviderCloudDescription;
+
+  /// No description provided for @aiCloudConsentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow cloud processing of medical data'**
+  String get aiCloudConsentTitle;
+
+  /// No description provided for @aiCloudConsentDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Document images and text will be sent to Google Vertex AI for processing. This data may leave your device and is subject to Google\'s terms. Only enable if you consent.'**
+  String get aiCloudConsentDescription;
+
+  /// No description provided for @aiCloudConsentRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Consent is required to use cloud AI.'**
+  String get aiCloudConsentRequired;
+
+  /// No description provided for @aiCloudFallbackTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fall back to on-device AI'**
+  String get aiCloudFallbackTitle;
+
+  /// No description provided for @aiCloudFallbackDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'If the cloud request fails, retry on your phone (requires a downloaded model).'**
+  String get aiCloudFallbackDescription;
+
+  /// No description provided for @aiCloudActiveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud AI active'**
+  String get aiCloudActiveTitle;
+
+  /// No description provided for @aiCloudActiveDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Documents will be processed in the cloud. A local model is not required.'**
+  String get aiCloudActiveDescription;
+
+  /// No description provided for @aiCloudModelLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud model'**
+  String get aiCloudModelLabel;
+
+  /// No description provided for @aiLocalSettingsCloudInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Local performance settings are hidden while cloud AI is active.'**
+  String get aiLocalSettingsCloudInfo;
 }
 
 class _AppLocalizationsDelegate
